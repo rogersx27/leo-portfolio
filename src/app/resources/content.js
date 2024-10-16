@@ -47,11 +47,14 @@ const home = {
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Design content creator and experience builder</>,
-  subline: 
+  subline: (
     <>
-      I'm {person.firstName}, a <InlineCode>{person.role}</InlineCode> with over 4 years of experience working with thousands of customers globally, specializing in YouTube thumbnails, Instagram posts, Facebook covers, and more.
+      I'm {person.firstName}, a <InlineCode>{person.role}</InlineCode> with over
+      4 years of experience working with thousands of customers globally,
+      specializing in YouTube thumbnails, Instagram posts, Facebook covers, and
+      more.
     </>
-  ,
+  ),
 }
 
 const about = {
@@ -74,7 +77,11 @@ const about = {
     title: 'Introduction',
     description: (
       <>
-        Leo is a Design Content Creator known for delivering creative visual solutions for platforms such as YouTube, Instagram, Facebook, and Twitch. With a focus on photo manipulation, skin retouching, and digital designs, Leo helps brands and individuals amplify their online presence through impactful design.
+        Leo is a Design Content Creator known for delivering creative visual
+        solutions for platforms such as YouTube, Instagram, Facebook, and
+        Twitch. With a focus on photo manipulation, skin retouching, and digital
+        designs, Leo helps brands and individuals amplify their online presence
+        through impactful design.
       </>
     ),
   },
@@ -88,10 +95,12 @@ const about = {
         role: 'Design Content Creator',
         achievements: [
           <>
-            Worked with thousands of clients globally, creating designs for YouTube, Instagram, Facebook, and Twitch.
+            Worked with thousands of clients globally, creating designs for
+            YouTube, Instagram, Facebook, and Twitch.
           </>,
           <>
-            Specialized in photo manipulation, skin retouching, and creating visual content that drives engagement.
+            Specialized in photo manipulation, skin retouching, and creating
+            visual content that drives engagement.
           </>,
         ],
         images: [
@@ -99,8 +108,8 @@ const about = {
             src: '/images/projects/project-01/cover-01.jpg',
             alt: 'Once UI Project',
             width: 16,
-            height: 9
-        }
+            height: 9,
+          },
         ],
       },
     ],
@@ -111,7 +120,12 @@ const about = {
     institutions: [
       {
         name: 'Self-taught',
-        description: <>Developed expertise in digital design, photo manipulation, and content creation.</>,
+        description: (
+          <>
+            Developed expertise in digital design, photo manipulation, and
+            content creation.
+          </>
+        ),
       },
     ],
   },
@@ -121,13 +135,37 @@ const about = {
     skills: [
       {
         title: 'Photoshop',
-        description: <>Experienced in advanced photo manipulation, retouching, and content creation using Adobe Photoshop.</>,
-        images: [],
+        description: (
+          <>
+            Experienced in advanced photo manipulation, retouching, and content
+            creation using Adobe Photoshop.
+          </>
+        ),
+        images: [
+          {
+            src: '/images/projects/project-01/cover-01.jpg',
+            alt: 'Once UI Project',
+            width: 16,
+            height: 9,
+          },
+        ],
       },
       {
         title: 'Digital Design',
-        description: <>Creating engaging designs for social media, advertisements, and online branding.</>,
-        images: [],
+        description: (
+          <>
+            Creating engaging designs for social media, advertisements, and
+            online branding.
+          </>
+        ),
+        images: [
+          {
+            src: '/images/projects/project-01/cover-01.jpg',
+            alt: 'Once UI Project',
+            width: 16,
+            height: 9,
+          },
+        ],
       },
     ],
   },

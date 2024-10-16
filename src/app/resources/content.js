@@ -94,7 +94,14 @@ const about = {
             Specialized in photo manipulation, skin retouching, and creating visual content that drives engagement.
           </>,
         ],
-        images: [],
+        images: [
+          {
+            src: '/images/projects/project-01/cover-01.jpg',
+            alt: 'Once UI Project',
+            width: 16,
+            height: 9
+        }
+        ],
       },
     ],
   },

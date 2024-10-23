@@ -8,7 +8,7 @@ import reviewersData from '@/app/resources/reviewers_info.json';
 
 import { Mailchimp } from '@/app/components';
 import { Posts } from '@/app/blog/components/Posts';
-import ReviewerCard from './components/ReviewerCard';
+import ReviewersCarousel from './components/ReviewersCarousel';
 
 export function generateMetadata() {
 	const title = home.title;
@@ -120,20 +120,9 @@ export default function Home() {
 					<Posts range={[1, 2]} columns="2" />
 				</Flex>
 			)}
-			<Flex direction="column" alignItems="center" gap="l">
-				<Heading variant="display-strong-l">What People Are Saying</Heading>
-				<Flex direction="row" gap="l" wrap="wrap" justifyContent="center">
-					{reviewersData.map((reviewer, index) => (
-						<ReviewerCard
-							key={index}
-							username={reviewer.username}
-							reviewer_country={reviewer.reviewer_country}
-							comment={reviewer.comment}
-							value={reviewer.value}
-						/>
-					))}
-				</Flex>
-			</Flex>
+			<RevealFx translateY="16" delay={0.6}>
+				<ReviewersCarousel />
+			</RevealFx>
 			<Projects range={[2]} />
 			{newsletter.display &&
 				<Mailchimp />

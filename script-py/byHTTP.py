@@ -1,5 +1,7 @@
 import requests
 import json
+import os
+import re
 from urllib.parse import urlencode
 
 
@@ -53,9 +55,15 @@ def fetch_reviews(user_id, as_seller, sort_by, page_size):
 def save_reviews_to_json(reviews, filename="reviewers_info.json"):
     extracted_data = []
     for review in reviews:
+        username = review.get("username")
+        user_image_url = review.get("user_image_url")
+        user_image = (
+            f"{username}_user_image.jpg" if (username and user_image_url) else None
+        )
+
         extracted_data.append(
             {
-                "username": review.get("username"),
+                "username": username,
                 "reviewer_country": review.get("reviewer_country"),
                 "comment": review.get("comment"),
                 "order_duration": review.get("order_duration"),
@@ -63,6 +71,8 @@ def save_reviews_to_json(reviews, filename="reviewers_info.json"):
                 "created_at": review.get("created_at"),
                 "value": review.get("value"),
                 "work_sample": review.get("work_sample"),
+                "user_image_url": user_image_url,
+                "user_image": user_image,
             }
         )
 
@@ -70,6 +80,64 @@ def save_reviews_to_json(reviews, filename="reviewers_info.json"):
         json.dump(extracted_data, json_file, indent=4)
 
     print(f"Data saved in '{filename}'")
+
+
+def clean_filename(filename):
+    return re.sub(r'[<>:"/\\|?*]', "_", filename)
+
+
+def download_image(image_url, save_directory, filename: str):
+    try:
+        response = requests.get(image_url)
+        response.raise_for_status()
+
+        # Verificar el tipo de contenido y ajustar la extensión si es necesario
+        content_type = response.headers.get("Content-Type")
+        if content_type == "image/jpeg":
+            filename = filename.replace(
+                ".png", ".jpg"
+            )  # Cambiar a .jpg si es necesario
+        elif content_type == "image/png":
+            filename = filename.replace(
+                ".png", ".jpg"
+            )  # Cambiar a .png si es necesario
+        else:
+            print(f"Unknown content type {content_type}. Skipping {image_url}")
+            return
+
+        # Limpiar el nombre del archivo
+        filename = clean_filename(filename)
+
+        with open(os.path.join(save_directory, filename), "wb") as img_file:
+            img_file.write(response.content)
+        print(f"Image saved as: {filename}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading {image_url}: {e}")
+
+
+def download_work_samples(reviews, save_directory="work_samples"):
+    if not os.path.exists(save_directory):
+        os.makedirs(save_directory)
+
+    for review in reviews:
+        work_sample_url = review.get("work_sample")
+        if work_sample_url:
+            username = review.get("username", "unknown_user")
+            file_extension = work_sample_url.split(".")[-1]
+            filename = f"{username}_work_sample.{file_extension}".replace(":", "-")
+            download_image(work_sample_url, save_directory, filename)
+
+        user_image_url = review.get("user_image_url")
+        if user_image_url:
+            print("user_image_url " + user_image_url)
+            username = review.get("username", "unknown_user")
+            file_extension = user_image_url.split(".")[-1]
+
+            if file_extension != "jpg":
+                file_extension = "jpg"
+
+            filename = f"{username}_user_image.{file_extension}".replace(":", "-")
+            download_image(user_image_url, save_directory, filename)
 
 
 def get_sort_by():
@@ -101,6 +169,7 @@ if __name__ == "__main__":
         if "reviews" in response_data:
             reviews = response_data["reviews"]
             save_reviews_to_json(reviews)
+            download_work_samples(reviews)
         else:
             print("No reviews found in the API response.")
 

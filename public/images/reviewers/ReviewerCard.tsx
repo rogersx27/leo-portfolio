@@ -2,15 +2,7 @@ import React from 'react';
 import { Flex, Avatar, Text } from '@/once-ui/components';
 import styles from './ReviewerCard.module.css';
 
-interface ReviewerCardProps {
-  username: string;
-  reviewer_country: string;
-  comment: string;
-  value: number;
-  user_image: string | null;
-}
-
-const ReviewerCard = ({ username, reviewer_country, comment, value, user_image }: ReviewerCardProps) => {
+const ReviewerCard = ({ username, reviewer_country, comment, value, user_image }) => {
   return (
     <Flex direction="column" alignItems="center" gap="m" className={styles.card}>
       {user_image ? (
@@ -18,6 +10,11 @@ const ReviewerCard = ({ username, reviewer_country, comment, value, user_image }
       ) : (
         <Avatar alt={username} size="l" className={styles.avatar} />
       )}
+
+      <Text variant="heading-small" className={styles.username}>{username}</Text>
+      <Text variant="body-small" className={styles.country}>{reviewer_country}</Text>
+      <Text variant="body-default" wrap="balance" className={styles.comment}>{comment}</Text>
+      <Text variant="body-small" className={styles.rating}>Rating: {value}/5</Text>
 
       <div className={styles.fiverrLogo}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 121.34831" height="24" width="80" fill="currentColor">
@@ -31,11 +28,6 @@ const ReviewerCard = ({ username, reviewer_country, comment, value, user_image }
           />
         </svg>
       </div>
-
-      <Text variant="heading-small" className={styles.username}>{username}</Text>
-      <Text variant="body-small" className={styles.country}>{reviewer_country}</Text>
-      <Text variant="body-default" wrap="balance" className={styles.comment}>{comment}</Text>
-      <Text variant="body-small" className={styles.rating}>Rating: {value}/5</Text>
     </Flex>
   );
 };

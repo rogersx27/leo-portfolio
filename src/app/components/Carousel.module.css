@@ -1,0 +1,27 @@
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1000px; /* Ajusta el ancho máximo si lo deseas */
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.carouselWrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.carouselContent {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%; /* Ahora se ajusta dinámicamente */
+}
+
+.carouselSlide {
+  flex: 0 0 auto; /* Asegura que cada tarjeta mantenga su tamaño */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 550px; /* Ajusta la altura de las tarjetas */
+}

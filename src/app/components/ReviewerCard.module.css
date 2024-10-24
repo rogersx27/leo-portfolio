@@ -1,51 +1,4 @@
 .card {
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde ligero, estilo conservador */
-  border-radius: 8px; /* Borde conservador */
-  padding: 1rem;
-  transition: all 0.3s ease-in-out; /* Transición suave */
-  max-width: 300px; /* Limitar el ancho para evitar que se desborde */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-}
-
-.card:hover {
-  transform: translateY(-5px); /* Efecto de desplazamiento al pasar el cursor */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Mayor sombra al hacer hover */
-}
-
-.workSample {
-  width: 100%;
-  height: auto;
-  border-radius: 6px; /* Redondear las esquinas de la imagen */
-  margin-bottom: 1rem;
-}
-
-.avatar {
-  border: 2px solid var(--accent-color); /* Acento en el borde del avatar */
-}
-
-.username {
-  color: var(--brand-color); /* Color de la marca para el nombre */
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.country {
-  color: rgba(255, 255, 255, 0.7); /* Texto más sutil */
-}
-
-.comment {
-  color: rgba(255, 255, 255, 0.9); /* Comentario más prominente */
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.rating {
-  color: var(--accent-color); /* Usar el color de acento para la calificación */
-  font-weight: bold;
-}
-
-.card {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
@@ -53,35 +6,23 @@
   transition: all 0.3s ease-in-out;
   max-width: 300px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.usernameContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem; /* Espacio entre el nombre y el logo */
-}
-
-.username {
-  color: var(--brand-color);
-  font-weight: bold;
+  max-height: 100%; /* Limita la altura de la tarjeta */
+  overflow: hidden; /* Oculta el contenido que excede el área de la tarjeta */
 }
 
 .fiverrLogo {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.fiverrLogo svg {
-  width: 80px; /* Ajusta el tamaño del logotipo según lo necesites */
-  height: auto;
-}
-
-.workSample {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
   margin-bottom: 1rem;
+}
+
+.username {
+  color: var(--brand-color);
+  font-weight: bold;
 }
 
 .country {
@@ -92,9 +33,57 @@
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
   margin-bottom: 1rem;
+  word-wrap: break-word; /* Hace que el texto largo se divida en líneas */
+  overflow: hidden; /* Oculta el contenido que excede */
+  text-overflow: ellipsis; /* Añade "..." si el texto es demasiado largo */
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Limitar el número de líneas a 5 */
+  -webkit-box-orient: vertical;
 }
 
 .rating {
   color: var(--accent-color);
   font-weight: bold;
+}
+
+/* Estilos para pantallas pequeñas (mobile) */
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    padding: 0.75rem;
+    max-height: 100%; /* Limita la altura de la tarjeta */
+  }
+
+  .fiverrLogo svg {
+    width: 60px;
+    height: auto;
+  }
+
+  .username {
+    font-size: 1.2rem;
+  }
+
+  .country {
+    font-size: 0.9rem;
+  }
+
+  .comment {
+    font-size: 0.9rem; /* Reduce ligeramente el tamaño del texto */
+    margin-bottom: 0.75rem;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Limita el comentario a 5 líneas */
+    -webkit-box-orient: vertical;
+  }
+
+  .rating {
+    font-size: 0.9rem;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
 }

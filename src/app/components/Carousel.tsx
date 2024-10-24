@@ -5,6 +5,7 @@ import styles from "./Carousel.module.css";
 const Carousel = ({ children, slidesToShow = 1 }) => {
     const [currentIndex, setCurrentIndex] = useState(1); // Iniciar en la primera tarjeta "real"
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [visibleSlides, setVisibleSlides] = useState(slidesToShow); // Estado para controlar cuántas tarjetas se muestran
     const transitionDuration = 500; // Duración de la transición en ms
     const autoPlayDelay = 3000; // Tiempo entre slides en ms
     const childrenArray = React.Children.toArray(children);
@@ -52,22 +53,40 @@ const Carousel = ({ children, slidesToShow = 1 }) => {
         }
     }, [currentIndex, slides.length]);
 
+    // Función para ajustar la cantidad de tarjetas mostradas en función del tamaño de la pantalla
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setVisibleSlides(1); // Solo una tarjeta en vista mobile
+            } else {
+                setVisibleSlides(slidesToShow); // Mantener el número de tarjetas configuradas por defecto
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Establecer la configuración correcta al cargar la página
+        handleResize();
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [slidesToShow]);
+
     return (
         <div className={styles.carouselContainer}>
             <div className={styles.carouselWrapper}>
                 <div
                     className={styles.carouselContent}
                     style={{
-                        transform: `translateX(-${(currentIndex * 100) / slidesToShow}%)`, // Ajustamos el desplazamiento dependiendo de cuántos slides se muestran
+                        transform: `translateX(-${(currentIndex * 100) / visibleSlides}%)`, // Ajustamos el desplazamiento dependiendo de cuántos slides se muestran
                         transition: isTransitioning ? `transform ${transitionDuration}ms ease` : "none",
-                        width: `${slides.length * (100 / slidesToShow)}%`, // Ajustamos el ancho del contenedor
+                        width: `${slides.length * (100 / visibleSlides)}%`, // Ajustamos el ancho del contenedor
                     }}
                 >
                     {slides.map((slide, index) => (
                         <div
                             key={index}
                             className={styles.carouselSlide}
-                            style={{ width: `${100 / slidesToShow}%` }} // Ajustamos el ancho de cada slide
+                            style={{ width: `${100 / visibleSlides}%` }} // Ajustamos el ancho de cada slide
                         >
                             {slide}
                         </div>

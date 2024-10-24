@@ -1,7 +1,7 @@
 .carouselContainer {
   position: relative;
   width: 100%;
-  max-width: 1000px; /* Ajusta el ancho máximo si lo deseas */
+  max-width: 1000px; /* Ajusta el ancho máximo según lo que necesites */
   overflow: hidden;
   margin: 0 auto;
 }
@@ -9,19 +9,43 @@
 .carouselWrapper {
   display: flex;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
 .carouselContent {
   display: flex;
   transition: transform 0.5s ease;
-  width: 100%; /* Ahora se ajusta dinámicamente */
+  width: 100%;
 }
 
 .carouselSlide {
-  flex: 0 0 auto; /* Asegura que cada tarjeta mantenga su tamaño */
+  flex: 0 0 auto;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 550px; /* Ajusta la altura de las tarjetas */
+  height: 550px; /* Ajusta la altura de las tarjetas según sea necesario */
+  padding: 5px; /* Espaciado interno para las tarjetas */
+  width: 100%; /* Esto se ajusta dinámicamente según slidesToShow */
+}
+
+.carouselSlide > div {
+  width: 100%; /* Aseguramos que el contenido ocupe todo el ancho de la tarjeta */
+  max-width: 300px; /* Ajuste máximo para asegurar un tamaño uniforme */
+  min-height: 350px; /* Asegura que todas las tarjetas tengan la misma altura mínima */
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .carouselSlide > div {
+    max-width: 50%; /* Para pantallas pequeñas, dejamos que ocupe todo el ancho disponible */
+  }
 }

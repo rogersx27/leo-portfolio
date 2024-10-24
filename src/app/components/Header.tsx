@@ -130,8 +130,9 @@ export const Header = () => {
                                 href="/gallery"
                                 selected={pathname.startsWith('/gallery')}
                             >
+                                {/* galeria  */}
                                 <Flex paddingX="2" hide="s">
-                                    GALERIA MIA
+                                    Gallery
                                 </Flex>
                             </ToggleButton>
                             <div className={`${styles.dropdownMenu} ${isGalleryMenuVisible ? styles.dropdownMenuVisible : ''}`}>

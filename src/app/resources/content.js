@@ -208,7 +208,7 @@ const gallery = {
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Tecnología'
+      niche: 'Finance'
     },
     {
       src: '/images/gallery/img-02.jpg',
@@ -218,7 +218,7 @@ const gallery = {
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
       offert_alert: true,
-      niche: 'Tecnología'
+      niche: 'Podcast'
 
     },
     {
@@ -229,7 +229,7 @@ const gallery = {
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Tecnología'
+      niche: 'Real Estate'
 
     },
     {
@@ -240,7 +240,7 @@ const gallery = {
       orientation: 'vertical',
       is_best_seller: true,             // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Tecnología'
+      niche: 'Health & Fitness'
 
     },
     {
@@ -251,7 +251,57 @@ const gallery = {
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Tecnología'
+      niche: 'Gaming'
+    },
+    {
+      src: '/images/gallery/img-06.jpg',
+      alt: 'City Lights',
+      title: '',             // Nuevo campo título
+      category: 'Cityscape',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false,
+      niche: 'Gaming'
+    },
+    {
+      src: '/images/gallery/img-07.jpg',
+      alt: 'City Lights',
+      title: '',             // Nuevo campo título
+      category: 'Cityscape',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false,
+      niche: 'Gaming'
+    },
+    {
+      src: '/images/gallery/img-08.jpg',
+      alt: 'City Lights',
+      title: '',             // Nuevo campo título
+      category: 'Cityscape',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false,
+      niche: 'Gaming'
+    },
+    {
+      src: '/images/gallery/img-09.jpg',
+      alt: 'City Lights',
+      title: '',             // Nuevo campo título
+      category: 'Cityscape',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false,
+      niche: 'Gaming'
+    },
+    {
+      src: '/images/gallery/img-10.jpg',
+      alt: 'City Lights',
+      title: '',             // Nuevo campo título
+      category: 'Cityscape',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: true,
+      niche: 'Gaming'
     }
   ],
 };

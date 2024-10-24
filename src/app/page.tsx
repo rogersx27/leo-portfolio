@@ -112,14 +112,14 @@ export default function Home() {
 				</Flex>
 
 			</Flex>
-			<RevealFx translateY="16" delay={0.6}>
+			{/* <RevealFx translateY="16" delay={0.6}>
 				<Projects range={[1, 1]} />
-			</RevealFx>
-			{routes['/blog'] && (
+			</RevealFx> */}
+			{/* {routes['/blog'] && (
 				<Flex fillWidth paddingX="20">
 					<Posts range={[1, 2]} columns="2" />
 				</Flex>
-			)}
+			)} */}
 			<RevealFx translateY="16" delay={0.6}>
 				<Flex direction="column" alignItems="center" gap="l">
 					<Heading variant="display-strong-l">What People Are Saying</Heading> 

@@ -39,6 +39,8 @@ import { FaHome } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
 import { LuGalleryVerticalEnd } from "react-icons/lu";
+import { RiGalleryView } from "react-icons/ri";
+
 
 export const iconLibrary: Record<string, IconType> = {
 	chevronUp: HiChevronUp,
@@ -62,7 +64,7 @@ export const iconLibrary: Record<string, IconType> = {
 	openLink: HiOutlineLink,
 	calendar: HiCalendarDays,
 	home: FaHome,
-	gallery: LuGalleryVerticalEnd,
+	gallery: RiGalleryView,
 	discord: FaDiscord,
 	github: FaGithub,
 	linkedin: FaLinkedin,

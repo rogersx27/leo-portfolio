@@ -13,8 +13,14 @@ export default function MasonryGrid() {
         560: 1      // En móviles mostramos 1 columna
     };
 
-    // Ordenar las imágenes para que las que tienen is_best_seller: true aparezcan primero
-    const sortedImages = [...gallery.images].sort((a, b) => (b.is_best_seller ? 1 : 0) - (a.is_best_seller ? 1 : 0));
+    // Ordenar las imágenes para que las destacadas aparezcan primero
+    const sortedImages = [...gallery.images].sort((a, b) => {
+        if (a.is_best_seller && !b.is_best_seller) return -1;
+        if (!a.is_best_seller && b.is_best_seller) return 1;
+        if (a.offert_alert && !b.offert_alert) return -1;
+        if (!a.offert_alert && b.offert_alert) return 1;
+        return 0;
+    });
 
     return (
         <Masonry
@@ -24,24 +30,33 @@ export default function MasonryGrid() {
         >
             {sortedImages.map((image, index) => (
                 <div key={index} className={styles.gridItem}>
-                    {/* Mostrar el título */}
+                    {/* Mostrar el título y categoría */}
                     <Flex direction="column" alignItems="center" marginTop="s">
                         <Text className={styles.imageTitle}>
                             {image.title}
                         </Text>
-                        {/* Mostrar la categoría solo si es best seller */}
                         {image.is_best_seller && (
                             <Text className={styles.imageCategory}>
                                 {image.category}
                             </Text>
                         )}
                     </Flex>
-                    <SmartImage
-                        radius="m"
-                        aspectRatio={image.orientation === "horizontal" ? "16 / 9" : "9 / 16"}
-                        src={image.src}
-                        alt={image.alt}
-                    />
+                    {/* Contenedor de la imagen para posicionar elementos superpuestos */}
+                    <div className={styles.imageContainer}>
+                        <SmartImage
+                            radius="m"
+                            aspectRatio={image.orientation === "horizontal" ? "16 / 9" : "9 / 16"}
+                            src={image.src}
+                            alt={image.alt}
+                            loading='lazy'
+                        />
+                        {/* Mostrar badge si tiene offert_alert */}
+                        {image.offert_alert && (
+                            <div className={styles.offerBadge}>
+                                Oferta
+                            </div>
+                        )}
+                    </div>
                 </div>
             ))}
         </Masonry>

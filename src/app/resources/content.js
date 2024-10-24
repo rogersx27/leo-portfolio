@@ -204,7 +204,7 @@ const gallery = {
       category: 'Cityscape',            // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false
+      offert_alert: true
 
     },
     {

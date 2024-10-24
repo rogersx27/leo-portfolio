@@ -2,23 +2,39 @@
     display: flex;
     margin-left: calc(-1 * var(--static-space-16));
     width: 100%;
-}
-
-.masonryGridColumn {
+  }
+  
+  .masonryGridColumn {
     padding-left: var(--static-space-16);
     background-clip: padding-box;
-}
-
-.gridItem {
+  }
+  
+  .gridItem {
     margin-bottom: var(--static-space-16);
     transition: transform 0.3s ease;
-}
-
-.gridItem:hover {
-  transform: scale(1.05); /* Efecto de hover para ampliar ligeramente las imágenes */
-}
-
-.imageTitle {
+  }
+  
+  .gridItem:hover {
+    transform: scale(1.05); /* Efecto de hover para ampliar ligeramente las imágenes */
+  }
+  
+  .imageContainer {
+    position: relative; /* Para posicionar elementos absolutamente dentro */
+  }
+  
+  .offerBadge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #e63946; /* Color de fondo del badge */
+    color: #ffffff; /* Color del texto */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .imageTitle {
     color: #ffffff;
     font-weight: bold;
     margin-top: 15px; /* Añadimos más espacio superior entre la imagen y el título */
@@ -31,3 +47,4 @@
     text-align: center;
     font-style: italic;
   }
+  

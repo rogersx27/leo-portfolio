@@ -203,7 +203,7 @@ const gallery = {
     {
       src: '/images/gallery/img-01.jpg',
       alt: 'Beautiful Landscape',
-      title: 'Beautiful Landscape',     // Nuevo campo título
+      title: '',     // Nuevo campo título
       category: 'Nature',              // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
@@ -213,7 +213,7 @@ const gallery = {
     {
       src: '/images/gallery/img-02.jpg',
       alt: 'Urban Exploration',
-      title: 'Urban Exploration',       // Nuevo campo título
+      title: '',       // Nuevo campo título
       category: 'Cityscape',            // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
@@ -224,7 +224,7 @@ const gallery = {
     {
       src: '/images/gallery/img-03.jpg',
       alt: 'Mountain Hiking',
-      title: 'Mountain Hiking',         // Nuevo campo título
+      title: '',         // Nuevo campo título
       category: 'Adventure',            // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
@@ -235,7 +235,7 @@ const gallery = {
     {
       src: '/images/gallery/img-04.jpg',
       alt: 'Beach Sunset',
-      title: 'Beach Sunset',            // Nuevo campo título
+      title: '',            // Nuevo campo título
       category: 'Landscape',            // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,             // Nuevo campo para destacar las mejores imágenes
@@ -246,7 +246,7 @@ const gallery = {
     {
       src: '/images/gallery/img-05.jpg',
       alt: 'City Lights',
-      title: 'City Lights',             // Nuevo campo título
+      title: '',             // Nuevo campo título
       category: 'Cityscape',            // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes

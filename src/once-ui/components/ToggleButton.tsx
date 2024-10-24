@@ -51,7 +51,9 @@ const ToggleButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
                 {prefixIcon && (
                     <Icon
                         name={prefixIcon}
-                        size={iconSize}/>
+                        size={iconSize}
+                        withBackground 
+                    />
                 )}
                 {label && (
                     <div className={`font-s font-label ${styles.label} ${weight === 'strong' ? 'font-strong' : 'font-default'} ${truncate ? styles.truncate : ''}`}>

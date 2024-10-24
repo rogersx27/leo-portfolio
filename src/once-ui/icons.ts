@@ -35,6 +35,11 @@ import {
 	FaXTwitter
 } from "react-icons/fa6";
 
+import { FaHome } from "react-icons/fa";
+import { IoPersonCircle } from "react-icons/io5";
+import { MdWork } from "react-icons/md";
+import { LuGalleryVerticalEnd } from "react-icons/lu";
+
 export const iconLibrary: Record<string, IconType> = {
 	chevronUp: HiChevronUp,
     chevronDown: HiChevronDown,
@@ -50,14 +55,14 @@ export const iconLibrary: Record<string, IconType> = {
 	checkCircle: HiCheckCircle,
 	email: HiEnvelope,
 	globe: HiMiniGlobeAsiaAustralia,
-	person: PiUserCircleDuotone,
-	grid: PiGridFourDuotone,
+	person: IoPersonCircle,
+	grid: MdWork,
 	book: PiBookBookmarkDuotone,
 	close: HiMiniXMark,
 	openLink: HiOutlineLink,
 	calendar: HiCalendarDays,
-	home: PiHouseDuotone,
-	gallery: PiImageDuotone,
+	home: FaHome,
+	gallery: LuGalleryVerticalEnd,
 	discord: FaDiscord,
 	github: FaGithub,
 	linkedin: FaLinkedin,

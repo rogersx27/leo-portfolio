@@ -19,6 +19,9 @@ type IconProps = {
     onBackground?: `${ColorScheme}-${ColorWeight}`;
     onSolid?: `${ColorScheme}-${ColorWeight}`;
     size?: 'xs' | 's' | 'm' | 'l' | 'xl';
+    withBackground?: boolean;  // Nueva propiedad para habilitar fondo relleno
+    backgroundColor?: string;  // Color del fondo relleno
+    backgroundPadding?: string; // Padding del fondo relleno
     decorative?: boolean;
     className?: string;
     style?: React.CSSProperties;
@@ -29,6 +32,9 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(({
     onBackground,
     onSolid,
     size = 'm',
+    withBackground = false,  // Valor predeterminado sin fondo
+    backgroundColor = 'var(--color-neutral-light)',  // Color predeterminado del fondo
+    backgroundPadding = '8px',  // Padding predeterminado del fondo
     decorative = true,
     className,
     style,
@@ -58,7 +64,16 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(({
         <span
             ref={ref}
             className={classNames(colorClass, className)}
-            style={{ display: 'contents', fontSize: sizeMap[size], ...style }}
+            style={{
+                display: 'inline-flex',  // Usamos inline-flex para manejar bien el layout
+                justifyContent: 'center',
+                alignItems: 'center',
+                fontSize: sizeMap[size],
+                backgroundColor: withBackground ? backgroundColor : 'transparent',  // Aplica el fondo si está habilitado
+                borderRadius: withBackground ? '50%' : 'none',  // Fondo circular
+                padding: withBackground ? backgroundPadding : '0',  // Aplica el padding si hay fondo
+                ...style,
+            }}
             role={decorative ? "presentation" : undefined}
             aria-hidden={decorative ? "true" : undefined}
             aria-label={decorative ? undefined : name}>

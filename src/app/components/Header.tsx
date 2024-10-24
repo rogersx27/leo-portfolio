@@ -135,11 +135,14 @@ export const Header = () => {
                                 </Flex>
                             </ToggleButton>
                             <div className={`${styles.dropdownMenu} ${isGalleryMenuVisible ? styles.dropdownMenuVisible : ''}`}>
-                                <ul>
-                                    <li><a href="/gallery/subsection1">Subsección 1</a></li>
-                                    <li><a href="/gallery/subsection2">Subsección 2</a></li>
-                                    <li><a href="/gallery/subsection3">Subsección 3</a></li>
-                                </ul>
+                                {gallery.images.map((image, index) => (
+                                    image.is_best_seller && (
+                                        <a key={index} href={image.src} className={styles.dropdownItem}>
+                                            {image.category}
+                                        </a>
+                                    )
+                                ))}
+
                             </div>
                         </div>
                     )}

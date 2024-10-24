@@ -17,3 +17,17 @@
 .gridItem:hover {
   transform: scale(1.05); /* Efecto de hover para ampliar ligeramente las imágenes */
 }
+
+.imageTitle {
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 15px; /* Añadimos más espacio superior entre la imagen y el título */
+    text-align: center;
+  }
+  
+  .imageCategory {
+    color: #a3a3a3;
+    margin-top: 8px;
+    text-align: center;
+    font-style: italic;
+  }

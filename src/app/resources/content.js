@@ -185,16 +185,58 @@ const work = {
 
 const gallery = {
   label: 'Gallery',
-  title: 'My thumbnails work',
-  description: `A collection of thumbnails created by ${person.name}`,
+  title: 'My photo gallery',
+  description:  `A curated photo collection by ${person.name}`,
   images: [
     {
       src: '/images/gallery/img-01.jpg',
-      alt: 'image',
+      alt: 'Beautiful Landscape',
+      title: 'Beautiful Landscape',     // Nuevo campo título
+      category: 'Nature',              // Nuevo campo categoría
       orientation: 'vertical',
+      is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false
     },
-    // Añadir imágenes según el portafolio si es necesario
+    {
+      src: '/images/gallery/img-02.jpg',
+      alt: 'Urban Exploration',
+      title: 'Urban Exploration',       // Nuevo campo título
+      category: 'Cityscape',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false
+
+    },
+    {
+      src: '/images/gallery/img-03.jpg',
+      alt: 'Mountain Hiking',
+      title: 'Mountain Hiking',         // Nuevo campo título
+      category: 'Adventure',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false
+
+    },
+    {
+      src: '/images/gallery/img-04.jpg',
+      alt: 'Beach Sunset',
+      title: 'Beach Sunset',            // Nuevo campo título
+      category: 'Landscape',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: true,             // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false
+
+    },
+    {
+      src: '/images/gallery/img-05.jpg',
+      alt: 'City Lights',
+      title: 'City Lights',             // Nuevo campo título
+      category: 'Cityscape',            // Nuevo campo categoría
+      orientation: 'vertical',
+      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false
+    }
   ],
-}
+};
 
 export { person, social, newsletter, home, about, blog, work, gallery }

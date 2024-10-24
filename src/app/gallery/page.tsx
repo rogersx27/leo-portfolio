@@ -1,6 +1,9 @@
 import { Flex } from "@/once-ui/components";
 import MasonryGrid from "./components/MasonryGrid";
-import { baseURL, gallery, person } from "../resources";
+import { baseURL, gallery, person, niche_in_category } from "../resources";
+import styles from "@/app/gallery/Gallery.module.scss";
+import PyramidCategory from "../components/PyramidCategory";
+
 
 export function generateMetadata() {
     const title = gallery.title;
@@ -30,6 +33,27 @@ export function generateMetadata() {
         },
     };
 }
+
+function NicheInCategorySection() {
+    return (
+        <div className={styles.nicheInCategorySection}>
+            <h2>Categories and Niches</h2>
+            <div className={styles.categoriesGrid}>
+                {Object.entries(niche_in_category).map(([category, niches]) => (
+                    <div key={category} className={styles.categoryColumn}>
+                        <h3 className={styles.categoryTitle}>{category}</h3>
+                        <ul className={styles.nicheList}>
+                            {niches.map((niche) => (
+                                <li key={niche} className={styles.nicheItem}>{niche}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 
 export default function Gallery() {
     return (
@@ -63,6 +87,7 @@ export default function Gallery() {
             <h1>{gallery.title}</h1>
             <p>{gallery.description}</p>
             <MasonryGrid />
+            <NicheInCategorySection />
         </Flex>
     );
 }

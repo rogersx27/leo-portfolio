@@ -2,49 +2,198 @@
     display: flex;
     margin-left: calc(-1 * var(--static-space-16));
     width: 100%;
-  }
-  
-  .masonryGridColumn {
+}
+
+.masonryGridColumn {
     padding-left: var(--static-space-16);
     background-clip: padding-box;
-  }
-  
-  .gridItem {
+}
+
+.gridItem {
     margin-bottom: var(--static-space-16);
     transition: transform 0.3s ease;
-  }
-  
-  .gridItem:hover {
-    transform: scale(1.05); /* Efecto de hover para ampliar ligeramente las imágenes */
-  }
-  
-  .imageContainer {
-    position: relative; /* Para posicionar elementos absolutamente dentro */
-  }
-  
-  .offerBadge {
+}
+
+.gridItem:hover {
+    transform: scale(1.05);
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.offerBadge {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: #e63946; /* Color de fondo del badge */
-    color: #ffffff; /* Color del texto */
+    bottom: 8px;
+    left: 8px;
+    background-color: #e63946;
+    color: #ffffff;
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: bold;
-  }
-  
-  .imageTitle {
+}
+
+/* Estilos para el nicheBadge */
+.nicheBadge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
     color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
     font-weight: bold;
-    margin-top: 15px; /* Añadimos más espacio superior entre la imagen y el título */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilos para resaltar el nicheBadge en hover */
+.gridItem:hover .nicheBadge,
+.gridItem:focus .nicheBadge {
+    background-color: rgba(42, 157, 144, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.imageTitle {
+    color: #d3d3d3;
+    /* Cambiado a gris claro para mayor contraste con el fondo negro */
+    font-weight: bold;
+    margin-top: 10px;
+    /* Reducido el margen superior */
     text-align: center;
-  }
-  
-  .imageCategory {
-    color: #a3a3a3;
-    margin-top: 8px;
+    font-size: 1.6rem;
+    /* Reducido el tamaño de fuente */
+}
+
+.imageCategory {
+    color: #b0b0b0;
+    /* Cambiado a un tono gris más oscuro para mayor contraste */
+    margin-top: 5px;
+    /* Reducido el margen superior */
     text-align: center;
     font-style: italic;
-  }
-  
+    font-size: 1.2rem;
+    /* Reducido el tamaño de fuente */
+}
+
+.nicheTitle {
+    text-align: center;
+}
+
+.pyramidCategory {
+    margin-bottom: 1.5rem;
+    /* Reducido el margen inferior para que estén más cerca */
+}
+
+.pyramidContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pyramidRow {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+    /* Reducido el margen inferior */
+}
+
+/* Estilos para los nichos */
+.nicheItem {
+    color: #00bcd4;
+    padding: 0;
+    margin: 0 0.2rem;
+    font-size: 0.9rem;
+    /* Reducido el tamaño de fuente */
+    text-decoration: none;
+    border-bottom: 2px solid #00bcd4;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+
+.nicheItem:hover {
+    color: #00ffff;
+    border-bottom: 2px solid #00ffff;
+    text-shadow: 0 0 8px #00ffff;
+    /* Añade un brillo al texto */
+}
+
+.nicheList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Los nichos se apilan verticalmente */
+    align-items: center;    /* Centra los nichos horizontalmente */
+}
+
+/* Eliminamos los colores por nivel si ya no son necesarios */
+.rowLevel0 .nicheItem,
+.rowLevel1 .nicheItem,
+.rowLevel2 .nicheItem {
+    background-color: transparent;
+}
+
+.nicheInCategorySection {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.categoriesGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Ajusta la distribución horizontal */
+    gap: 2rem;
+    /* Añade espacio entre columnas */
+}
+
+.categoryColumn {
+    flex: 1;
+    min-width: 200px; /* Asegura un ancho mínimo para las columnas */
+    text-align: center; /* Centra los elementos dentro de la columna */
+}
+
+.categoryTitle {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #d3d3d3; /* Estilo para el título de la categoría */
+}
+
+.nicheInCategorySection h2 {
+    font-size: 1.8rem;
+    /* Reducido el tamaño de fuente */
+    margin-bottom: 0.8rem;
+    /* Reducido el margen inferior */
+    text-align: center;
+    color: #d3d3d3;
+    /* Cambiado a gris claro para mayor contraste con el fondo negro */
+}
+
+.categoryTitle {
+    font-size: 1.8rem;
+    /* Reducido el tamaño de fuente */
+    margin-top: 0.8rem;
+    /* Reducido el margen superior */
+    margin-bottom: 0.8rem;
+    /* Reducido el margen inferior */
+    color: #b0b0b0;
+    /* Cambiado a un tono gris más oscuro para mayor contraste */
+    text-align: center;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 600px) {
+    .nicheItem {
+        font-size: 0.8rem;
+        padding: 0;
+    }
+}

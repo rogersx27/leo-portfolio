@@ -7,13 +7,16 @@ import styles from "@/app/gallery/Gallery.module.scss";
 
 export default function MasonryGrid() {
     const breakpointColumnsObj = {
-        default: 4, // En pantallas grandes mostramos 4 columnas
-        1440: 3,    // En pantallas de tamaño medio mostramos 3 columnas
-        1024: 2,    // En pantallas tablet mostramos 2 columnas
-        560: 1      // En móviles mostramos 1 columna
-    };
+        default: 5, // Pantallas mayores a 1440px
+        1440: 5,    // <= 1440px, 5 columnas
+        1200: 4,    // <= 1200px, 4 columnas
+        1024: 3,    // <= 1024px, 3 columnas
+        768: 2,     // <= 768px, 2 columnas
+        560: 1      // <= 560px, 1 columna
+      };
+      
 
-    // Ordenar las imágenes para que las destacadas aparezcan primero
+    // Ordenar las imágenes (si es necesario)
     const sortedImages = [...gallery.images].sort((a, b) => {
         if (a.is_best_seller && !b.is_best_seller) return -1;
         if (!a.is_best_seller && b.is_best_seller) return 1;
@@ -53,7 +56,13 @@ export default function MasonryGrid() {
                         {/* Mostrar badge si tiene offert_alert */}
                         {image.offert_alert && (
                             <div className={styles.offerBadge}>
-                                Oferta
+                                Ofert
+                            </div>
+                        )}
+                        {/* Mostrar badge de 'niche' en una esquina diferente */}
+                        {image.niche && (
+                            <div className={styles.nicheBadge}>
+                                {image.niche}
                             </div>
                         )}
                     </div>

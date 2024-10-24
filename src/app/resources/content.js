@@ -183,6 +183,18 @@ const work = {
   description: `Design and development projects by ${person.name}`,
 }
 
+const niche_in_category = {
+  Nature: ['Travel', 'Lifestyle', 'Technology'],
+  Cityscape: ['Travel', 'Lifestyle'],
+  Adventure: ['Travel', 'Lifestyle'],
+  Landscape: ['Travel', 'Lifestyle'],
+  Technology: ['Technology'],
+  Travel: ['Travel'],
+  Food: ['Food'],
+  Fashion: ['Fashion'],
+  Lifestyle: ['Lifestyle']
+}
+
 const gallery = {
   label: 'Gallery',
   title: 'My photo gallery',
@@ -195,7 +207,8 @@ const gallery = {
       category: 'Nature',              // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false
+      offert_alert: false,
+      niche: 'Tecnología'
     },
     {
       src: '/images/gallery/img-02.jpg',
@@ -204,7 +217,8 @@ const gallery = {
       category: 'Cityscape',            // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
-      offert_alert: true
+      offert_alert: true,
+      niche: 'Tecnología'
 
     },
     {
@@ -214,7 +228,8 @@ const gallery = {
       category: 'Adventure',            // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false
+      offert_alert: false,
+      niche: 'Tecnología'
 
     },
     {
@@ -224,7 +239,8 @@ const gallery = {
       category: 'Landscape',            // Nuevo campo categoría
       orientation: 'vertical',
       is_best_seller: true,             // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false
+      offert_alert: false,
+      niche: 'Tecnología'
 
     },
     {
@@ -233,10 +249,11 @@ const gallery = {
       title: 'City Lights',             // Nuevo campo título
       category: 'Cityscape',            // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false
+      is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
+      offert_alert: false,
+      niche: 'Tecnología'
     }
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery }
+export { person, social, newsletter, home, about, blog, work, gallery, niche_in_category }

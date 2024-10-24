@@ -6,6 +6,113 @@
     }
 }
 
+.callToAction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    /* Ajustes de padding y margin */
+    padding: 1rem;
+
+    @media (max-width: 768px) {
+        padding: 0.75rem;
+    }
+
+    /* Icono */
+    .icon {
+        width: 3rem;
+        /* 48px */
+        height: 3rem;
+        /* 48px */
+        margin-bottom: 1rem;
+
+        @media (max-width: 480px) {
+            width: 2.5rem;
+            /* 40px */
+            height: 2.5rem;
+            /* 40px */
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    /* Heading */
+    .heading {
+        font-size: 1.5rem;
+        /* 24px */
+
+        @media (max-width: 768px) {
+            font-size: 1.3rem;
+            /* 20.8px */
+        }
+
+        @media (max-width: 480px) {
+            font-size: 1.1rem;
+            /* 17.6px */
+        }
+    }
+
+    /* Texto */
+    .text {
+        font-size: 1rem;
+        /* 16px */
+
+        @media (max-width: 768px) {
+            font-size: 0.95rem;
+            /* 15.2px */
+        }
+
+        @media (max-width: 480px) {
+            font-size: 0.9rem;
+            /* 14.4px */
+        }
+    }
+
+    /* Botón */
+    .button {
+        margin-top: 1rem;
+        width: 100%;
+        background-color: #ffffff00;
+        color: #ffffff;
+
+        @media (max-width: 480px) {
+            width: 90%;
+            /* Dejar algo de margen */
+        }
+
+        /* Transiciones para interactividad */
+        transition: background-color 0.3s ease,
+        transform 0.3s ease;
+
+        &:hover {
+            color: #00ffff;
+            border-bottom: 2px solid #00ffff;
+            text-shadow: 0 0 8px #00ffff;
+            background-color: #ffffff1e;
+            transform: translateY(-2px);
+        }
+    }
+
+    /* Enlaces adicionales */
+    .additionalLinks {
+        display: flex;
+        gap: 0.5rem;
+        /* 8px */
+        margin-top: 1rem;
+
+        @media (max-width: 480px) {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .button-secondary {
+            flex: 1;
+            text-align: center;
+        }
+    }
+}
+
+
 @media (--s) {
     .textAlign {
         text-align: center;

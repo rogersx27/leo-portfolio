@@ -1,65 +1,81 @@
 import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
-import { person, about, social, baseURL } from '@/app/resources'
+
+import { person, about, social, baseURL } from '@/app/resources';
 import TableOfContents from '@/app/about/components/TableOfContents';
-import styles from '@/app/about/about.module.scss'
+import styles from '@/app/about/about.module.scss';
+import Card from '../components/Card';
+
 
 export function generateMetadata() {
-	const title = about.title;
-	const description = about.description;
-	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
+    const title = about.title;
+    const description = about.description;
+    const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
 
-	return {
-		title,
-		description,
-		openGraph: {
-			title,
-			description,
-			type: 'website',
-			url: `https://${baseURL}/blog`,
-			images: [
-				{
-					url: ogImage,
-					alt: title,
-				},
-			],
-		},
-		twitter: {
-			card: 'summary_large_image',
-			title,
-			description,
-			images: [ogImage],
-		},
-	};
+    return {
+        title,
+        description,
+        openGraph: {
+            title,
+            description,
+            type: 'website',
+            url: `https://${baseURL}/about`, // Cambiado de /blog a /about
+            images: [
+                {
+                    url: ogImage,
+                    alt: title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: [ogImage],
+        },
+    };
 }
 
 const structure = [
-    { 
+    {
         title: about.intro.title,
         display: about.intro.display,
         items: []
     },
-    { 
-        title: about.work.title,
-        display: about.work.display,
-        items: about.work.experiences.map(experience => experience.company)
+    {
+        title: about.bilingual.title,
+        display: about.bilingual.display,
+        items: about.bilingual.experiences.map(experience => experience.languages)
     },
-    { 
-        title: about.studies.title,
-        display: about.studies.display,
-        items: about.studies.institutions.map(institution => institution.name)
+    {
+        title: about.callToAction.title,
+        display: about.callToAction.display,
+        items: [], // No hay subítems para esta sección
     },
-    { 
-        title: about.technical.title,
-        display: about.technical.display,
-        items: about.technical.skills.map(skill => skill.title)
-    },
-]
+    // Elimina las siguientes entradas si no usas esas secciones:
+    // { 
+    //   title: about.studies.title,
+    //   display: about.studies.display,
+    //   items: about.studies.institutions.map(institution => institution.name)
+    // },
+    // { 
+    //   title: about.technical.title,
+    //   display: about.technical.display,
+    //   items: about.technical.skills.map(skill => skill.title)
+    // },
+    // { 
+    //   title: about.work.title,
+    //   display: about.work.display,
+    //   items: about.work.experiences.map(experience => experience.company)
+    // },
+];
 
 export default function About() {
     return (
         <Flex
             fillWidth maxWidth="m"
             direction="column">
+
+            {/* Datos Estructurados */}
             <script
                 type="application/ld+json"
                 suppressHydrationWarning
@@ -73,16 +89,18 @@ export default function About() {
                         url: `https://${baseURL}/about`,
                         image: `${baseURL}/images/${person.avatar}`,
                         sameAs: social
-                            .filter((item) => item.link && !item.link.startsWith('mailto:')) // Filter out empty links and email links
+                            .filter((item) => item.link && !item.link.startsWith('mailto:')) // Filtrar enlaces vacíos y correos electrónicos
                             .map((item) => item.link),
-                        worksFor: {
-                            '@type': 'Organization',
-                            name: about.work.experiences[0].company || ''
-                        },
+                        // worksFor: {
+                        //     '@type': 'Organization',
+                        //     name: about.work.experiences[0]?.company || ''
+                        // },
                     }),
                 }}
             />
-            { about.tableOfContent.display && (
+
+            {/* Table of Contents */}
+            {about.tableOfContent.display && (
                 <Flex
                     style={{ left: '0', top: '50%', transform: 'translateY(-50%)' }}
                     position="fixed"
@@ -93,25 +111,29 @@ export default function About() {
                         about={about} />
                 </Flex>
             )}
+
+            {/* Contenido Principal */}
             <Flex
                 fillWidth
                 mobileDirection="column" justifyContent="center">
-                { about.avatar.display && (
+
+                {/* Avatar y Datos Personales */}
+                {about.avatar.display && (
                     <Flex
                         minWidth="160" paddingX="l" paddingBottom="xl" gap="m"
                         flex={3} direction="column" alignItems="center">
                         <Avatar
                             src={person.avatar}
-                            size="xl"/>
+                            size="xl" />
                         <Flex
                             gap="8"
                             alignItems="center">
                             <Icon
                                 onBackground="accent-weak"
-                                name="globe"/>
+                                name="globe" />
                             {person.location}
                         </Flex>
-                        { person.languages.length > 0 && (
+                        {person.languages.length > 0 && (
                             <Flex
                                 wrap
                                 gap="8">
@@ -126,9 +148,13 @@ export default function About() {
                         )}
                     </Flex>
                 )}
+
+                {/* Secciones de Información */}
                 <Flex
                     className={styles.blockAlign}
                     fillWidth flex={9} maxWidth={40} direction="column">
+
+                    {/* Introducción y Redes Sociales */}
                     <Flex
                         id={about.intro.title}
                         fillWidth minHeight="160"
@@ -148,7 +174,7 @@ export default function About() {
                                 <Flex paddingLeft="12">
                                     <Icon
                                         name="calendar"
-                                        onBackground="brand-weak"/>
+                                        onBackground="brand-weak" />
                                 </Flex>
                                 <Flex
                                     paddingX="8">
@@ -158,7 +184,7 @@ export default function About() {
                                     href={about.calendar.link}
                                     data-border="rounded"
                                     variant="tertiary"
-                                    icon="chevronRight"/>
+                                    icon="chevronRight" />
                             </Flex>
                         )}
                         <Heading
@@ -184,23 +210,141 @@ export default function About() {
                                             prefixIcon={item.icon}
                                             label={item.name}
                                             size="s"
-                                            variant="tertiary"/>
+                                            variant="tertiary" />
                                     )
                                 ))}
                             </Flex>
                         )}
                     </Flex>
 
-                    { about.intro.display && (
+                    {about.intro.display && (
                         <Flex
                             direction="column"
                             textVariant="body-default-l"
                             fillWidth gap="m" marginBottom="xl">
-                            {about.intro.description}
+                            {Array.isArray(about.intro.description) ? (
+                                about.intro.description.map((paragraph, index) => (
+                                    <p key={index}>{paragraph}</p>
+                                ))
+                            ) : (
+                                about.intro.description
+                            )}
                         </Flex>
                     )}
 
-                    { about.work.display && (
+                    {/* Bilingual Section */}
+                    {about.bilingual.display && (
+                        <>
+                            <Heading
+                                as="h2"
+                                id={about.bilingual.title}
+                                variant="display-strong-s"
+                                marginBottom="m">
+                                {about.bilingual.title}
+                            </Heading>
+                            <Flex
+                                direction="column"
+                                fillWidth gap="l" marginBottom="40">
+                                {about.bilingual.experiences.map((experience, index) => (
+                                    <Flex
+                                        key={`${experience.company}-${index}`}
+                                        fillWidth
+                                        direction="column">
+                                        <Text
+                                            id={experience.languages.replace(" ", "-")}
+                                            variant="heading-strong-l">
+                                            {experience.languages}
+                                        </Text>
+                                        <Text
+                                            variant="body-default-m"
+                                            onBackground="neutral-weak">
+                                            {experience.achievements}
+                                        </Text>
+                                        {/* Si tienes imágenes en bilingual, inclúyelas aquí */}
+                                        {experience.images.length > 0 && (
+                                            <Flex
+                                                fillWidth paddingTop="m" gap="12"
+                                                wrap>
+                                                {experience.images.map((image, index) => (
+                                                    <Flex
+                                                        key={index}
+                                                        border="neutral-medium"
+                                                        borderStyle="solid-1"
+                                                        radius="m"
+                                                        minWidth={image.width} height={image.height}>
+                                                        <SmartImage
+                                                            enlarge
+                                                            radius="m"
+                                                            sizes={image.width.toString()}
+                                                            alt={image.alt}
+                                                            src={image.src} />
+                                                    </Flex>
+                                                ))}
+                                            </Flex>
+                                        )}
+                                    </Flex>
+                                ))}
+                            </Flex>
+                        </>
+                    )}
+
+                    {about.callToAction.display && (
+                        <Card className={styles.callToActionCard}>
+                            <Flex
+                                direction="column"
+                                alignItems="center"
+                                justifyContent="center"
+                                className={styles.callToAction}>
+
+                                <Icon
+                                    name="handshake"
+                                    size="xl"
+                                    onBackground="accent-strong"
+                                    decorative
+                                    aria-hidden="true"
+                                    className={styles.icon}
+                                />
+
+                                <Heading
+                                    variant="display-strong-m"
+                                    marginBottom="m"
+                                    className={styles.heading}>
+                                    {about.callToAction.title}
+                                </Heading>
+
+                                <Text
+                                    variant="body-default-l"
+                                    marginBottom="m"
+                                    className={styles.text}>
+                                    {about.callToAction.description}
+                                </Text>
+
+                                <Button
+                                    href={about.callToAction.button.link}
+                                    variant="primary"
+                                    size="m"
+                                    className={styles.button}>
+                                    {about.callToAction.button.label}
+                                </Button>
+
+                                {/* Enlaces adicionales (opcional) */}
+                                <Flex
+                                    className={styles.additionalLinks}
+                                    gap="8"
+                                    marginTop="m">
+                                    <Button
+                                        href="/gallery"
+                                        size="s"
+                                        className="button-secondary">
+                                        Watch my gallery
+                                    </Button>
+                                </Flex>
+                            </Flex>
+                        </Card>
+                    )}
+
+                    {/* Experiencias Laborales */}
+                    {/* {about.work.display && (
                         <>
                             <Heading
                                 as="h2"
@@ -267,7 +411,7 @@ export default function About() {
                                                             radius="m"
                                                             sizes={image.width.toString()}
                                                             alt={image.alt}
-                                                            src={image.src}/>
+                                                            src={image.src} />
                                                     </Flex>
                                                 ))}
                                             </Flex>
@@ -276,9 +420,10 @@ export default function About() {
                                 ))}
                             </Flex>
                         </>
-                    )}
+                    )} */}
 
-                    { about.studies.display && (
+                    {/* Estudios */}
+                    {/* {about.studies.display && (
                         <>
                             <Heading
                                 as="h2"
@@ -309,9 +454,10 @@ export default function About() {
                                 ))}
                             </Flex>
                         </>
-                    )}
+                    )} */}
 
-                    { about.technical.display && (
+                    {/* Habilidades Técnicas */}
+                    {/* {about.technical.display && (
                         <>
                             <Heading
                                 as="h2"
@@ -324,7 +470,7 @@ export default function About() {
                                 fillWidth gap="l">
                                 {about.technical.skills.map((skill, index) => (
                                     <Flex
-                                        key={`${skill}-${index}`}
+                                        key={`${skill.title}-${index}`}
                                         fillWidth gap="4"
                                         direction="column">
                                         <Text
@@ -352,7 +498,7 @@ export default function About() {
                                                             radius="m"
                                                             sizes={image.width.toString()}
                                                             alt={image.alt}
-                                                            src={image.src}/>
+                                                            src={image.src} />
                                                     </Flex>
                                                 ))}
                                             </Flex>
@@ -361,7 +507,7 @@ export default function About() {
                                 ))}
                             </Flex>
                         </>
-                    )}
+                    )} */}
                 </Flex>
             </Flex>
         </Flex>

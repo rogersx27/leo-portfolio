@@ -40,6 +40,7 @@ import { IoPersonCircle } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
 import { LuGalleryVerticalEnd } from "react-icons/lu";
 import { RiGalleryView } from "react-icons/ri";
+import { FaHandshake } from 'react-icons/fa';
 
 
 export const iconLibrary: Record<string, IconType> = {
@@ -69,4 +70,5 @@ export const iconLibrary: Record<string, IconType> = {
 	github: FaGithub,
 	linkedin: FaLinkedin,
 	x: FaXTwitter,
+	handshake: FaHandshake,
 };

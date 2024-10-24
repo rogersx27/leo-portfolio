@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`
   },
-  role: 'Design Content Creator', // Especialista en creación de contenido de diseño y experiencias visuales
+  role: 'Digital Designer', // Especialista en creación de contenido de diseño y experiencias visuales
   avatar: '/images/avatar.jpg',
   location: 'Asia/Jakarta', // Se puede ajustar según preferencias, pero el enfoque es internacional
   languages: ['English', 'Spanish'], // Añadido español ya que el portafolio parece apuntar a un público diverso
@@ -38,7 +38,7 @@ const social = [
   {
     name: 'Email',
     icon: 'email',
-    link: 'mailto:example@gmail.com', // Puedes cambiar este email si es necesario
+    link: 'businessleorubiano@gmail.com', // Puedes cambiar este email si es necesario
   },
 ]
 
@@ -46,15 +46,12 @@ const home = {
   label: 'Home',
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design content creator and experience builder</>,
+  headline: <>Turning Ideas Into Eye-Catching Visuals</>,
   subline: (
     <>
-      I'm {person.firstName}, a <InlineCode>{person.role}</InlineCode> with over
-      4 years of experience working with thousands of customers globally,
-      specializing in YouTube thumbnails, Instagram posts, Facebook covers, and
-      more.
+      Crafting exceptional digital experiences through innovative design and development.
     </>
-  ),
+  )
 }
 
 const about = {
@@ -74,101 +71,58 @@ const about = {
   },
   intro: {
     display: true,
-    title: 'Introduction',
-    description: (
-      <>
-        Leo is a Design Content Creator known for delivering creative visual
-        solutions for platforms such as YouTube, Instagram, Facebook, and
-        Twitch. With a focus on photo manipulation, skin retouching, and digital
-        designs, Leo helps brands and individuals amplify their online presence
-        through impactful design.
-      </>
-    ),
+    title: 'Traveling and Working',
+    description: [
+      'Hey there! I’m a passionate digital designer with over 4 years of hands-on experience in Photoshop and other design software, specializing in creating engaging and eye-catching social media designs.',
+      'Throughout my career, I’ve had the privilege of collaborating with thousands of clients worldwide, transforming ideas into visual stories that captivate audiences. Whether it’s building a brand’s identity, crafting promotional content, or designing stunning thumbnails that boost engagement, I’m dedicated to bringing creativity and impact to every project.',
+    ],
   },
-  work: {
+
+  bilingual: {
     display: true,
-    title: 'Work Experience',
+    title: 'Bilingual Expertise',
     experiences: [
       {
-        company: 'Freelance',
-        timeframe: '2019 - Present',
-        role: 'Design Content Creator',
+        languages: 'English and Spanish',
         achievements: [
           <>
-            Worked with thousands of clients globally, creating designs for
-            YouTube, Instagram, Facebook, and Twitch.
+            Fluent in both English and Spanish, I effortlessly connect and
+            collaborate with a diverse range of clients globally. Additionally,
+            I can create and adapt visuals in other languages, ensuring that
+            every design communicates effectively, regardless of the audience.
+            Language is no barrier when it comes to delivering impactful and
+            engaging content!
           </>,
-          <>
-            Specialized in photo manipulation, skin retouching, and creating
-            visual content that drives engagement.
-          </>,
         ],
         images: [
           {
-            src: '/images/projects/project-01/cover-01.jpg',
-            alt: 'Once UI Project',
-            width: 16,
-            height: 9,
+            src: '',
+            alt: '',
+            width: 0,
+            height: 0,
           },
         ],
       },
     ],
   },
-  studies: {
+  callToAction: {
     display: true,
-    title: 'Studies',
-    institutions: [
-      {
-        name: 'Self-taught',
-        description: (
-          <>
-            Developed expertise in digital design, photo manipulation, and
-            content creation.
-          </>
-        ),
-      },
-    ],
+    title: 'Let’s Work Together',
+    description: (
+      <>
+        Let’s work together and make something extraordinary that leaves a
+        lasting impression!
+      </>
+    ),
+    button: {
+      label: 'Contact Me',
+      link: '/contact', // Actualiza con la ruta correcta a tu página de contacto
+    },
   },
-  technical: {
-    display: true,
-    title: 'Technical skills',
-    skills: [
-      {
-        title: 'Photoshop',
-        description: (
-          <>
-            Experienced in advanced photo manipulation, retouching, and content
-            creation using Adobe Photoshop.
-          </>
-        ),
-        images: [
-          {
-            src: '/images/projects/project-01/cover-01.jpg',
-            alt: 'Once UI Project',
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: 'Digital Design',
-        description: (
-          <>
-            Creating engaging designs for social media, advertisements, and
-            online branding.
-          </>
-        ),
-        images: [
-          {
-            src: '/images/projects/project-01/cover-01.jpg',
-            alt: 'Once UI Project',
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-    ],
-  },
+  // Elimina o no incluyas las siguientes secciones si no las necesitas:
+  // technical: { ... },
+  // studies: { ... },
+  // work: { ... },
 }
 
 const blog = {
@@ -192,118 +146,125 @@ const niche_in_category = {
   Travel: ['Travel'],
   Food: ['Food'],
   Fashion: ['Fashion'],
-  Lifestyle: ['Lifestyle']
+  Lifestyle: ['Lifestyle'],
 }
 
 const gallery = {
   label: 'Gallery',
   title: 'My photo gallery',
-  description:  `A curated photo collection by ${person.name}`,
+  description: `A curated photo collection by ${person.name}`,
   images: [
     {
       src: '/images/gallery/img-01.jpg',
       alt: 'Beautiful Landscape',
-      title: '',     // Nuevo campo título
-      category: 'Nature',              // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Nature', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Finance'
+      niche: 'Finance',
     },
     {
       src: '/images/gallery/img-02.jpg',
       alt: 'Urban Exploration',
-      title: '',       // Nuevo campo título
-      category: 'Cityscape',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Cityscape', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: true,
-      niche: 'Podcast'
-
+      niche: 'Podcast',
     },
     {
       src: '/images/gallery/img-03.jpg',
       alt: 'Mountain Hiking',
-      title: '',         // Nuevo campo título
-      category: 'Adventure',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Adventure', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Real Estate'
-
+      niche: 'Real Estate',
     },
     {
       src: '/images/gallery/img-04.jpg',
       alt: 'Beach Sunset',
-      title: '',            // Nuevo campo título
-      category: 'Landscape',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Landscape', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: true,             // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Health & Fitness'
-
+      niche: 'Health & Fitness',
     },
     {
       src: '/images/gallery/img-05.jpg',
       alt: 'City Lights',
-      title: '',             // Nuevo campo título
-      category: 'Cityscape',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Cityscape', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: true,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Gaming'
+      niche: 'Gaming',
     },
     {
       src: '/images/gallery/img-06.jpg',
       alt: 'City Lights',
-      title: '',             // Nuevo campo título
-      category: 'Cityscape',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Cityscape', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Gaming'
+      niche: 'Gaming',
     },
     {
       src: '/images/gallery/img-07.jpg',
       alt: 'City Lights',
-      title: '',             // Nuevo campo título
-      category: 'Cityscape',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Cityscape', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Gaming'
+      niche: 'Gaming',
     },
     {
       src: '/images/gallery/img-08.jpg',
       alt: 'City Lights',
-      title: '',             // Nuevo campo título
-      category: 'Cityscape',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Cityscape', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Gaming'
+      niche: 'Gaming',
     },
     {
       src: '/images/gallery/img-09.jpg',
       alt: 'City Lights',
-      title: '',             // Nuevo campo título
-      category: 'Cityscape',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Cityscape', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
-      niche: 'Gaming'
+      niche: 'Gaming',
     },
     {
       src: '/images/gallery/img-10.jpg',
       alt: 'City Lights',
-      title: '',             // Nuevo campo título
-      category: 'Cityscape',            // Nuevo campo categoría
+      title: '', // Nuevo campo título
+      category: 'Cityscape', // Nuevo campo categoría
       orientation: 'vertical',
-      is_best_seller: false,            // Nuevo campo para destacar las mejores imágenes
+      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
       offert_alert: true,
-      niche: 'Gaming'
-    }
+      niche: 'Gaming',
+    },
   ],
-};
+}
 
-export { person, social, newsletter, home, about, blog, work, gallery, niche_in_category }
+export {
+  person,
+  social,
+  newsletter,
+  home,
+  about,
+  blog,
+  work,
+  gallery,
+  niche_in_category,
+}

@@ -1,0 +1,50 @@
+/* src/components/Card/Card.module.scss */
+
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    /* Fondo semi-transparente */
+    backdrop-filter: blur(10px);
+    /* Efecto de desenfoque */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Borde sutil */
+    border-radius: 12px;
+    /* Bordes redondeados */
+    padding: 2rem;
+    /* Espaciado interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Transiciones suaves */
+    max-width: 600px;
+    /* Ancho máximo para grandes pantallas */
+    width: 90%;
+    /* Ancho relativo para pantallas más pequeñas */
+    margin: 0 auto;
+    /* Centrar horizontalmente */
+
+    &:hover {
+        transform: translateY(-5px);
+        /* Levanta la card al pasar el mouse */
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        /* Sombra más intensa */
+    }
+
+    @media (max-width: $breakpoint-lg) {
+        padding: 1.5rem;
+        max-width: 80%;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        padding: 1rem;
+        max-width: 95%;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        padding: 0.75rem;
+        border-radius: 8px;
+    }
+}

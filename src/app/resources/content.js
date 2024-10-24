@@ -185,8 +185,8 @@ const work = {
 
 const gallery = {
   label: 'Gallery',
-  title: 'My photo gallery',
-  description: `A curated photo collection by ${person.name}`,
+  title: 'My thumbnails work',
+  description: `A collection of thumbnails created by ${person.name}`,
   images: [
     {
       src: '/images/gallery/img-01.jpg',

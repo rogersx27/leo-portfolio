@@ -11,4 +11,9 @@
 
 .gridItem {
     margin-bottom: var(--static-space-16);
+    transition: transform 0.3s ease;
+}
+
+.gridItem:hover {
+  transform: scale(1.05); /* Efecto de hover para ampliar ligeramente las imágenes */
 }

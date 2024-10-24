@@ -1,8 +1,73 @@
 .position {
-    position: sticky;
+    position: fixed;
     top: 0;
-}
-
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .menuContainer {
+    position: relative; /* Permite que el menú se posicione respecto a este contenedor */
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 100%; /* El menú aparece justo debajo del botón */
+    left: 0;
+    background-color: #151515; /* Fondo azul oscuro para el menú */
+    border-left: 1px solid #3f3f3f;
+    border-right: 1px solid #3f3f3f;
+    border-bottom: 1px solid #3f3f3f;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+    padding: 8px;
+    z-index: 10;
+    min-width: 150px; /* Ancho mínimo del menú */
+    margin-top: 1px;
+  
+    /* Transición para fade-in y deslizamiento */
+    opacity: 0;
+    transform: translateY(-10px); /* Mueve el menú ligeramente hacia arriba */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+  }
+  
+  .dropdownMenuVisible {
+    opacity: 1; /* Totalmente visible */
+    transform: translateY(0); /* Sin desplazamiento vertical */
+  }
+  
+  .dropdownMenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dropdownMenu li {
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdownMenu li:hover {
+    background-color: #353535; /* Fondo azul ligeramente más claro al pasar el ratón */
+  }
+  
+  .dropdownMenu a {
+    text-decoration: none; /* Sin subrayado */
+    color: #cbd5e1; /* Texto gris claro */
+    display: block;
+  }
+  
+  .dropdownMenu a:hover {
+    color: #ffffff; /* Cambiar a blanco al hacer hover */
+  }
+  
+  .dropdownMenu a:active {
+    color: #9ec6ff; /* Color azul claro al hacer clic */
+  }
+  
+  
 @media (--s) {
     .position {
         top: auto;

@@ -121,7 +121,10 @@ export default function Home() {
 				</Flex>
 			)}
 			<RevealFx translateY="16" delay={0.6}>
-				<ReviewersCarousel />
+				<Flex direction="column" alignItems="center" gap="l">
+					<Heading variant="display-strong-l">What People Are Saying</Heading> 
+					<ReviewersCarousel />
+				</Flex>
 			</RevealFx>
 			<Projects range={[2]} />
 			{newsletter.display &&

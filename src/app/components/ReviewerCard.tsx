@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, Avatar, Text } from '@/once-ui/components';
+import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import styles from './ReviewerCard.module.css';
 
 interface ReviewerCardProps {
@@ -11,6 +12,30 @@ interface ReviewerCardProps {
 }
 
 const ReviewerCard: React.FC<ReviewerCardProps> = ({ username, reviewer_country, comment, value, user_image }) => {
+  // Función para renderizar estrellas basadas en la calificación
+  const renderStars = (rating: number) => {
+    const fullStars = Math.floor(rating); // Estrellas completas
+    const halfStar = rating % 1 !== 0; // Si hay una media estrella
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Estrellas vacías
+
+    return (
+      <div className={styles.stars}>
+        {/* Estrellas completas */}
+        {[...Array(fullStars)].map((_, index) => (
+          <FaStar key={index} style={{ color: '#FFD700' }} />
+        ))}
+
+        {/* Media estrella */}
+        {halfStar && <FaStarHalfAlt style={{ color: '#FFD700' }} />}
+
+        {/* Estrellas vacías */}
+        {[...Array(emptyStars)].map((_, index) => (
+          <FaRegStar key={index} style={{ color: '#FFD700' }} />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <Flex direction="column" alignItems="center" gap="m" className={styles.card}>
       {user_image ? (
@@ -35,7 +60,7 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({ username, reviewer_country,
       <Text className={styles.username}>{username}</Text>
       <Text className={styles.country}>{reviewer_country}</Text>
       <Text wrap="balance" className={styles.comment}>{comment}</Text>
-      <Text className={styles.rating}>Rating: {value}/5</Text>
+      <Flex className={styles.rating}>{renderStars(value)}</Flex>
     </Flex>
   );
 };

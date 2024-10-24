@@ -13,6 +13,10 @@
   overflow: hidden; /* Oculta el contenido que excede el área de la tarjeta */
 }
 
+.card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
+}
+
 .fiverrLogo {
   display: flex;
   align-items: center;

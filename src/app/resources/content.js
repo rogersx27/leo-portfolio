@@ -13,7 +13,7 @@ const person = {
 }
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -151,7 +151,7 @@ const niche_in_category = {
 
 const gallery = {
   label: 'Gallery',
-  title: 'My photo gallery',
+  title: 'My works',
   description: `A curated photo collection by ${person.name}`,
   images: [
     {
@@ -203,57 +203,7 @@ const gallery = {
       is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
       niche: 'Gaming',
-    },
-    {
-      src: '/images/gallery/img-06.jpg',
-      alt: 'City Lights',
-      title: '', // Nuevo campo título
-      category: 'Cityscape', // Nuevo campo categoría
-      orientation: 'vertical',
-      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false,
-      niche: 'Gaming',
-    },
-    {
-      src: '/images/gallery/img-07.jpg',
-      alt: 'City Lights',
-      title: '', // Nuevo campo título
-      category: 'Cityscape', // Nuevo campo categoría
-      orientation: 'vertical',
-      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false,
-      niche: 'Gaming',
-    },
-    {
-      src: '/images/gallery/img-08.jpg',
-      alt: 'City Lights',
-      title: '', // Nuevo campo título
-      category: 'Cityscape', // Nuevo campo categoría
-      orientation: 'vertical',
-      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false,
-      niche: 'Gaming',
-    },
-    {
-      src: '/images/gallery/img-09.jpg',
-      alt: 'City Lights',
-      title: '', // Nuevo campo título
-      category: 'Cityscape', // Nuevo campo categoría
-      orientation: 'vertical',
-      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
-      offert_alert: false,
-      niche: 'Gaming',
-    },
-    {
-      src: '/images/gallery/img-10.jpg',
-      alt: 'City Lights',
-      title: '', // Nuevo campo título
-      category: 'Cityscape', // Nuevo campo categoría
-      orientation: 'vertical',
-      is_best_seller: false, // Nuevo campo para destacar las mejores imágenes
-      offert_alert: true,
-      niche: 'Gaming',
-    },
+    }
   ],
 }
 

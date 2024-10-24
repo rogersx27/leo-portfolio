@@ -5,7 +5,7 @@ import reviewersData from '@/app/resources/reviewers_info.json';
 
 const ReviewersCarousel = () => {
     return (
-        <Carousel slidesToShow={2}>
+        <Carousel slidesToShow={3}>
             {reviewersData.map((reviewer, index) => (
                 <ReviewerCard
                     key={index}

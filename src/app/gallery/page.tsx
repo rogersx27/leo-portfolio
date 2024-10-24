@@ -86,7 +86,9 @@ export default function Gallery() {
                     }),
                 }}
             />
-            <h1>{gallery.title}</h1>
+            <Heading
+            size="xl"
+            >{gallery.title}</Heading>
             <p>{gallery.description}</p>
             <>
                 <Heading marginTop="l" marginBottom="m">

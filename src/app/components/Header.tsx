@@ -130,7 +130,6 @@ export const Header = () => {
                                 href="/gallery"
                                 selected={pathname.startsWith('/gallery')}
                             >
-                                {/* galeria  */}
                                 <Flex paddingX="2" hide="s">
                                     Gallery
                                 </Flex>
@@ -143,7 +142,6 @@ export const Header = () => {
                                         </a>
                                     )
                                 ))}
-
                             </div>
                         </div>
                     )}

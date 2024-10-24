@@ -10,7 +10,7 @@ interface ReviewerCardProps {
   user_image: string | null;
 }
 
-const ReviewerCard = ({ username, reviewer_country, comment, value, user_image }: ReviewerCardProps) => {
+const ReviewerCard: React.FC<ReviewerCardProps> = ({ username, reviewer_country, comment, value, user_image }) => {
   return (
     <Flex direction="column" alignItems="center" gap="m" className={styles.card}>
       {user_image ? (

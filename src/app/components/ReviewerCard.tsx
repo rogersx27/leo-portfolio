@@ -14,9 +14,9 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({ username, reviewer_country,
   return (
     <Flex direction="column" alignItems="center" gap="m" className={styles.card}>
       {user_image ? (
-        <Avatar alt={username} size="l" className={styles.avatar} src={`/images/reviewers/${user_image}`} />
+        <Avatar size="l" className={styles.avatar} src={`/images/reviewers/${user_image}`} />
       ) : (
-        <Avatar alt={username} size="l" className={styles.avatar} />
+        <Avatar size="l" className={styles.avatar} />
       )}
 
       <div className={styles.fiverrLogo}>
@@ -32,10 +32,10 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({ username, reviewer_country,
         </svg>
       </div>
 
-      <Text variant="heading-small" className={styles.username}>{username}</Text>
-      <Text variant="body-small" className={styles.country}>{reviewer_country}</Text>
-      <Text variant="body-default" wrap="balance" className={styles.comment}>{comment}</Text>
-      <Text variant="body-small" className={styles.rating}>Rating: {value}/5</Text>
+      <Text className={styles.username}>{username}</Text>
+      <Text className={styles.country}>{reviewer_country}</Text>
+      <Text wrap="balance" className={styles.comment}>{comment}</Text>
+      <Text className={styles.rating}>Rating: {value}/5</Text>
     </Flex>
   );
 };

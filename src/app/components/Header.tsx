@@ -45,9 +45,10 @@ export default TimeDisplay;
 
 export const Header = () => {
     const pathname = usePathname() ?? '';
-    const { height: windowHeight } = useWindowSize()
+    const isClient = typeof window !== "undefined";
+    const { height: windowHeight } = isClient ? useWindowSize() : { height: undefined };
     const [isGalleryMenuVisible, setGalleryMenuVisible] = useState(false);
-    const isDropdownAbove = windowHeight <= 768
+    const isDropdownAbove = windowHeight ? windowHeight <= 768 : false;
 
     useEffect(() => {
         console.log("Menu despliega hacia arriba:", isDropdownAbove); // Confirma que el valor cambia correctamente

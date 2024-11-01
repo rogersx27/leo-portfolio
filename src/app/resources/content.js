@@ -9,7 +9,7 @@ const person = {
   role: 'Digital Designer',
   avatar: '/images/avatar.jpg',
   location: 'Asia/Jakarta',
-  languages: ['English', 'Spanish'], 
+  languages: ['English', 'Spanish'],
 }
 
 const newsletter = {
@@ -49,9 +49,10 @@ const home = {
   headline: <>Turning Ideas Into Eye-Catching Visuals</>,
   subline: (
     <>
-      Crafting exceptional digital experiences through innovative design and development.
+      Crafting exceptional digital experiences through innovative design and
+      development.
     </>
-  )
+  ),
 }
 
 const about = {
@@ -203,9 +204,44 @@ const gallery = {
       is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
       niche: 'Gaming',
-    }
+    },
   ],
 }
+
+const imagesForHome = [
+  {
+    alt: 'Sample image 1',
+    src: '/images/socialApp/1.jpg',
+  },
+  {
+    alt: 'Sample image 2',
+    src: '/images/socialApp/2.jpg',
+  },
+  {
+    alt: 'Sample image 3',
+    src: '/images/socialApp/3.jpg',
+  },
+  {
+    alt: 'Sample 4',
+    src: '/images/socialApp/4.jpg',
+  },
+  {
+    alt: 'Sample 5',
+    src: '/images/socialApp/5.jpg',
+  },
+  {
+    alt: 'Sample 6',
+    src: '/images/socialApp/6.jpg',
+  },
+  {
+    alt: 'Sample 7',
+    src: '/images/socialApp/7.jpg',
+  },
+  {
+    alt: 'Sample 8',
+    src: '/images/socialApp/8.jpg',
+  },
+]
 
 export {
   person,
@@ -217,4 +253,5 @@ export {
   work,
   gallery,
   niche_in_category,
+  imagesForHome
 }

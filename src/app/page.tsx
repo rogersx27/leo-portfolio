@@ -3,7 +3,7 @@ import React from 'react';
 import { Heading, Flex, Text, Button, Avatar, RevealFx } from '@/once-ui/components';
 import { Projects } from '@/app/work/components/Projects';
 
-import { about, baseURL, home, newsletter, person, routes } from '@/app/resources'
+import { about, baseURL, home, newsletter, person, routes, imagesForHome } from '@/app/resources'
 import reviewersData from '@/app/resources/reviewers_info.json';
 
 import { Mailchimp } from '@/app/components';
@@ -12,6 +12,7 @@ import ReviewersCarousel from './components/ReviewersCarousel';
 import Card from './components/Card';
 import CallToAction from './about/components/CallToAction';
 import styles from '@/app/about/about.module.scss';
+import ImageCarousel from './components/ImageCarousel';
 
 
 export function generateMetadata() {
@@ -116,6 +117,11 @@ export default function Home() {
 				</Flex>
 
 			</Flex>
+			<ImageCarousel
+				aspectRatio="16 / 9"
+				indicator="line"
+				images={imagesForHome}
+			/>
 			<RevealFx translateY="16" delay={0.6}>
 				<Flex direction="column" alignItems="center" gap="l">
 					<Heading variant="display-strong-l">What People Are Saying</Heading>

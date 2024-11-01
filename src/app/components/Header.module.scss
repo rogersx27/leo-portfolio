@@ -10,63 +10,82 @@
 }
 
 .menuContainer {
-  position: relative; /* Permite que el menú se posicione respecto a este contenedor */
+  position: relative;
+}
+
+.bridge {
+  position: absolute;
+  top: calc(100% + 1px); /* Justo debajo del botón */
+  left: 0; /* Asegúrate de que comience desde el borde izquierdo del contenedor */
+  height: 10px; /* Aumenta la altura para cubrir mejor el espacio */
+  width: 100%; /* Asegúrate de que el ancho cubra toda el área entre el botón y el menú */
+  background-color: transparent; /* Invisible para el usuario */
+  z-index: 150;
 }
 
 .dropdownMenu {
-  position: absolute;
-  top: 100%; /* El menú aparece justo debajo del botón */
-  left: 10px;
-  background-color: #151515; /* Fondo azul oscuro para el menú */
-  border-left: 1px solid #3f3f3f;
-  border-right: 1px solid #3f3f3f;
-  border-bottom: 1px solid #3f3f3f;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
-  padding: 0px;
-  z-index: 200; /* Aumentado para estar por encima del header */
-  min-width: 10px; /* Ancho mínimo del menú */
-  margin-top: -2px;
-
-  /* Transición para fade-in y deslizamiento */
+  visibility: hidden;
   opacity: 0;
-  transform: translateY(-10px); /* Mueve el menú ligeramente hacia arriba */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+  transform: translateY(-10px);
+  transition: visibility 0s, opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: calc(100% + 8px); /* Mantén el espacio entre el menú y el botón */
+  left: 1px;
+  background-color: #151515;
+  border: 1px solid #3f3f3f;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  z-index: 200;
+  min-width: 15px;
 }
 
 .dropdownMenuVisible {
-  opacity: 1; /* Totalmente visible */
-  transform: translateY(0); /* Sin desplazamiento vertical */
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 
 .dropdownMenu a {
   display: block;
-  padding: 8px 16px;
-  color: #ffffff; /* Texto gris claro */
+  padding: 8px 16px; /* Añade espacio a la derecha e izquierda */
+  color: #ffffff;
   text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: right; 
 }
 
 .dropdownMenu a:hover {
-  background-color: #353535; /* Fondo azul ligeramente más claro al pasar el ratón */
-  color: #ffffff; /* Cambiar a blanco al hacer hover */
+  background-color: #179cf7;
+  color: #ffffff;
+  border-radius: 10px;
 }
 
 .dropdownMenu a:active {
-  color: #ffffff; /* Color azul claro al hacer clic */
+  color: #ffffff;
 }
 
-@media (--s) { /* Asegúrate de que '--s' esté definido correctamente */
+@media (--s) {
+
+  /* Asegúrate de que '--s' esté definido correctamente */
   .position {
-      top: auto;
-      position: fixed;
-      bottom: var(--static-space-24);
+    top: auto;
+    position: fixed;
+    bottom: var(--static-space-24);
+  }
+}
+
+@media (max-height: 768) {
+  .dropdownMenu {
+    top: auto;
+    bottom: calc(100% + 8px); /* Posiciona el menú hacia arriba */
+    transform: translateY(10px); /* Ajuste de transformación hacia abajo */
   }
 }
 
 /* Opcional: Estilos para evitar que el dropdown se corte en móviles */
 @media (max-width: 480px) {
   .dropdownMenu {
-     display: none;
+    display: none;
   }
 }

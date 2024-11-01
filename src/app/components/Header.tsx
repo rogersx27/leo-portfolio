@@ -44,7 +44,22 @@ export default TimeDisplay;
 
 export const Header = () => {
     const pathname = usePathname() ?? '';
-    const [isGalleryMenuVisible, setGalleryMenuVisible] = useState(false); // Estado para mostrar u ocultar el menú
+    const [isGalleryMenuVisible, setGalleryMenuVisible] = useState(false);
+    const [isDropdownAbove, setDropdownAbove] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            // Check if the window height is below a certain threshold
+            setDropdownAbove(window.innerHeight < 600); // Ajusta el valor según tus necesidades
+        };
+
+        // Inicializa el estado al cargar
+        handleResize();
+
+        // Agrega el listener para manejar cambios de tamaño
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <Flex
@@ -121,7 +136,7 @@ export const Header = () => {
                     {/* Menú desplegable de galería */}
                     {routes['/gallery'] && (
                         <div
-                            onMouseEnter={() => setGalleryMenuVisible(true)} // Mostrar el menú al pasar el ratón
+                            onMouseEnter={() => setGalleryMenuVisible(true)} // Mostrar el menú al pasar el mouse sobre el botón o puente
                             onMouseLeave={() => setGalleryMenuVisible(false)} // Ocultar el menú al salir
                             className={styles.menuContainer}
                         >
@@ -134,6 +149,9 @@ export const Header = () => {
                                     Gallery
                                 </Flex>
                             </ToggleButton>
+                            <div className={styles.bridge}></div>
+                            {/* Puente invisible entre el botón y el menú */}
+                            {isGalleryMenuVisible && <div className={styles.bridge}></div>}
                             <div className={`${styles.dropdownMenu} ${isGalleryMenuVisible ? styles.dropdownMenuVisible : ''}`}>
                                 {gallery.images.map((image, index) => (
                                     image.is_best_seller && (
@@ -145,6 +163,7 @@ export const Header = () => {
                             </div>
                         </div>
                     )}
+
                 </Flex>
             </Flex>
             <Flex

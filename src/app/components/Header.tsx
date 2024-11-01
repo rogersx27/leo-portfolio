@@ -86,8 +86,9 @@ export const Header = () => {
                             prefixIcon="home"
                             href="/"
                             selected={pathname === "/"}
+                            style={{ padding: '4px 8px', height: '30px' }} 
                         >
-                            <Flex paddingX="2" hide="s">
+                            <Flex paddingX="1" hide="s" paddingY="xs">
                                 {home.label}
                             </Flex>
                         </ToggleButton>
@@ -97,8 +98,9 @@ export const Header = () => {
                             prefixIcon="person"
                             href="/about"
                             selected={pathname === "/about"}
+                            style={{ padding: '4px 8px', height: '30px' }} 
                         >
-                            <Flex paddingX="2" hide="s">
+                            <Flex paddingX="1" hide="s">
                                 {about.label}
                             </Flex>
                         </ToggleButton>
@@ -108,8 +110,9 @@ export const Header = () => {
                             prefixIcon="grid"
                             href="/work"
                             selected={pathname.startsWith('/work')}
+                            style={{ padding: '4px 8px', height: '30px' }} 
                         >
-                            <Flex paddingX="2" hide="s">
+                            <Flex paddingX="1" hide="s">
                                 {work.label}
                             </Flex>
                         </ToggleButton>
@@ -119,6 +122,7 @@ export const Header = () => {
                             prefixIcon="book"
                             href="/blog"
                             selected={pathname.startsWith('/blog')}
+                            style={{ padding: '4px 8px' }} 
                         >
                             <Flex paddingX="2" hide="s">
                                 {blog.label}
@@ -136,6 +140,7 @@ export const Header = () => {
                                 prefixIcon="gallery"
                                 href="/gallery"
                                 selected={pathname.startsWith('/gallery')}
+                                style={{ height: '30px' }} 
                             >
                                 <Flex paddingX="2" hide="s">
                                     Gallery

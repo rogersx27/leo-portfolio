@@ -51,7 +51,7 @@ export const Header = () => {
     const isDropdownAbove = windowHeight ? windowHeight <= 768 : false;
 
     useEffect(() => {
-        console.log("Menu despliega hacia arriba:", isDropdownAbove); // Confirma que el valor cambia correctamente
+        console.log(isDropdownAbove); // Confirma que el valor cambia correctamente
     }, [isDropdownAbove]);
 
     return (

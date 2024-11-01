@@ -195,22 +195,22 @@
     --scheme-aqua-600-50: #08A6A580;
 
     /* cyan */
-    --scheme-cyan-100:  #050911;
-    --scheme-cyan-200:  #0A1525;
-    --scheme-cyan-300:  #094074;
-    --scheme-cyan-400:  #045B9C;
-    --scheme-cyan-500:  #0279BE;
-    --scheme-cyan-600:  #049EE2;
-    --scheme-cyan-700:  #17C0FD;
-    --scheme-cyan-800:  #60E4FC;
-    --scheme-cyan-900:  #82F1FC;
-    --scheme-cyan-1000: #B3FAFC;
-    --scheme-cyan-1100: #D4FBFC;
-    --scheme-cyan-1200: #EFFCFD;
+    --scheme-cyan-100: #08002f;
+    --scheme-cyan-200: #1d9cf04d;
+    --scheme-cyan-300: #003c8a;
+    --scheme-cyan-400: #005bab;
+    --scheme-cyan-500: #0079cc;
+    --scheme-cyan-600: #1f9cf1;
+    --scheme-cyan-700: #4ec0ff;
+    --scheme-cyan-800: #75e4ff;
+    --scheme-cyan-900: #83f2ff;
+    --scheme-cyan-1000: #94ffff;
+    --scheme-cyan-1100: #9bffff;
+    --scheme-cyan-1200: #9bffff;
 
-    --scheme-cyan-600-10: #049EE21A;
-    --scheme-cyan-600-30: #049EE24D;
-    --scheme-cyan-600-50: #049EE280;
+    --scheme-cyan-600-10: rgba(31,156,241,0.1);
+    --scheme-cyan-600-30: rgba(31,156,241,0.3);
+    --scheme-cyan-600-50: rgba(31,156,241,0.5);
 
     /* blue */
     --scheme-blue-100:  #0A071B;
@@ -300,5 +300,5 @@
 
     --scheme-pink-600-10:  #F854BE1A;
     --scheme-pink-600-30:  #F854BE4D;
-    --scheme-pink-600-50:  #F854BE80;
+    --scheme-pink-600-50:  #F854BE80;    
 }

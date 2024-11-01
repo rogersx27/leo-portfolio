@@ -121,6 +121,7 @@ export default function Home() {
 				aspectRatio="16 / 9"
 				indicator="line"
 				images={imagesForHome}
+				autoPlay={true}
 			/>
 			<RevealFx translateY="16" delay={0.6}>
 				<Flex direction="column" alignItems="center" gap="l">

@@ -13,6 +13,8 @@ interface CarouselProps {
     indicator?: 'line' | 'thumbnail';
     aspectRatio?: string;
     sizes?: string;
+    autoPlay?: boolean;  // Nuevo prop para activar la reproducción automática
+    autoPlayInterval?: number; // Intervalo de tiempo para la reproducción automática
 }
 
 export const ImageCarousel: React.FC<CarouselProps> = ({
@@ -20,24 +22,30 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
     indicator = 'line',
     aspectRatio = '16 / 9',
     sizes,
+    autoPlay = false,         // Valor predeterminado para autoPlay
+    autoPlayInterval = 3000,  // Intervalo predeterminado (3 segundos)
 }) => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
+    // Manejo del temporizador automático si autoPlay está activado
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsTransitioning(true);
-        }, 1000);
+        if (autoPlay && images.length > 1) {
+            const interval = setInterval(() => {
+                setIsTransitioning(false);
+                const nextIndex = (activeIndex + 1) % images.length;
+                handleControlClick(nextIndex);
+            }, autoPlayInterval);
 
-        return () => clearTimeout(timer);
-    }, []);
+            return () => clearInterval(interval);
+        }
+    }, [autoPlay, autoPlayInterval, activeIndex, images.length]);
 
     const handleImageClick = () => {
-        if(images.length > 1) {
+        if (images.length > 1) {
             setIsTransitioning(false);
             const nextIndex = (activeIndex + 1) % images.length;
             handleControlClick(nextIndex);
-
         }
     };
 
@@ -115,8 +123,7 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                                                 ? '2px solid var(--brand-solid-strong)'
                                                 : 'none',
                                         cursor: 'pointer',
-                                        borderRadius:
-                                            'var(--radius-m-nest-4)',
+                                        borderRadius: 'var(--radius-m-nest-4)',
                                         transition: 'border 0.3s ease',
                                     }}
                                     padding="4"
@@ -132,7 +139,7 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                                             cursor: 'pointer',
                                             borderRadius: 'var(--radius-m)',
                                             transition: 'background 0.3s ease',
-                                        }}/>
+                                        }} />
                                 </Flex>
                             ))}
                         </Scroller>

@@ -211,35 +211,35 @@ const gallery = {
 const imagesForHome = [
   {
     alt: 'Sample image 1',
-    src: '/images/socialApp/1.jpg',
+    src: '/images/gallery/img-01.jpg',
   },
   {
     alt: 'Sample image 2',
-    src: '/images/socialApp/2.jpg',
+    src: '/images/gallery/img-02.jpg',
   },
   {
     alt: 'Sample image 3',
-    src: '/images/socialApp/3.jpg',
+    src: '/images/gallery/img-03.jpg',
   },
   {
     alt: 'Sample 4',
-    src: '/images/socialApp/4.jpg',
+    src: '/images/gallery/img-04.jpg',
   },
   {
     alt: 'Sample 5',
-    src: '/images/socialApp/5.jpg',
+    src: '/images/gallery/img-05.jpg',
   },
   {
     alt: 'Sample 6',
-    src: '/images/socialApp/6.jpg',
+    src: '/images/gallery/img-06.jpg',
   },
   {
     alt: 'Sample 7',
-    src: '/images/socialApp/7.jpg',
+    src: '/images/gallery/img-07.jpg',
   },
   {
     alt: 'Sample 8',
-    src: '/images/socialApp/8.jpg',
+    src: '/images/gallery/img-08.jpg',
   },
 ]
 

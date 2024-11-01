@@ -1,6 +1,7 @@
 'use client';
-
-import { Flex, RevealFx, Scroller, SmartImage } from "@/once-ui/components";
+import { Flex, RevealFx, Scroller, SmartImage, Button } from "@/once-ui/components";
+import ImageModal from './ImageModal';
+import ExpandedImage from './ExpandedImage';
 import { useEffect, useState } from "react";
 
 interface Image {
@@ -13,8 +14,8 @@ interface CarouselProps {
     indicator?: 'line' | 'thumbnail';
     aspectRatio?: string;
     sizes?: string;
-    autoPlay?: boolean;  // Nuevo prop para activar la reproducción automática
-    autoPlayInterval?: number; // Intervalo de tiempo para la reproducción automática
+    autoPlay?: boolean;
+    autoPlayInterval?: number;
 }
 
 export const ImageCarousel: React.FC<CarouselProps> = ({
@@ -22,13 +23,13 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
     indicator = 'line',
     aspectRatio = '16 / 9',
     sizes,
-    autoPlay = false,         // Valor predeterminado para autoPlay
-    autoPlayInterval = 3000,  // Intervalo predeterminado (3 segundos)
+    autoPlay = false,
+    autoPlayInterval = 3000,
 }) => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Manejo del temporizador automático si autoPlay está activado
     useEffect(() => {
         if (autoPlay && images.length > 1) {
             const interval = setInterval(() => {
@@ -59,13 +60,16 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
         }
     };
 
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
     if (images.length === 0) {
         return null;
     }
 
     return (
         <Flex fillWidth gap="12" direction="column">
-            <Flex onClick={handleImageClick}>
+            <Flex position="relative" onClick={handleImageClick}>
                 <RevealFx
                     style={{ width: '100%' }}
                     trigger={isTransitioning}
@@ -87,7 +91,40 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                         }}
                     />
                 </RevealFx>
+
+                {/* Botón de expansión */}
+                <Button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        openModal();
+                    }}
+                    variant="secondary"
+                    style={{
+                        position: 'absolute',
+                        top: '8px',
+                        right: '8px',
+                        zIndex: 2,
+                        opacity: 0.8,
+                        padding: '0.5rem 1rem',
+                    }}
+                >
+                    Expand
+                </Button>
             </Flex>
+
+            {/* Modal para mostrar la imagen ampliada */}
+            <ImageModal isOpen={isModalOpen} onClose={closeModal}>
+                <ExpandedImage
+                    src={images[activeIndex]?.src}
+                    alt={images[activeIndex]?.alt}
+                    style={{
+                        maxWidth: '90vw',
+                        maxHeight: '90vh',
+                    }}
+                />
+            </ImageModal>
+
+
             {images.length > 1 && (
                 <>
                     {indicator === 'line' ? (

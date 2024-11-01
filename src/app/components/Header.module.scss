@@ -35,6 +35,11 @@
   padding: 8px;
   z-index: 200;
   min-width: 10px;
+
+  background-color: rgba(21, 21, 21, 0.8); /* Fondo negro con 50% de opacidad */
+  border: 1px solid rgba(87, 86, 86, 0.5); /* Bordes con opacidad */
+  backdrop-filter: blur(100px); /* Aplica el efecto de difuminado */
+  -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
 }
 
 .dropdownMenuVisible {

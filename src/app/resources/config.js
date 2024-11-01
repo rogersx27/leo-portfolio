@@ -28,7 +28,7 @@ const style = {
     solid:       'contrast',     // color | contrast
     solidStyle:  'plastic',         // flat | plastic
     border:      'rounded', // rounded | playful | conservative
-    surface:     'filled',       // filled | translucent
+    surface:     'translucent',       // filled | translucent
     transition:  'all'           // all | micro | macro
 }
 

@@ -63,6 +63,19 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
+    // Bloquear el scroll cuando el modal está abierto
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isModalOpen]);
+
     if (images.length === 0) {
         return null;
     }
@@ -117,13 +130,13 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                 <ExpandedImage
                     src={images[activeIndex]?.src}
                     alt={images[activeIndex]?.alt}
+                    sizes="100vw"
                     style={{
                         maxWidth: '90vw',
                         maxHeight: '90vh',
                     }}
                 />
             </ImageModal>
-
 
             {images.length > 1 && (
                 <>

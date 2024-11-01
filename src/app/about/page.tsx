@@ -4,6 +4,8 @@ import { person, about, social, baseURL } from '@/app/resources';
 import TableOfContents from '@/app/about/components/TableOfContents';
 import styles from '@/app/about/about.module.scss';
 import Card from '../components/Card';
+import CallToAction from './components/CallToAction';
+import cardStyles from '@/app/components/Card.module.scss';
 
 
 export function generateMetadata() {
@@ -289,57 +291,18 @@ export default function About() {
                     )}
 
                     {about.callToAction.display && (
-                        <Card className={styles.callToActionCard}>
-                            <Flex
-                                direction="column"
-                                alignItems="center"
-                                justifyContent="center"
-                                className={styles.callToAction}>
-
-                                <Icon
-                                    name="handshake"
-                                    size="xl"
-                                    onBackground="accent-strong"
-                                    decorative
-                                    aria-hidden="true"
-                                    className={styles.icon}
-                                />
-
-                                <Heading
-                                    variant="display-strong-m"
-                                    marginBottom="m"
-                                    className={styles.heading}>
-                                    {about.callToAction.title}
-                                </Heading>
-
-                                <Text
-                                    variant="body-default-l"
-                                    marginBottom="m"
-                                    className={styles.text}>
-                                    {about.callToAction.description}
-                                </Text>
-
-                                <Button
-                                    href={about.callToAction.button.link}
-                                    variant="primary"
-                                    size="m"
-                                    className={styles.button}>
-                                    {about.callToAction.button.label}
-                                </Button>
-
-                                {/* Enlaces adicionales (opcional) */}
-                                <Flex
-                                    className={styles.additionalLinks}
-                                    gap="8"
-                                    marginTop="m">
-                                    <Button
-                                        href="/gallery"
-                                        size="s"
-                                        className="button-secondary">
-                                        Watch my gallery
-                                    </Button>
-                                </Flex>
-                            </Flex>
+                        <Card className={cardStyles.card}>
+                            <CallToAction
+                                title={about.callToAction.title}
+                                description={about.callToAction.description}
+                                button={{
+                                    label: about.callToAction.button.label,
+                                    link: about.callToAction.button.link
+                                }}
+                                additionalLinks={[
+                                    { label: "Watch my gallery", link: "/gallery" }
+                                ]}
+                            />
                         </Card>
                     )}
 

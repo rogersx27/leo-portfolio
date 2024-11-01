@@ -1,5 +1,3 @@
-/* src/components/Card/Card.module.scss */
-
 $breakpoint-sm: 480px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
@@ -21,8 +19,8 @@ $breakpoint-lg: 1024px;
     /* Transiciones suaves */
     max-width: 600px;
     /* Ancho máximo para grandes pantallas */
-    width: 90%;
-    /* Ancho relativo para pantallas más pequeñas */
+    width: 100%;
+    /* Ajuste el ancho completo en pantallas grandes */
     margin: 0 auto;
     /* Centrar horizontalmente */
 
@@ -33,18 +31,33 @@ $breakpoint-lg: 1024px;
         /* Sombra más intensa */
     }
 
+    /* Ajustes para pantallas medianas */
     @media (max-width: $breakpoint-lg) {
         padding: 1.5rem;
-        max-width: 80%;
+        max-width: 90%;
+        /* Reduce el ancho en pantallas medianas */
     }
 
+    /* Ajustes para tablets y pantallas medianas */
     @media (max-width: $breakpoint-md) {
         padding: 1rem;
-        max-width: 95%;
+        max-width: 85%;
+        /* Ancho más reducido en pantallas medianas */
     }
 
+    /* Ajustes para móviles pequeños */
     @media (max-width: $breakpoint-sm) {
         padding: 0.75rem;
         border-radius: 8px;
+        /* Bordes más pequeños en móviles */
+        max-width: 75%;
+        /* Mantén el ancho completo pero con margen en móviles */
+    }
+
+    /* Ajuste para pantallas muy pequeñas */
+    @media (max-width: 360px) {
+        padding: 0.1rem;
+        max-width: 60%;
+        /* Ancho completo en dispositivos muy pequeños */
     }
 }

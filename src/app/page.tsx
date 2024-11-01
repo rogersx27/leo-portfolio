@@ -9,6 +9,10 @@ import reviewersData from '@/app/resources/reviewers_info.json';
 import { Mailchimp } from '@/app/components';
 import { Posts } from '@/app/blog/components/Posts';
 import ReviewersCarousel from './components/ReviewersCarousel';
+import Card from './components/Card';
+import CallToAction from './about/components/CallToAction';
+import styles from '@/app/about/about.module.scss';
+
 
 export function generateMetadata() {
 	const title = home.title;
@@ -122,10 +126,23 @@ export default function Home() {
 			)} */}
 			<RevealFx translateY="16" delay={0.6}>
 				<Flex direction="column" alignItems="center" gap="l">
-					<Heading variant="display-strong-l">What People Are Saying</Heading> 
+					<Heading variant="display-strong-l">What People Are Saying</Heading>
 					<ReviewersCarousel />
 				</Flex>
 			</RevealFx>
+			<Card>
+				<CallToAction
+					title={about.callToAction.title}
+					description={about.callToAction.description}
+					button={{
+						label: about.callToAction.button.label,
+						link: about.callToAction.button.link
+					}}
+					additionalLinks={[
+						{ label: "Watch my gallery", link: "/gallery" }
+					]}
+				/>
+			</Card>
 			<Projects range={[2]} />
 			{newsletter.display &&
 				<Mailchimp />

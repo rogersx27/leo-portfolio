@@ -116,14 +116,6 @@ export default function Home() {
 				</Flex>
 
 			</Flex>
-			{/* <RevealFx translateY="16" delay={0.6}>
-				<Projects range={[1, 1]} />
-			</RevealFx> */}
-			{/* {routes['/blog'] && (
-				<Flex fillWidth paddingX="20">
-					<Posts range={[1, 2]} columns="2" />
-				</Flex>
-			)} */}
 			<RevealFx translateY="16" delay={0.6}>
 				<Flex direction="column" alignItems="center" gap="l">
 					<Heading variant="display-strong-l">What People Are Saying</Heading>
@@ -131,17 +123,7 @@ export default function Home() {
 				</Flex>
 			</RevealFx>
 			<Card>
-				<CallToAction
-					title={about.callToAction.title}
-					description={about.callToAction.description}
-					button={{
-						label: about.callToAction.button.label,
-						link: about.callToAction.button.link
-					}}
-					additionalLinks={[
-						{ label: "Watch my gallery", link: "/gallery" }
-					]}
-				/>
+				<CallToAction />
 			</Card>
 			<Projects range={[2]} />
 			{newsletter.display &&

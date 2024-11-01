@@ -6,10 +6,10 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`
   },
-  role: 'Digital Designer', // Especialista en creación de contenido de diseño y experiencias visuales
+  role: 'Digital Designer',
   avatar: '/images/avatar.jpg',
-  location: 'Asia/Jakarta', // Se puede ajustar según preferencias, pero el enfoque es internacional
-  languages: ['English', 'Spanish'], // Añadido español ya que el portafolio parece apuntar a un público diverso
+  location: 'Asia/Jakarta',
+  languages: ['English', 'Spanish'], 
 }
 
 const newsletter = {

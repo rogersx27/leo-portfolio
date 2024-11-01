@@ -1,17 +1,35 @@
-import { Button, Flex, Heading, Icon, Text } from '@/once-ui/components';
+import { Button, Flex, Icon, Text } from '@/once-ui/components';
 import styles from '@/app/about/about.module.scss';
 
-interface CallToActionProps {
-    title: string;
-    description: JSX.Element;
-    button: {
-        label: string;
-        link: string;
-    };
-    additionalLinks?: { label: string; link: string }[];
-}
+const CustomHeading: React.FC = () => {
+    return (
+        <div style={{ textAlign: 'center', lineHeight: '1.1', marginBottom: '1rem' }}>
+            <span
+                style={{
+                    fontSize: '2.5em',       // Tamaño grande para "Let’s Work"
+                    display: 'inline-block',
+                    marginBottom: '-0.3rem', // Reducir margen inferior
+                    fontWeight: 'bold',     // Negrita
+                }}
+            >
+                Let’s Work
+            </span>
+            <br />
+            <span
+                style={{
+                    fontSize: '1.75em',    // Tamaño un poco menor para "Together!"
+                    padding: '0',
+                    fontWeight: 'bold',     // Negrita
 
-const CallToAction: React.FC<CallToActionProps> = ({ title, description, button, additionalLinks = [] }) => {
+                }}
+            >
+                Together!
+            </span>
+        </div>
+    );
+};
+
+const CallToAction: React.FC = () => {
     return (
         <Flex
             direction="column"
@@ -28,50 +46,43 @@ const CallToAction: React.FC<CallToActionProps> = ({ title, description, button,
                 className={styles.icon}
             />
 
-            <Heading
-                variant="display-strong-m"
-                marginBottom="m"
-                className={styles.heading}
-            >
-                {title}
-            </Heading>
+            {/* Título personalizado */}
+            <CustomHeading />
 
+            {/* Descripción */}
             <Text
                 variant="body-default-l"
                 marginBottom="m"
                 className={styles.text}
             >
-                {description}
+                It’s time to make something extraordinary that leaves a lasting impression.
             </Text>
 
+            {/* Botón principal */}
             <Button
-                href={button.link}
+                href="/contact"
                 variant="primary"
                 size="m"
                 className={styles.button}
             >
-                {button.label}
+                Contact Now
             </Button>
 
-            {/* Enlaces adicionales (opcional) */}
-            {additionalLinks.length > 0 && (
-                <Flex
-                    className={styles.additionalLinks}
-                    gap="8"
-                    marginTop="m"
+            {/* Enlace adicional */}
+            <Flex
+                className={styles.additionalLinks}
+                gap="8"
+                marginTop="m"
+            >
+                <Button
+                    href="/faq"
+                    size="s"
+                    variant="secondary"
+                    className="button-secondary"
                 >
-                    {additionalLinks.map((link, index) => (
-                        <Button
-                            key={index}
-                            href={link.link}
-                            size="s"
-                            className="button-secondary"
-                        >
-                            {link.label}
-                        </Button>
-                    ))}
-                </Flex>
-            )}
+                    Don’t forget to check the FAQ
+                </Button>
+            </Flex>
         </Flex>
     );
 };

@@ -18,6 +18,21 @@
     /* Centra el componente horizontalmente en la pantalla */
     box-sizing: border-box;
 
+    .heading {
+        line-height: 1.1; /* Ajuste de la altura de línea para acercar las líneas */
+    }
+
+    .heading-primary {
+        font-size: 20em; /* Aumentar tamaño de "Let’s Work" */
+        display: inline-block;
+        margin-bottom: -0.3rem; /* Ajuste del margen inferior */
+    }
+
+    .heading-secondary {
+        font-size: 1.75em; /* Aumentar tamaño de "Together!" */
+        padding: 0; /* Quitar cualquier padding adicional */
+    }
+
     @media (max-width: 768px) {
         padding: 0.75rem;
         max-width: 400px;

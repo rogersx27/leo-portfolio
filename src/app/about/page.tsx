@@ -292,17 +292,7 @@ export default function About() {
 
                     {about.callToAction.display && (
                         <Card className={cardStyles.card}>
-                            <CallToAction
-                                title={about.callToAction.title}
-                                description={about.callToAction.description}
-                                button={{
-                                    label: about.callToAction.button.label,
-                                    link: about.callToAction.button.link
-                                }}
-                                additionalLinks={[
-                                    { label: "Watch my gallery", link: "/gallery" }
-                                ]}
-                            />
+                            <CallToAction />
                         </Card>
                     )}
 

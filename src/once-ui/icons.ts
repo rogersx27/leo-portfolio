@@ -41,6 +41,10 @@ import { MdWork } from "react-icons/md";
 import { LuGalleryVerticalEnd } from "react-icons/lu";
 import { RiGalleryView } from "react-icons/ri";
 import { FaHandshake } from 'react-icons/fa';
+import { TbBrandFiverr } from "react-icons/tb";
+import { TiSocialInstagram } from "react-icons/ti";
+
+
 
 
 export const iconLibrary: Record<string, IconType> = {
@@ -71,4 +75,6 @@ export const iconLibrary: Record<string, IconType> = {
 	linkedin: FaLinkedin,
 	x: FaXTwitter,
 	handshake: FaHandshake,
+	fiverr: TbBrandFiverr,
+	instagram: TiSocialInstagram,
 };

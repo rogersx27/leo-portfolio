@@ -8,6 +8,7 @@ import styles from '@/app/components/Header.module.scss';
 
 import { routes, display } from '@/app/resources';
 import { person, home, about, blog, work, gallery } from '@/app/resources';
+import useWindowSize from "../hooks/useWindowSize";
 
 type TimeDisplayProps = {
     timeZone: string;
@@ -44,22 +45,13 @@ export default TimeDisplay;
 
 export const Header = () => {
     const pathname = usePathname() ?? '';
+    const { height: windowHeight } = useWindowSize()
     const [isGalleryMenuVisible, setGalleryMenuVisible] = useState(false);
-    const [isDropdownAbove, setDropdownAbove] = useState(false);
+    const isDropdownAbove = windowHeight <= 768
 
     useEffect(() => {
-        const handleResize = () => {
-            // Check if the window height is below a certain threshold
-            setDropdownAbove(window.innerHeight < 600); // Ajusta el valor según tus necesidades
-        };
-
-        // Inicializa el estado al cargar
-        handleResize();
-
-        // Agrega el listener para manejar cambios de tamaño
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+        console.log("Menu despliega hacia arriba:", isDropdownAbove); // Confirma que el valor cambia correctamente
+    }, [isDropdownAbove]);
 
     return (
         <Flex
@@ -136,8 +128,8 @@ export const Header = () => {
                     {/* Menú desplegable de galería */}
                     {routes['/gallery'] && (
                         <div
-                            onMouseEnter={() => setGalleryMenuVisible(true)} // Mostrar el menú al pasar el mouse sobre el botón o puente
-                            onMouseLeave={() => setGalleryMenuVisible(false)} // Ocultar el menú al salir
+                            onMouseEnter={() => setGalleryMenuVisible(true)}
+                            onMouseLeave={() => setGalleryMenuVisible(false)}
                             className={styles.menuContainer}
                         >
                             <ToggleButton
@@ -150,9 +142,7 @@ export const Header = () => {
                                 </Flex>
                             </ToggleButton>
                             <div className={styles.bridge}></div>
-                            {/* Puente invisible entre el botón y el menú */}
-                            {isGalleryMenuVisible && <div className={styles.bridge}></div>}
-                            <div className={`${styles.dropdownMenu} ${isGalleryMenuVisible ? styles.dropdownMenuVisible : ''}`}>
+                            <div className={`${styles.dropdownMenu} ${isGalleryMenuVisible ? styles.dropdownMenuVisible : ''} ${isDropdownAbove ? styles.dropdownAbove : ''}`}>
                                 {gallery.images.map((image, index) => (
                                     image.is_best_seller && (
                                         <a key={index} href={image.src} className={styles.dropdownItem}>

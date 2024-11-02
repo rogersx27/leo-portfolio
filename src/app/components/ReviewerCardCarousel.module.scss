@@ -1,0 +1,104 @@
+/* ReviewerCardCarousel.module.scss */
+
+.carouselContainer {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carouselInner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cardWrapper {
+    flex: 0 0 auto;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+}
+
+.prevCard,
+.nextCard {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.prevCard {
+    left: -11%;
+    transform: scale(0.8);
+    filter: blur(6px);
+    opacity: 0.6;
+}
+
+.nextCard {
+    right: -60%;
+    transform: scale(0.8);
+    filter: blur(6px);
+    opacity: 0.6;
+}
+
+.prevCard:hover,
+.nextCard:hover {
+    filter: blur(2px);
+    opacity: 0.8;
+}
+
+.carouselInner .cardWrapper:nth-child(2) {
+    position: relative;
+    z-index: 1;
+}
+
+.indicators {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--neutral-alpha-medium);
+    cursor: pointer;
+}
+
+.indicator.active {
+    background: var(--brand-solid-strong);
+}
+
+@media (max-width: 996px) {
+    .prevCard {
+        left: -22%;
+    }
+
+    .nextCard {
+        right: -63%;
+    }
+}
+
+@media (max-width: 768px) {
+    .prevCard {
+        left: -60%;
+    }
+
+    .nextCard {
+        right: -60%;
+    }
+}
+
+@media (max-width: 767px) {
+    .prevCard {
+        display: none;
+
+    }
+
+    .nextCard {
+        display: none;
+    }
+}

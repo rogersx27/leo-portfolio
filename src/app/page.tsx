@@ -87,7 +87,7 @@ export default function Home() {
 						<Heading
 							wrap="balance"
 							variant="display-strong-l"
-							style={{ textAlign: 'center' }}>
+							style={{ textAlign: 'center', margin: '0 0 5px 0' }}>
 							{home.headline}
 						</Heading>
 					</RevealFx>

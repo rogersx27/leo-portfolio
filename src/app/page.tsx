@@ -74,15 +74,20 @@ export default function Home() {
 			<Flex
 				fillWidth
 				direction="column"
-				paddingY="l" gap="m">
+				paddingY="l"
+				gap="m"
+				alignItems="center">
 
 				<Flex
 					direction="column"
-					fillWidth maxWidth="s" gap="m">
+					maxWidth="s"
+					gap="m"
+					alignItems="center">
 					<RevealFx translateY="4">
 						<Heading
 							wrap="balance"
-							variant="display-strong-l">
+							variant="display-strong-l"
+							style={{ textAlign: 'center' }}>
 							{home.headline}
 						</Heading>
 					</RevealFx>
@@ -90,7 +95,8 @@ export default function Home() {
 						<Text
 							wrap="balance"
 							onBackground="neutral-weak"
-							variant="body-default-l">
+							variant="body-default-l"
+							style={{ textAlign: 'center' }}>
 							{home.subline}
 						</Text>
 					</RevealFx>

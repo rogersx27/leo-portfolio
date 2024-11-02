@@ -1,9 +1,11 @@
 /* ReviewerCardCarousel.module.scss */
 
 .carouselContainer {
-    width: 100%;
+    width: 120%; /* Aumentamos el ancho al 120% */
     overflow: hidden;
     position: relative;
+    margin-left: -10%; /* Centramos el carrusel */
+    margin-right: -10%; /* Centramos el carrusel */
 }
 
 .carouselInner {
@@ -29,14 +31,14 @@
 }
 
 .prevCard {
-    left: -11%;
+    left: 6%;
     transform: scale(0.8);
     filter: blur(6px);
     opacity: 0.6;
 }
 
 .nextCard {
-    right: -60%;
+    right: -53%;
     transform: scale(0.8);
     filter: blur(6px);
     opacity: 0.6;
@@ -74,11 +76,21 @@
 
 @media (max-width: 996px) {
     .prevCard {
-        left: -22%;
+        left: 2%;
     }
 
     .nextCard {
-        right: -63%;
+        right: -55%;
+    }
+}
+
+@media (max-width: 877px) {
+    .prevCard {
+        left: -1%;
+    }
+
+    .nextCard {
+        right: -56%;
     }
 }
 

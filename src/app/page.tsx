@@ -123,12 +123,8 @@ export default function Home() {
 				images={imagesForHome}
 				autoPlay={true}
 			/>
-			<RevealFx translateY="16" delay={0.6}>
-				<Flex direction="column" alignItems="center" gap="l">
-					<Heading variant="display-strong-l">What People Are Saying</Heading>
-					<ReviewersCarousel />
-				</Flex>
-			</RevealFx>
+			<Heading variant="display-strong-l">What People Are Saying</Heading>
+			<ReviewersCarousel />
 			<Card>
 				<CallToAction />
 			</Card>

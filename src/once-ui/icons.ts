@@ -38,18 +38,18 @@ import {
 import { FaHome } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
-import { LuGalleryVerticalEnd } from "react-icons/lu";
 import { RiGalleryView } from "react-icons/ri";
 import { FaHandshake } from 'react-icons/fa';
 import { TbBrandFiverr } from "react-icons/tb";
-import { TiSocialInstagram } from "react-icons/ti";
+import { RiInstagramFill } from "react-icons/ri";
+
 
 
 
 
 export const iconLibrary: Record<string, IconType> = {
 	chevronUp: HiChevronUp,
-    chevronDown: HiChevronDown,
+	chevronDown: HiChevronDown,
 	chevronRight: HiChevronRight,
 	chevronLeft: HiChevronLeft,
 	refresh: HiOutlineArrowPath,
@@ -76,5 +76,5 @@ export const iconLibrary: Record<string, IconType> = {
 	x: FaXTwitter,
 	handshake: FaHandshake,
 	fiverr: TbBrandFiverr,
-	instagram: TiSocialInstagram,
+	instagram: RiInstagramFill,
 };

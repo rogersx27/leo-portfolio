@@ -49,8 +49,7 @@ const home = {
   headline: <>Turning Ideas Into Eye-Catching Visuals</>,
   subline: (
     <>
-      Crafting exceptional digital experiences through innovative design and
-      development.
+      Crafting exceptional digital experiences.
     </>
   ),
 }
@@ -67,7 +66,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: 'https://cal.com',
   },
   intro: {

@@ -31,14 +31,14 @@
 }
 
 .prevCard {
-    left: 7.5%;
+    left: 5%;
     transform: scale(0.8);
     filter: blur(6px);
     opacity: 0.6;
 }
 
 .nextCard {
-    right: -53%;
+    right: -55.5%;
     transform: scale(0.8);
     filter: blur(6px);
     opacity: 0.6;
@@ -106,11 +106,11 @@
 
 @media (max-width: 767px) {
     .prevCard {
-        display: none;
+        left: -35%;
 
     }
 
     .nextCard {
-        display: none;
+        right: -73%;
     }
 }

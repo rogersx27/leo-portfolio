@@ -125,7 +125,7 @@ export default function Home() {
 			</Flex>
 			<ImageCarousel
 				aspectRatio="16 / 9"
-				indicator="line"
+				indicator="thumbnail"
 				images={imagesForHome}
 				autoPlay={true}
 			/>

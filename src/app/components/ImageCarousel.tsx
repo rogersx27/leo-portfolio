@@ -2,7 +2,7 @@
 import { Flex, RevealFx, Scroller, SmartImage, Button } from "@/once-ui/components";
 import ImageModal from './ImageModal';
 import ExpandedImage from './ExpandedImage';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface Image {
     src: string;
@@ -29,17 +29,25 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         if (autoPlay && images.length > 1) {
-            const interval = setInterval(() => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+            intervalRef.current = setInterval(() => {
                 setIsTransitioning(false);
                 const nextIndex = (activeIndex + 1) % images.length;
                 handleControlClick(nextIndex);
             }, autoPlayInterval);
-
-            return () => clearInterval(interval);
         }
+
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        };
     }, [autoPlay, autoPlayInterval, activeIndex, images.length]);
 
     const handleImageClick = () => {
@@ -70,7 +78,7 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
         } else {
             document.body.style.overflow = 'auto';
         }
-        
+
         return () => {
             document.body.style.overflow = 'auto';
         };
@@ -163,7 +171,7 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                             ))}
                         </Flex>
                     ) : (
-                        <Scroller fillWidth gap="4">
+                        <Scroller direction="row" gap="4">
                             {images.map((image, index) => (
                                 <Flex
                                     key={index}
@@ -178,7 +186,9 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                                     }}
                                     padding="4"
                                     width="80"
-                                    height="80">
+                                    height="80"
+                                    alignItems="center"
+                                    justifyContent="center">
                                     <SmartImage
                                         alt={image.alt}
                                         aspectRatio="1 / 1"
@@ -198,6 +208,7 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
             )}
         </Flex>
     );
+
 };
 
 export default ImageCarousel;

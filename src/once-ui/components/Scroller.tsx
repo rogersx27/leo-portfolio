@@ -25,26 +25,33 @@ const Scroller: React.FC<ScrollerProps> = ({
     const scrollerRef = useRef<HTMLDivElement>(null);
     const [showPrevButton, setShowPrevButton] = useState<boolean>(false);
     const [showNextButton, setShowNextButton] = useState<boolean>(false);
+    const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
+
+    const checkOverflow = () => {
+        const scroller = scrollerRef.current;
+        if (scroller) {
+            const isRow = direction === 'row';
+            const scrollSize = isRow ? scroller.scrollWidth : scroller.scrollHeight;
+            const clientSize = isRow ? scroller.clientWidth : scroller.clientHeight;
+            setIsOverflowing(scrollSize > clientSize);
+            // Actualizar visibilidad de botones
+            setShowPrevButton(isRow ? scroller.scrollLeft > 0 : scroller.scrollTop > 0);
+            setShowNextButton(isRow ? scroller.scrollLeft < scrollSize - clientSize - 1 : scroller.scrollTop < scrollSize - clientSize - 1);
+        }
+    };
 
     useEffect(() => {
         const scroller = scrollerRef.current;
-        const handleScroll = () => {
-            if (scroller) {
-                const scrollPosition = direction === 'row' ? scroller.scrollLeft : scroller.scrollTop;
-                const maxScrollPosition = direction === 'row'
-                    ? scroller.scrollWidth - scroller.clientWidth
-                    : scroller.scrollHeight - scroller.clientHeight;
-                setShowPrevButton(scrollPosition > 0);
-                setShowNextButton(scrollPosition < maxScrollPosition - 1);
-            }
-        };
-
-        if (scroller && (direction === 'row' ? scroller.scrollWidth > scroller.clientWidth : scroller.scrollHeight > scroller.clientHeight)) {
-            handleScroll();
-            scroller.addEventListener('scroll', handleScroll);
-            return () => scroller.removeEventListener('scroll', handleScroll);
+        if (scroller) {
+            checkOverflow();
+            scroller.addEventListener('scroll', checkOverflow);
+            window.addEventListener('resize', checkOverflow);
+            return () => {
+                scroller.removeEventListener('scroll', checkOverflow);
+                window.removeEventListener('resize', checkOverflow);
+            };
         }
-    }, [direction]);
+    }, [direction, children]);
 
     const handleScrollNext = () => {
         const scroller = scrollerRef.current;
@@ -86,7 +93,7 @@ const Scroller: React.FC<ScrollerProps> = ({
                         size="s"
                         variant="secondary"
                         className={classNames(styles.scrollButton, styles.scrollButtonPrev)}
-                        aria-label="Scroll Previous"/>
+                        aria-label="Scroll Previous" />
                 </div>
             )}
             <Flex
@@ -96,7 +103,11 @@ const Scroller: React.FC<ScrollerProps> = ({
                     [styles.row]: direction === 'row',
                     [styles.column]: direction === 'column',
                 })}
-                {...props}>
+                {...props}
+                style={{
+                    justifyContent: isOverflowing ? 'flex-start' : 'center',
+                    ...props.style
+                }}>
                 {children}
             </Flex>
             {showNextButton && (
@@ -108,7 +119,7 @@ const Scroller: React.FC<ScrollerProps> = ({
                         size="s"
                         variant="secondary"
                         className={classNames(styles.scrollButton, styles.scrollButtonNext)}
-                        aria-label="Scroll Next"/>
+                        aria-label="Scroll Next" />
                 </div>
             )}
         </Flex>

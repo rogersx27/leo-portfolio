@@ -88,9 +88,7 @@
   }
 
   .dropdownMenu {
-    top: auto; /* Elimina el `top` en móviles */
-    bottom: calc(100% + 8px); /* Coloca el menú justo arriba del botón */
-    left: -65px;
+    display: none;
   }
 
   .bridge {

@@ -2,6 +2,7 @@ import React from 'react';
 import { Flex, Avatar, Text } from '@/once-ui/components';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import styles from './ReviewerCard.module.scss';
+import Flag from 'react-flagpack'
 
 interface ReviewerCardProps {
   username: string;
@@ -88,6 +89,7 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({
         />
         <Text className={styles.username}>{username}</Text>
         <Flex className={styles.rating}>{renderStars(value)}</Flex>
+        <Flag code={reviewer_country} size="s" hasBorder={false} />
       </div>
 
       {/* Contenido principal */}

@@ -10,6 +10,7 @@ interface Reviewer {
   comment: string;
   value: number;
   user_image: string | null;
+  created_at: string;
 }
 
 interface CarouselProps {

@@ -2,8 +2,7 @@ import React from 'react';
 import { Flex, Avatar, Text } from '@/once-ui/components';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import styles from './ReviewerCard.module.scss';
-import Flag from 'react-flagpack'
-
+import Flag from 'react-world-flags';
 interface ReviewerCardProps {
   username: string;
   reviewer_country: string;
@@ -87,9 +86,11 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({
           className={styles.avatar}
           src={user_image ? `/images/reviewers/${user_image}` : undefined}
         />
-        <Text className={styles.username}>{username}</Text>
+        <div className={styles.username}>
+          <Text>{username}</Text>
+          {reviewer_country && <Flag code={reviewer_country} className={styles.flag} />}
+        </div>
         <Flex className={styles.rating}>{renderStars(value)}</Flex>
-        <Flag code={reviewer_country} size="s" hasBorder={false} />
       </div>
 
       {/* Contenido principal */}

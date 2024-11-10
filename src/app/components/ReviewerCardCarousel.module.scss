@@ -1,11 +1,34 @@
 /* ReviewerCardCarousel.module.scss */
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 .carouselContainer {
-    width: 120%; /* Aumentamos el ancho al 120% */
+    width: 120%;
+    /* Aumentamos el ancho al 120% */
     overflow: hidden;
     position: relative;
-    margin-left: -10%; /* Centramos el carrusel */
-    margin-right: -10%; /* Centramos el carrusel */
+    margin-left: -10%;
+    /* Centramos el carrusel */
+    margin-right: -10%;
+    /* Centramos el carrusel */
 }
 
 .carouselInner {
@@ -31,17 +54,19 @@
 }
 
 .prevCard {
-    left: 5%;
     transform: scale(0.8);
     filter: blur(6px);
     opacity: 0.6;
+    left: 5%
+
 }
 
 .nextCard {
-    right: -55.5%;
     transform: scale(0.8);
     filter: blur(6px);
     opacity: 0.6;
+    right: -55.5%;
+
 }
 
 .prevCard:hover,
@@ -72,6 +97,14 @@
 
 .indicator.active {
     background: var(--brand-solid-strong);
+}
+
+.activeCard {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.exitingCard {
+    animation: fadeOut 0.5s ease forwards;
 }
 
 @media (max-width: 996px) {

@@ -1,4 +1,3 @@
-// ReviewerCardCarousel.tsx
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import ReviewerCard from './ReviewerCard';
@@ -25,14 +24,14 @@ const ReviewerCardCarousel: React.FC<CarouselProps> = ({
   autoPlayInterval = 5000,
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [exiting, setExiting] = useState<number | null>(null);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
   useEffect(() => {
     if (autoPlay && reviewers.length > 1) {
       const interval = setInterval(() => {
-        const nextIndex = (activeIndex + 1) % reviewers.length;
-        setActiveIndex(nextIndex);
+        handleNext();
       }, autoPlayInterval);
 
       return () => clearInterval(interval);
@@ -40,13 +39,19 @@ const ReviewerCardCarousel: React.FC<CarouselProps> = ({
   }, [autoPlay, autoPlayInterval, activeIndex, reviewers.length]);
 
   const handleNext = () => {
-    const nextIndex = (activeIndex + 1) % reviewers.length;
-    setActiveIndex(nextIndex);
+    setExiting(activeIndex); // Marca la tarjeta actual como saliente
+    setTimeout(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % reviewers.length);
+      setExiting(null); // Reinicia el estado saliente
+    }, 500); // Duración de la animación
   };
 
   const handlePrev = () => {
-    const prevIndex = (activeIndex - 1 + reviewers.length) % reviewers.length;
-    setActiveIndex(prevIndex);
+    setExiting(activeIndex);
+    setTimeout(() => {
+      setActiveIndex((prevIndex) => (prevIndex - 1 + reviewers.length) % reviewers.length);
+      setExiting(null);
+    }, 500);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -61,11 +66,9 @@ const ReviewerCardCarousel: React.FC<CarouselProps> = ({
     if (touchStartX.current !== null && touchEndX.current !== null) {
       const diff = touchStartX.current - touchEndX.current;
       if (diff > 50) {
-        // Deslizó hacia la izquierda (siguiente)
-        handleNext();
+        handleNext(); // Deslizó hacia la izquierda (siguiente)
       } else if (diff < -50) {
-        // Deslizó hacia la derecha (anterior)
-        handlePrev();
+        handlePrev(); // Deslizó hacia la derecha (anterior)
       }
     }
     touchStartX.current = null;
@@ -94,8 +97,11 @@ const ReviewerCardCarousel: React.FC<CarouselProps> = ({
           />
         </div>
 
-        {/* Tarjeta actual */}
-        <div className={styles.cardWrapper}>
+        {/* Tarjeta actual con animación */}
+        <div
+          className={`${styles.cardWrapper} ${exiting === activeIndex ? styles.exitingCard : styles.activeCard
+            }`}
+        >
           <ReviewerCard {...reviewers[activeIndex]} />
         </div>
 
@@ -110,15 +116,14 @@ const ReviewerCardCarousel: React.FC<CarouselProps> = ({
         </div>
       </div>
 
-      {/* Indicadores */}
+
       <div className={styles.indicators}>
         {reviewers.map((_, index) => (
           <div
             key={index}
             onClick={() => setActiveIndex(index)}
-            className={`${styles.indicator} ${
-              activeIndex === index ? styles.active : ''
-            }`}
+            className={`${styles.indicator} ${activeIndex === index ? styles.active : ''
+              }`}
           />
         ))}
       </div>

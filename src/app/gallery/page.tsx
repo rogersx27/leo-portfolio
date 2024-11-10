@@ -88,8 +88,9 @@ export default function Gallery() {
             />
             <Heading
                 size="xl"
+                style={{ textAlign: 'center', margin: '0 0 5px 0' }}
             >{gallery.title}</Heading>
-            <p>{gallery.description}</p>
+            <p style={{ textAlign: 'center', margin: '0 0 5px 0' }}>{gallery.description}</p>
             <>
                 <MasonryGrid />
             </>

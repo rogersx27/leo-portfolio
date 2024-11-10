@@ -97,7 +97,8 @@ export default function Home() {
 							wrap="balance"
 							onBackground="neutral-weak"
 							variant="body-default-l"
-							style={{ textAlign: 'center' }}>
+							style={{ textAlign: 'center', margin: '0 0 5px 0' }}
+						>
 							{home.subline}
 						</Text>
 					</RevealFx>

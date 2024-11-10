@@ -151,15 +151,15 @@ const niche_in_category = {
 
 const gallery = {
   label: 'Gallery',
-  title: 'My works',
-  description: `A curated photo collection by ${person.name}`,
+  title: "HERE'S A COLLECTION OF MY WORK",
+  description: `Explore by Category or Niche`,
   images: [
     {
       src: '/images/gallery/img-01.jpg',
       alt: 'Beautiful Landscape',
       title: '', // Nuevo campo título
       category: 'Nature', // Nuevo campo categoría
-      orientation: 'vertical',
+      orientation: 'horizontal',
       is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
       niche: 'Finance',
@@ -169,7 +169,7 @@ const gallery = {
       alt: 'Urban Exploration',
       title: '', // Nuevo campo título
       category: 'Cityscape', // Nuevo campo categoría
-      orientation: 'vertical',
+      orientation: 'horizontal',
       is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: true,
       niche: 'Podcast',
@@ -179,7 +179,7 @@ const gallery = {
       alt: 'Mountain Hiking',
       title: '', // Nuevo campo título
       category: 'Adventure', // Nuevo campo categoría
-      orientation: 'vertical',
+      orientation: 'horizontal',
       is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
       niche: 'Real Estate',
@@ -189,7 +189,7 @@ const gallery = {
       alt: 'Beach Sunset',
       title: '', // Nuevo campo título
       category: 'Landscape', // Nuevo campo categoría
-      orientation: 'vertical',
+      orientation: 'horizontal',
       is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
       niche: 'Health & Fitness',
@@ -199,7 +199,7 @@ const gallery = {
       alt: 'City Lights',
       title: '', // Nuevo campo título
       category: 'Cityscape', // Nuevo campo categoría
-      orientation: 'vertical',
+      orientation: 'horizontal',
       is_best_seller: true, // Nuevo campo para destacar las mejores imágenes
       offert_alert: false,
       niche: 'Gaming',

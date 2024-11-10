@@ -58,7 +58,6 @@
     filter: blur(6px);
     opacity: 0.6;
     left: 5%
-
 }
 
 .nextCard {
@@ -145,5 +144,38 @@
 
     .nextCard {
         right: -73%;
+    }
+}
+
+@media (max-width: 430px) {
+    .prevCard {
+        left: -44%;
+
+    }
+
+    .nextCard {
+        right: -73%;
+    }
+}
+
+@media (max-width: 414px) {
+    .prevCard {
+        left: -47%;
+
+    }
+
+    .nextCard {
+        right: -74%;
+    }
+}
+
+@media (max-width: 390px) {
+    .prevCard {
+        left: -51%;
+
+    }
+
+    .nextCard {
+        right: -76%;
     }
 }

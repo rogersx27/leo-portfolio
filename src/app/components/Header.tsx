@@ -144,7 +144,7 @@ export const Header = () => {
                                 style={{ height: '30px' }}
                             >
                                 <Flex paddingX="2" hide="s">
-                                    Gallery
+                                    Portfolio
                                 </Flex>
                             </ToggleButton>
                             <div className={styles.bridge}></div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx } from '@/once-ui/components';
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Icon } from '@/once-ui/components';
 import { Projects } from '@/app/work/components/Projects';
 
 import { about, baseURL, home, newsletter, person, routes, imagesForHome } from '@/app/resources'
@@ -11,8 +11,8 @@ import { Posts } from '@/app/blog/components/Posts';
 import ReviewersCarousel from './components/ReviewersCarousel';
 import Card from './components/Card';
 import CallToAction from './about/components/CallToAction';
-import styles from '@/app/about/about.module.scss';
 import ImageCarousel from './components/ImageCarousel';
+import headingStyles from '@/app/components/headingStyles.module.scss';
 
 
 export function generateMetadata() {
@@ -87,11 +87,12 @@ export default function Home() {
 						<Heading
 							wrap="balance"
 							variant="display-strong-l"
-							style={{ textAlign: 'center', margin: '0 0 5px 0' }}>
+							className={headingStyles.twoLinesHeading} // Aplicar la clase SCSS
+						>
 							{home.headline}
 						</Heading>
 					</RevealFx>
-					<RevealFx translateY="8" delay={0.2}>
+					<RevealFx translateY="8" delay={0.1}>
 						<Text
 							wrap="balance"
 							onBackground="neutral-weak"
@@ -100,25 +101,40 @@ export default function Home() {
 							{home.subline}
 						</Text>
 					</RevealFx>
-					<RevealFx translateY="12" delay={0.4}>
-						<Button
-							data-border="rounded"
-							href="/about"
-							variant="tertiary"
-							suffixIcon="chevronRight"
-							size="m">
-							<Flex
-								gap="8"
-								alignItems="center">
-								{about.avatar.display && (
-									<Avatar
-										style={{ marginLeft: '-0.75rem', marginRight: '0.25rem' }}
-										src={person.avatar}
-										size="m" />
-								)}
-								About me
-							</Flex>
-						</Button>
+					<RevealFx translateY="12" delay={0.1}>
+						<Flex gap="m">
+							<Button
+								data-border="rounded"
+								href="/about"
+								variant="tertiary"
+								suffixIcon="chevronRight"
+								size="m">
+								<Flex
+									gap="8"
+									alignItems="center">
+									{about.avatar.display && (
+										<Avatar
+											style={{ marginLeft: '-0.75rem', marginRight: '0.25rem' }}
+											src={person.avatar}
+											size="m" />
+									)}
+									About me
+								</Flex>
+							</Button>
+							<Button
+								data-border="rounded"
+								href="/gallery"
+								variant="tertiary"
+								suffixIcon="chevronRight"
+								size="m">
+								<Flex
+									gap="8"
+									alignItems="center">
+									<Icon name="gallery" />
+									Portfolio
+								</Flex>
+							</Button>
+						</Flex>
 					</RevealFx>
 				</Flex>
 
@@ -129,7 +145,7 @@ export default function Home() {
 				images={imagesForHome}
 				autoPlay={true}
 			/>
-			<Heading variant="display-strong-l">What People Are Saying</Heading>
+			<Heading variant="display-strong-l" style={{ textAlign: 'center', margin: '0 0 5px 0' }}>What People Are Saying</Heading>
 			<ReviewersCarousel />
 			<Card>
 				<CallToAction />

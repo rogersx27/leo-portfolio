@@ -87,13 +87,10 @@ export default function Gallery() {
                 }}
             />
             <Heading
-            size="xl"
+                size="xl"
             >{gallery.title}</Heading>
             <p>{gallery.description}</p>
             <>
-                <Heading marginTop="l" marginBottom="m">
-                    Best-Sellers
-                </Heading>
                 <MasonryGrid />
             </>
             <NicheInCategorySection />

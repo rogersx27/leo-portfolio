@@ -10,17 +10,54 @@
   height: 450px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  /* Centra el contenido verticalmente */
+  justify-content: flex-start;
+  /* Alinea el contenido desde la parte superior */
   position: relative;
   overflow: hidden;
   margin-top: 10px;
 }
 
+.avatarRatingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.username {
+  color: var(--brand-color);
+  font-weight: bold;
+  margin-top: 0.8rem;
+}
+
+
+.rating {
+  color: var(--accent-color);
+  font-weight: bold;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Centra el contenido verticalmente */
+  gap: 1rem;
+  flex-grow: 0.5;
+  /* Permite que el contenedor ocupe el espacio restante */
+}
+
+
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
+
 
 .fiverrLogo {
   position: absolute;
@@ -66,6 +103,16 @@
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
+  margin-top: 0.5rem;
+}
+
+.date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: auto;
+  /* Empuja la fecha hacia la parte inferior */
+  padding-bottom: 0.5rem;
 }
 
 @media (max-width: 768px) {
@@ -116,5 +163,16 @@
   .avatar {
     width: 60px;
     height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .content {
+    gap: 0.3rem;
   }
 }

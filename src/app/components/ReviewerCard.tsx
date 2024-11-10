@@ -9,7 +9,10 @@ interface ReviewerCardProps {
   comment: string;
   value: number;
   user_image: string | null;
+  created_at: string;
 }
+
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const ReviewerCard: React.FC<ReviewerCardProps> = ({
   username,
@@ -17,6 +20,7 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({
   comment,
   value,
   user_image,
+  created_at,
 }) => {
   // Función para renderizar estrellas basadas en la calificación
   const renderStars = (rating: number) => {
@@ -41,6 +45,10 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({
       </div>
     );
   };
+
+  const month = new Date(created_at).toLocaleString('default', { month: 'long' });
+  const day = new Date(created_at).getDate();
+  const year = new Date(created_at).getFullYear();
 
   return (
     <Flex
@@ -72,29 +80,25 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({
       </div>
 
       {/* Avatar */}
-      <div className={styles.content}>
-        {user_image ? (
-
-          <Avatar
-            size="l"
-            className={styles.avatar}
-            src={`/images/reviewers/${user_image}`}
-          />
-        ) : (
-          <Avatar size="l" className={styles.avatar} />
-        )}
-
-        {/* Nombre de usuario */}
+      <div className={styles.avatarRatingContainer}>
+        <Avatar
+          size="l"
+          className={styles.avatar}
+          src={user_image ? `/images/reviewers/${user_image}` : undefined}
+        />
         <Text className={styles.username}>{username}</Text>
+        <Flex className={styles.rating}>{renderStars(value)}</Flex>
+      </div>
 
-        {/* Comentario */}
+      {/* Contenido principal */}
+      <div className={styles.content}>
         <Text wrap="balance" className={styles.comment}>
           {comment}
         </Text>
-
-        {/* Calificación */}
-        <Flex className={styles.rating}>{renderStars(value)}</Flex>
       </div>
+
+      {/* Fecha */}
+      <Text className={styles.date}>{`${capitalize(month)} ${day}, ${year}`}</Text>
     </Flex>
   );
 };

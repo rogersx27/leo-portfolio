@@ -124,19 +124,6 @@ export default function Home() {
 							</Button>
 							<Button
 								data-border="rounded"
-								href="/contact"
-								variant="tertiary"
-								suffixIcon="chevronRight"
-								size="m">
-								<Flex
-									gap="8"
-									alignItems="center">
-									<Icon name="contact" />
-									Contact me
-								</Flex>
-							</Button>
-							<Button
-								data-border="rounded"
 								href="/gallery"
 								variant="tertiary"
 								suffixIcon="chevronRight"

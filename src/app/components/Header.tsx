@@ -2,7 +2,7 @@
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { Flex, ToggleButton } from '@/once-ui/components';
 import styles from './Header.module.scss';
@@ -17,19 +17,32 @@ import { display, person } from '../resources';
 
 export const Header: React.FC = () => {
     const pathname = usePathname() ?? '';
-    const { height: windowHeight } = useWindowSize();
+    const { height: windowHeight, width: windowWidth } = useWindowSize();
     const [visibleDropdown, setVisibleDropdown] = useState<string | null>(null);
-    const isDropdownAbove = windowHeight ? windowHeight <= 768 : false;
+    const isMobile = windowWidth ? windowWidth <= 768 : false;
+    const isDropdownAbove = isMobile;
 
     useEffect(() => {
         console.log('Is dropdown above:', isDropdownAbove);
     }, [isDropdownAbove]);
 
     const handleMouseEnter = (key: string) => {
-        setVisibleDropdown(key);
+        if (!isMobile) { // Solo abrir dropdown en hover si no es móvil
+            setVisibleDropdown(key);
+        }
     };
 
     const handleMouseLeave = () => {
+        if (!isMobile) { // Solo cerrar dropdown en hover si no es móvil
+            setVisibleDropdown(null);
+        }
+    };
+
+    const handleToggleDropdown = useCallback((key: string) => {
+        setVisibleDropdown(prev => (prev === key ? null : key));
+    }, []);
+
+    const handleCloseDropdown = () => {
         setVisibleDropdown(null);
     };
 
@@ -38,7 +51,7 @@ export const Header: React.FC = () => {
             <Flex className={styles.headerContainer}>
                 {/* Sección Izquierda */}
                 <Flex className={styles.leftSection}>
-                    { display.location && <LocationDisplay />}
+                    {display.location && <LocationDisplay />}
                 </Flex>
 
                 {/* Sección de Navegación */}
@@ -58,6 +71,10 @@ export const Header: React.FC = () => {
                                     className={styles.menuContainer}
                                     onMouseEnter={() => handleMouseEnter(item.key)}
                                     onMouseLeave={handleMouseLeave}
+                                    onClick={() => hasSubItems && handleToggleDropdown(item.key)}
+                                    role="menuitem"
+                                    aria-haspopup={hasSubItems}
+                                    aria-expanded={isVisible}
                                 >
                                     <ToggleButton
                                         prefixIcon={item.icon}
@@ -65,7 +82,7 @@ export const Header: React.FC = () => {
                                         selected={isSelected}
                                         className={`${styles.toggleButton} ${isSelected ? styles.selected : ''}`}
                                     >
-                                        {item.label}
+                                        <span className={styles.buttonText}>{item.label}</span>
                                     </ToggleButton>
                                     {hasSubItems && (
                                         <>
@@ -74,6 +91,7 @@ export const Header: React.FC = () => {
                                                 isVisible={isVisible}
                                                 isAbove={isDropdownAbove}
                                                 items={item.subItems!}
+                                                onClose={handleCloseDropdown}
                                             />
                                         </>
                                     )}
@@ -91,4 +109,3 @@ export const Header: React.FC = () => {
         </header>
     );
 };
-

@@ -1,7 +1,7 @@
 /* src/app/components/Header.module.scss */
 
 /* Variables */
-$color-black-overlay: rgba(39, 38, 38, 0.384);
+$color-black-overlay: #0000004d;
 $color-hover: #179cf7;
 $color-neutral-medium: rgba(87, 86, 86, 0.5);
 $color-white: #ffffff;
@@ -21,9 +21,7 @@ $breakpoint-small: 768px;
     left: 0;
     right: 0;
     z-index: 100;
-    // background-color: $color-black-overlay;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    
     padding: $spacing-medium;
 
     @media (max-width: $breakpoint-small) {
@@ -38,11 +36,12 @@ $breakpoint-small: 768px;
 /* Contenedor Principal del Header */
 .headerContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Mejor distribución */
     align-items: center;
-    max-width: 100px;
+    max-width: 1200px; /* Ajustado a un valor más razonable */
     margin: 0 auto;
     width: 100%;
+    padding: 0 $spacing-medium; /* Añadido padding horizontal */
 }
 
 /* Secciones Izquierda y Derecha */
@@ -54,7 +53,7 @@ $breakpoint-small: 768px;
 
 /* Sección de Navegación */
 .navSection {
-    flex: 1;
+    // flex: 1;
     display: flex;
     justify-content: center;
     background-color: $color-black-overlay;
@@ -62,15 +61,26 @@ $breakpoint-small: 768px;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
     padding: $spacing-small;
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
 }
 
 .navContainer {
     display: flex;
     gap: 1rem;
 
+    /* Eliminado flex-direction: column para mantener horizontal en móviles */
+    /*
     @media (max-width: $breakpoint-small) {
         flex-direction: column;
         align-items: center;
+    }
+    */
+
+    /* Opcional: Ajustes adicionales para móviles sin cambiar la dirección */
+    @media (max-width: $breakpoint-small) {
+        justify-content: space-around;
+        /* Otros ajustes según sea necesario */
     }
 }
 
@@ -114,6 +124,14 @@ $breakpoint-small: 768px;
 
     @media (max-width: $breakpoint-small) {
         width: 100%;
+
+        /* Ocultar el texto en vista móvil */
+        .buttonText {
+            display: none;
+        }
+
+        /* Ajustar padding si es necesario */
+        padding: 2px; /* Reducir el padding para iconos más pequeños */
     }
 }
 
@@ -144,16 +162,16 @@ $breakpoint-small: 768px;
     transition: visibility 0s, opacity 0.3s ease, transform 0.3s ease;
     position: absolute;
     top: calc(100% + 12px);
-    left: -15px;
-    background-color: rgba(21, 21, 21, 0.8); /* Fondo negro con 80% de opacidad */
-    border: $border-width solid rgba(87, 86, 86, 0.5); /* Bordes con opacidad */
+    left: 0; /* Alineado correctamente */
+    background-color: rgba(21, 21, 21, 0.8);
+    border: $border-width solid rgba(87, 86, 86, 0.5);
     border-radius: $border-radius;
     box-shadow: $box-shadow;
     padding: $spacing-small;
     z-index: 200;
     min-width: 150px;
-    backdrop-filter: blur(100px); /* Aplica el efecto de difuminado */
-    -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
+    // backdrop-filter: blur(10px);
+    // -webkit-backdrop-filter: blur(10px);
 
     &.visible {
         visibility: visible;
@@ -162,12 +180,27 @@ $breakpoint-small: 768px;
         transition-delay: 0s;
     }
 
-    // &.above {
-    //     top: auto;
-    //     bottom: calc(100% + 8px);
-    // }
+    &.above {
+        top: auto;
+        bottom: calc(100% + 8px);
+    }
+
+    a,
+    .dropdownItem {
+        display: flex;
+        align-items: center;
+        /* Ajustar display a flex para alinear iconos si los hay */
+
+        /* Ocultar el texto en vista móvil */
+        @media (max-width: $breakpoint-small) {
+            .dropdownText {
+                display: none;
+            }
+        }
+    }
 
     a {
+        /* Estilos existentes para los enlaces */
         display: block;
         padding: 8px 16px;
         color: $color-white;
@@ -191,7 +224,7 @@ $breakpoint-small: 768px;
     }
 
     @media (max-width: $breakpoint-small) {
-        display: none;
+        display: none; /* Removido para mantener visibilidad */
     }
 }
 
@@ -212,4 +245,33 @@ $breakpoint-small: 768px;
 /* Clase para Botón Seleccionado */
 .selected {
     color: $color-hover;
+}
+
+/* Definición para .dropdownItem */
+.dropdownItem {
+    display: block;
+    padding: 8px 16px;
+    color: $color-white;
+    text-decoration: none;
+    text-align: right;
+    border-radius: 0;
+
+    &:hover {
+        background-color: $color-hover;
+        color: $color-white;
+        border-radius: $border-radius-hover;
+    }
+
+    &:active {
+        color: $color-white;
+    }
+
+    @media (max-width: $breakpoint-small) {
+        text-align: center;
+
+        /* Ocultar el texto en vista móvil */
+        .dropdownText {
+            display: none;
+        }
+    }
 }

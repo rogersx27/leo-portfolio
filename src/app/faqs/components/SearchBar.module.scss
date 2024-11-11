@@ -1,0 +1,33 @@
+/* src/once-ui/components/SearchBar/SearchBar.module.scss */
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: border-color 0.3s ease;
+
+    &:focus-within {
+        border-color: #179cf7;
+    }
+}
+
+.searchIcon {
+    margin-right: 0.5rem;
+    color: #ffffff;
+}
+
+.input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #333333;
+
+    &::placeholder {
+        color: #999999;
+    }
+}

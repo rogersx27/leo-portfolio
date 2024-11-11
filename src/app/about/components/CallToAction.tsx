@@ -60,7 +60,7 @@ const CallToAction: React.FC = () => {
                 marginTop="m"
             >
                 <Link
-                    href="/faq"
+                    href="/faqs"
                     className={clsx(styles.faqLink)}
                 >
                     Don’t forget to check the FAQ

@@ -45,6 +45,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { FaUserNinja } from "react-icons/fa";
 import { MdOutlineSubject } from "react-icons/md";
 import { BiMessageSquareDots } from "react-icons/bi";
+import { CiSearch } from "react-icons/ci";
 
 
 
@@ -82,4 +83,5 @@ export const iconLibrary: Record<string, IconType> = {
 	user: FaUserNinja,
 	subject: MdOutlineSubject,
 	message: BiMessageSquareDots,
+	search: CiSearch,
 };

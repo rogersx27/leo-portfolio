@@ -1,51 +1,52 @@
 const baseURL = 'nextjs-portfolio.up.railway.app'
 
 const routes = {
-    '/':        true,
-    '/about':   true,
-    '/work':    false,
-    '/blog':    false,
-    '/gallery': true,
-    '/contact': true,
-    '/api/contact': true,
+  '/': true,
+  '/about': true,
+  '/work': false,
+  '/blog': false,
+  '/gallery': true,
+  '/contact': true,
+  '/api/contact': true,
+  '/faqs': true,
 }
 
 // Enable password protection on selected routes
 // Set password in pages/api/authenticate.ts
 const protectedRoutes = {
-    '/work/automate-design-handovers-with-a-figma-to-code-pipeline': true
+  '/work/automate-design-handovers-with-a-figma-to-code-pipeline': true,
 }
 
 const effects = {
-    gradient: true,
-    dots:     true,
-    lines:    false,
+  gradient: true,
+  dots: true,
+  lines: false,
 }
 
 const style = {
-    theme:       'dark',        // dark | light
-    neutral:     'gray',         // sand | gray | slate
-    brand:       'cyan',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-    accent:      'cyan',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-    solid:       'contrast',     // color | contrast
-    solidStyle:  'plastic',         // flat | plastic
-    border:      'rounded', // rounded | playful | conservative
-    surface:     'translucent',       // filled | translucent
-    transition:  'all'           // all | micro | macro
+  theme: 'dark', // dark | light
+  neutral: 'gray', // sand | gray | slate
+  brand: 'cyan', // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  accent: 'cyan', // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  solid: 'contrast', // color | contrast
+  solidStyle: 'plastic', // flat | plastic
+  border: 'rounded', // rounded | playful | conservative
+  surface: 'translucent', // filled | translucent
+  transition: 'all', // all | micro | macro
 }
 
 const display = {
-    location: false,
-    time:     false
+  location: false,
+  time: false,
 }
 
 const mailchimp = {
-    action: 'https://url/subscribe/post?parameters',
-    effects: {
-        gradient: true,
-        dots:     false,
-        lines:    true,
-    }
+  action: 'https://url/subscribe/post?parameters',
+  effects: {
+    gradient: true,
+    dots: false,
+    lines: true,
+  },
 }
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL };
+export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL }

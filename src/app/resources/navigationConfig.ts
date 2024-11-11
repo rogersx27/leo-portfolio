@@ -1,20 +1,34 @@
 // src/app/config/navigationConfig.ts
 
-import { routes, gallery } from '@/app/resources';
+import { gallery } from '@/app/resources'; // Asegúrate de que esto esté correctamente importado
 
+/**
+ * @typedef {Object} SubNavItem
+ * @property {string} label - Texto a mostrar en el submenú.
+ * @property {string} href - Ruta a la que enlaza el submenú.
+ */
 export interface SubNavItem {
     label: string;
     href: string;
 }
 
+/**
+ * @typedef {Object} NavItem
+ * @property {string} key - Clave única para el elemento de navegación.
+ * @property {string} label - Texto a mostrar en el menú de navegación.
+ * @property {string} href - Ruta a la que enlaza el elemento.
+ * @property {string} icon - Nombre del icono a mostrar.
+ * @property {SubNavItem[]} [subItems] - Sub-elementos para menús desplegables.
+ */
 export interface NavItem {
     key: string;
     label: string;
     href: string;
     icon: string;
-    subItems?: SubNavItem[];
+    subItems?: { label: string; href: string }[];
 }
 
+/** @type {NavItem[]} */
 export const navigationItems: NavItem[] = [
     {
         key: 'home',

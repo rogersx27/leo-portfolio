@@ -4,91 +4,91 @@
 
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Flex } from '@/once-ui/components';
-import styles from '@/app/components/Header.module.scss';
+import { Flex, ToggleButton } from '@/once-ui/components';
+import styles from './Header.module.scss';
 
-import NavItem from './NavItem';
-import useWindowSize from '../hooks/useWindowSize';
+import { navigationItems } from '../resources';
+
+import DropdownMenu from './DropdownMenu';
 import LocationDisplay from './LocationDisplay';
-import { navigationItems } from '../resources/navigationConfig';
-import { display, person } from '../resources';
 import TimeDisplay from './TimeDisplay';
+import useWindowSize from '../hooks/useWindowSize';
+import { display, person } from '../resources';
 
 export const Header: React.FC = () => {
     const pathname = usePathname() ?? '';
     const { height: windowHeight } = useWindowSize();
-    const [dropdownStates, setDropdownStates] = useState<Record<string, boolean>>({});
+    const [visibleDropdown, setVisibleDropdown] = useState<string | null>(null);
     const isDropdownAbove = windowHeight ? windowHeight <= 768 : false;
 
     useEffect(() => {
-        console.log(isDropdownAbove); // Confirm that the value changes correctly
+        console.log('Is dropdown above:', isDropdownAbove);
     }, [isDropdownAbove]);
 
     const handleMouseEnter = (key: string) => {
-        setDropdownStates(prev => ({ ...prev, [key]: true }));
+        setVisibleDropdown(key);
     };
 
-    const handleMouseLeave = (key: string) => {
-        setDropdownStates(prev => ({ ...prev, [key]: false }));
+    const handleMouseLeave = () => {
+        setVisibleDropdown(null);
     };
 
     return (
-        <Flex
-            as="header"
-            className={styles.header}
-            zIndex={9}
-            fillWidth
-            padding="8"
-            justifyContent="center"
-        >
-            {/* Left Section */}
-            <Flex className={styles.leftSection}>
-                { display.location && <LocationDisplay /> }
-            </Flex>
+        <header className={styles.position}>
+            <Flex className={styles.headerContainer}>
+                {/* Sección Izquierda */}
+                <Flex className={styles.leftSection}>
+                    { display.location && <LocationDisplay />}
+                </Flex>
 
-            {/* Navigation Section */}
-            <Flex
-                className={styles.navSection}
-                background="surface"
-                border="neutral-medium"
-                borderStyle="solid-1"
-                radius="m-4"
-                shadow="l"
-                padding="4"
-                justifyContent="center"
-            >
-                <Flex gap="4" textVariant="body-default-s" className={styles.navContainer}>
-                    {navigationItems.map(item => {
-                        const isSelected =
-                            item.href === '/'
-                                ? pathname === item.href
-                                : pathname.startsWith(item.href);
-                        const hasSubItems = !!item.subItems && item.subItems.length > 0;
-                        const isDropdownVisible = dropdownStates[item.key] || false;
+                {/* Sección de Navegación */}
+                <Flex className={styles.navSection}>
+                    <div className={styles.navContainer}>
+                        {navigationItems.map(item => {
+                            const isSelected =
+                                item.href === '/'
+                                    ? pathname === item.href
+                                    : pathname.startsWith(item.href);
+                            const hasSubItems = !!item.subItems && item.subItems.length > 0;
+                            const isVisible = visibleDropdown === item.key;
 
-                        return (
-                            <NavItem
-                                key={item.key}
-                                label={item.label}
-                                href={item.href}
-                                icon={item.icon}
-                                isSelected={isSelected}
-                                subItems={item.subItems}
-                                isDropdownAbove={isDropdownAbove}
-                                isDropdownVisible={isDropdownVisible}
-                                onMouseEnter={() => handleMouseEnter(item.key)}
-                                onMouseLeave={() => handleMouseLeave(item.key)}
-                            />
-                        );
-                    })}
+                            return (
+                                <div
+                                    key={item.key}
+                                    className={styles.menuContainer}
+                                    onMouseEnter={() => handleMouseEnter(item.key)}
+                                    onMouseLeave={handleMouseLeave}
+                                >
+                                    <ToggleButton
+                                        prefixIcon={item.icon}
+                                        href={item.href}
+                                        selected={isSelected}
+                                        className={`${styles.toggleButton} ${isSelected ? styles.selected : ''}`}
+                                    >
+                                        {item.label}
+                                    </ToggleButton>
+                                    {hasSubItems && (
+                                        <>
+                                            <div className={styles.bridge}></div>
+                                            <DropdownMenu
+                                                isVisible={isVisible}
+                                                isAbove={isDropdownAbove}
+                                                items={item.subItems!}
+                                            />
+                                        </>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </Flex>
+
+                {/* Sección Derecha */}
+                <Flex className={styles.rightSection}>
+                    {display.time && <TimeDisplay timeZone={person.location} />}
                 </Flex>
             </Flex>
-
-            {/* Right Section */}
-            <Flex className={styles.rightSection}>
-                {display.time && <TimeDisplay timeZone={person.location} />}
-            </Flex>
-        </Flex>
+        </header>
     );
 };
 

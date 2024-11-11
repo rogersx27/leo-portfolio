@@ -3,7 +3,7 @@
 'use client';
 
 import React from 'react';
-import styles from '@/app/components/Header.module.scss';
+import styles from './Header.module.scss';
 import Link from 'next/link';
 
 interface DropdownMenuProps {

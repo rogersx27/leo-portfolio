@@ -1,0 +1,35 @@
+// src/app/components/_variables.scss
+
+// Colores
+$color-black: #151515;
+$color-black-overlay: rgba(21, 21, 21, 0.8);
+$color-neutral-medium: #3f3f3f;
+$color-white: #ffffff;
+$color-hover: #179cf7;
+
+// Bordes
+$border-radius: 16px;
+$border-radius-hover: 10px;
+$border-width: 1px;
+
+// Sombras
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+// Espaciados
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 24px;
+
+// Puntos de Interrupción
+$breakpoint-small: 768px;
+
+// Mixins
+@mixin transition($properties, $duration: 0.3s, $timing: ease) {
+    transition: $properties $duration $timing;
+}
+
+@mixin responsive($breakpoint) {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}

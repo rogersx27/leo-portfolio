@@ -1,101 +1,215 @@
+/* src/app/components/Header.module.scss */
+
+/* Variables */
+$color-black-overlay: rgba(39, 38, 38, 0.384);
+$color-hover: #179cf7;
+$color-neutral-medium: rgba(87, 86, 86, 0.5);
+$color-white: #ffffff;
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 24px;
+$border-radius: 16px;
+$border-radius-hover: 10px;
+$border-width: 1px;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+$breakpoint-small: 768px;
+
+/* Posicionamiento del Header */
 .position {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    // background-color: $color-black-overlay;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: $spacing-medium;
+
+    @media (max-width: $breakpoint-small) {
+        position: fixed;
+        top: auto;
+        bottom: $spacing-large;
+        left: 0;
+        right: 0;
+    }
 }
 
-.menuContainer {
-  position: relative;
-}
-
-.bridge {
-  position: absolute;
-  top: calc(100% + 1px); /* Justo debajo del botón */
-  left: 0;
-  height: 10px;
-  width: 100%;
-  background-color: transparent;
-  z-index: 150;
-}
-
-.dropdownMenu {
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: visibility 0s, opacity 0.3s ease, transform 0.3s ease;
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 1px;
-  background-color: #151515;
-  border: 1px solid #3f3f3f;
-  border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  padding: 8px;
-  z-index: 200;
-  min-width: 10px;
-
-  background-color: rgba(21, 21, 21, 0.8); /* Fondo negro con 50% de opacidad */
-  border: 1px solid rgba(87, 86, 86, 0.5); /* Bordes con opacidad */
-  backdrop-filter: blur(100px); /* Aplica el efecto de difuminado */
-  -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
-}
-
-.dropdownMenuVisible {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0s;
-}
-
-.dropdownAbove {
-  top: auto; /* Elimina la posición top */
-  bottom: calc(100% + 8px); /* Posiciona el menú hacia arriba */
-}
-
-.dropdownMenu a {
-  display: block;
-  padding: 8px 16px;
-  color: #ffffff;
-  text-decoration: none;
-  text-align: right;
-}
-
-.dropdownMenu a:hover {
-  background-color: #179cf7;
-  color: #ffffff;
-  border-radius: 10px;
-}
-
-.dropdownMenu a:active {
-  color: #ffffff;
-}
-
-@media (--s) {
-  .position {
-    top: auto;
-    position: fixed;
-    bottom: var(--static-space-24);
-  }
-}
-
-
-@media (max-width: 768px) {
-  .menuContainer {
+/* Contenedor Principal del Header */
+.headerContainer {
     display: flex;
     justify-content: center;
-  }
+    align-items: center;
+    max-width: 100px;
+    margin: 0 auto;
+    width: 100%;
+}
 
-  .dropdownMenu {
-    display: none;
-  }
+/* Secciones Izquierda y Derecha */
+.leftSection,
+.rightSection {
+    display: flex;
+    align-items: center;
+}
 
-  .bridge {
-    top: auto; /* Elimina el `top` en móviles */
-    bottom: calc(100% + 1px); /* Coloca el `bridge` justo arriba del menú */
-    height: 15px; /* Aumenta la altura si es necesario para cubrir el espacio */
-    width: 100%; /* Asegura que cubra toda el área sobre el menú */
+/* Sección de Navegación */
+.navSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background-color: $color-black-overlay;
+    border: $border-width solid $color-neutral-medium;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    padding: $spacing-small;
+}
+
+.navContainer {
+    display: flex;
+    gap: 1rem;
+
+    @media (max-width: $breakpoint-small) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Contenedor de Cada Menú */
+.menuContainer {
+    position: relative;
+
+    &:hover .dropdownMenu {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: $breakpoint-small) {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Botón de Navegación */
+.toggleButton {
+    padding: 2px 8px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $color-white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+
+    &.selected {
+        color: $color-hover;
+    }
+
+    &:hover {
+        color: $color-hover;
+    }
+
+    @media (max-width: $breakpoint-small) {
+        width: 100%;
+    }
+}
+
+/* Bridge para Posicionamiento del Dropdown */
+.bridge {
+    position: absolute;
+    top: calc(100% + 1px); /* Justo debajo del botón */
     left: 0;
-  }
+    height: 15px;
+    width: 100%;
+    background-color: transparent;
+    z-index: 150;
+
+    @media (max-width: $breakpoint-small) {
+        top: auto; /* Elimina el `top` en móviles */
+        bottom: calc(100% + 1px); /* Coloca el `bridge` justo arriba del menú */
+        height: 15px; /* Aumenta la altura si es necesario para cubrir el espacio */
+        width: 100%; /* Asegura que cubra toda el área sobre el menú */
+        left: 0;
+    }
+}
+
+/* Menú Desplegable */
+.dropdownMenu {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: visibility 0s, opacity 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: -15px;
+    background-color: rgba(21, 21, 21, 0.8); /* Fondo negro con 80% de opacidad */
+    border: $border-width solid rgba(87, 86, 86, 0.5); /* Bordes con opacidad */
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    padding: $spacing-small;
+    z-index: 200;
+    min-width: 150px;
+    backdrop-filter: blur(100px); /* Aplica el efecto de difuminado */
+    -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
+
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0s;
+    }
+
+    // &.above {
+    //     top: auto;
+    //     bottom: calc(100% + 8px);
+    // }
+
+    a {
+        display: block;
+        padding: 8px 16px;
+        color: $color-white;
+        text-decoration: none;
+        text-align: right;
+        border-radius: 0;
+
+        &:hover {
+            background-color: $color-hover;
+            color: $color-white;
+            border-radius: $border-radius-hover;
+        }
+
+        &:active {
+            color: $color-white;
+        }
+
+        @media (max-width: $breakpoint-small) {
+            text-align: center;
+        }
+    }
+
+    @media (max-width: $breakpoint-small) {
+        display: none;
+    }
+}
+
+/* Clase para Dropdown Visible */
+.dropdownMenuVisible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+
+/* Clase para Dropdown Posicionado Arriba */
+.dropdownAbove {
+    top: auto;
+    bottom: calc(100% + 8px);
+}
+
+/* Clase para Botón Seleccionado */
+.selected {
+    color: $color-hover;
 }

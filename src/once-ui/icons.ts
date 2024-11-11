@@ -46,6 +46,7 @@ import { FaUserNinja } from "react-icons/fa";
 import { MdOutlineSubject } from "react-icons/md";
 import { BiMessageSquareDots } from "react-icons/bi";
 import { CiSearch } from "react-icons/ci";
+import { MdContactPhone } from "react-icons/md";
 
 
 
@@ -84,4 +85,5 @@ export const iconLibrary: Record<string, IconType> = {
 	subject: MdOutlineSubject,
 	message: BiMessageSquareDots,
 	search: CiSearch,
+	contact: MdContactPhone
 };

@@ -54,4 +54,10 @@ export const navigationItems: NavItem[] = [
                 href: image.src,
             })),
     },
+    {
+        key: 'contact',
+        label: 'Contact',
+        href: '/contact',
+        icon: 'contact',
+    }
 ];

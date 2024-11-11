@@ -162,7 +162,7 @@ $breakpoint-small: 768px;
     transition: visibility 0s, opacity 0.3s ease, transform 0.3s ease;
     position: absolute;
     top: calc(100% + 12px);
-    left: 0; /* Alineado correctamente */
+    left: -10px; /* Alineado correctamente */
     background-color: rgba(21, 21, 21, 0.8);
     border: $border-width solid rgba(87, 86, 86, 0.5);
     border-radius: $border-radius;

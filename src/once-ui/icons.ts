@@ -42,7 +42,9 @@ import { RiGalleryView } from "react-icons/ri";
 import { FaHandshake } from 'react-icons/fa';
 import { TbBrandFiverr } from "react-icons/tb";
 import { RiInstagramFill } from "react-icons/ri";
-
+import { FaUserNinja } from "react-icons/fa";
+import { MdOutlineSubject } from "react-icons/md";
+import { BiMessageSquareDots } from "react-icons/bi";
 
 
 
@@ -77,4 +79,7 @@ export const iconLibrary: Record<string, IconType> = {
 	handshake: FaHandshake,
 	fiverr: TbBrandFiverr,
 	instagram: RiInstagramFill,
+	user: FaUserNinja,
+	subject: MdOutlineSubject,
+	message: BiMessageSquareDots,
 };

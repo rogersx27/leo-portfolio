@@ -3,6 +3,7 @@ import { InlineCode } from '@/once-ui/components'
 const person = {
   firstName: 'Leo',
   lastName: 'Rubiano',
+  email: 'businessleorubiano@gmail.com',
   get name() {
     return `${this.firstName} ${this.lastName}`
   },
@@ -10,6 +11,11 @@ const person = {
   avatar: '/images/avatar.jpg',
   location: 'Asia/Jakarta',
   languages: ['English', 'Spanish'],
+}
+
+const contact = {
+  title: 'Contact Me',
+  description: `I’d love to hear from you! Whether you have a question or just want to say hi, feel free to reach out.`,
 }
 
 const newsletter = {
@@ -38,7 +44,7 @@ const social = [
   {
     name: 'Email',
     icon: 'email',
-    link: 'businessleorubiano@gmail.com', // Puedes cambiar este email si es necesario
+    link: person.email,
   },
 ]
 
@@ -47,11 +53,7 @@ const home = {
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Turning Ideas Into Eye-Catching Visuals</>,
-  subline: (
-    <>
-      Crafting exceptional digital experiences.
-    </>
-  ),
+  subline: <>Crafting exceptional digital experiences.</>,
 }
 
 const about = {
@@ -252,5 +254,6 @@ export {
   work,
   gallery,
   niche_in_category,
-  imagesForHome
+  imagesForHome,
+  contact,
 }

@@ -1,30 +1,15 @@
+// src/app/components/CallToAction.tsx
+
 import { Button, Flex, Icon, Text } from '@/once-ui/components';
 import styles from '@/app/about/about.module.scss';
+import Link from './Link';
+import clsx from 'clsx';
 
 const CustomHeading: React.FC = () => {
     return (
-        <div style={{ textAlign: 'center', lineHeight: '1.1', marginBottom: '1rem' }}>
-            <span
-                style={{
-                    fontSize: '2.5em',       // Tamaño grande para "Let’s Work"
-                    display: 'inline-block',
-                    marginBottom: '-0.3rem', // Reducir margen inferior
-                    fontWeight: 'bold',     // Negrita
-                }}
-            >
-                Let’s Work
-            </span>
-            <br />
-            <span
-                style={{
-                    fontSize: '1.75em',    // Tamaño un poco menor para "Together!"
-                    padding: '0',
-                    fontWeight: 'bold',     // Negrita
-
-                }}
-            >
-                Together!
-            </span>
+        <div className={styles.customHeading}>
+            <h1 className={styles.primaryHeading}>Let’s Work</h1>
+            <h2 className={styles.secondaryHeading}>Together!</h2>
         </div>
     );
 };
@@ -68,20 +53,18 @@ const CallToAction: React.FC = () => {
                 Contact Now
             </Button>
 
-            {/* Enlace adicional */}
+            {/* Enlace adicional como texto de bajo contraste */}
             <Flex
                 className={styles.additionalLinks}
                 gap="8"
                 marginTop="m"
             >
-                <Button
+                <Link
                     href="/faq"
-                    size="s"
-                    variant="secondary"
-                    className="button-secondary"
+                    className={clsx(styles.faqLink)}
                 >
                     Don’t forget to check the FAQ
-                </Button>
+                </Link>
             </Flex>
         </Flex>
     );

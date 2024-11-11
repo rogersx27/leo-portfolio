@@ -1,3 +1,21 @@
+/* src/app/about/about.module.scss */
+
+/* Variables */
+$color-black-overlay: rgba(39, 38, 38, 0.384);
+$color-hover: #179cf7;
+$color-neutral-medium: rgba(87, 86, 86, 0.5);
+$color-white: #ffffff;
+$color-light-gray: #b0b0b0; /* Color de bajo contraste */
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 24px;
+$border-radius: 16px;
+$border-radius-hover: 10px;
+$border-width: 1px;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+$breakpoint-small: 768px;
+
+/* Clase Hover */
 .hover {
     transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
 
@@ -6,44 +24,16 @@
     }
 }
 
+/* Call to Action */
 .callToAction {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 1rem;
-    max-width: 500px;
-    /* Limita el ancho máximo para pantallas grandes */
-    margin: 0 auto;
-    /* Centra el componente horizontalmente en la pantalla */
+    max-width: 500px; /* Limita el ancho máximo para pantallas grandes */
+    margin: 0 auto; /* Centra el componente horizontalmente en la pantalla */
     box-sizing: border-box;
-
-    .heading {
-        line-height: 1.1; /* Ajuste de la altura de línea para acercar las líneas */
-    }
-
-    .heading-primary {
-        font-size: 20em; /* Aumentar tamaño de "Let’s Work" */
-        display: inline-block;
-        margin-bottom: -0.3rem; /* Ajuste del margen inferior */
-    }
-
-    .heading-secondary {
-        font-size: 1.75em; /* Aumentar tamaño de "Together!" */
-        padding: 0; /* Quitar cualquier padding adicional */
-    }
-
-    @media (max-width: 768px) {
-        padding: 0.75rem;
-        max-width: 400px;
-        /* Reduce el ancho máximo en tablets */
-    }
-
-    @media (max-width: 480px) {
-        padding: 0.5rem;
-        max-width: 300px;
-        /* Reduce aún más el ancho máximo en móviles */
-    }
 
     /* Icono */
     .icon {
@@ -64,18 +54,37 @@
         }
     }
 
-    /* Heading */
-    .heading {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
+    /* Custom Heading */
+    .customHeading {
+        margin-bottom: 1rem;
 
-        @media (max-width: 768px) {
-            font-size: 1.3rem;
+        .primaryHeading {
+            font-size: 2.5rem; /* Tamaño grande para "Let’s Work" */
+            font-weight: bold;
+            margin-bottom: -0.3rem;
+
+            @media (max-width: 768px) {
+                font-size: 2rem;
+            }
+
+            @media (max-width: 480px) {
+                font-size: 1.75rem;
+                margin-bottom: -0.2rem;
+            }
         }
 
-        @media (max-width: 480px) {
-            font-size: 1.1rem;
-            line-height: 1.3;
+        .secondaryHeading {
+            font-size: 1.75rem; /* Tamaño un poco menor para "Together!" */
+            font-weight: bold;
+            padding: 0;
+
+            @media (max-width: 768px) {
+                font-size: 1.5rem;
+            }
+
+            @media (max-width: 480px) {
+                font-size: 1.25rem;
+            }
         }
     }
 
@@ -83,8 +92,7 @@
     .text {
         font-size: 1rem;
         margin-bottom: 1rem;
-        padding: 0 1rem;
-        /* Padding horizontal para que el texto no se pegue a los bordes */
+        padding: 0 1rem; /* Padding horizontal para que el texto no se pegue a los bordes */
 
         @media (max-width: 768px) {
             font-size: 0.95rem;
@@ -97,13 +105,16 @@
         }
     }
 
-    /* Botón */
+    /* Botón principal */
     .button {
         margin-top: 1rem;
         width: 100%;
         background-color: transparent;
         color: #ffffff;
         text-align: center;
+        border: 1px solid #ffffff;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
 
         @media (max-width: 780px) {
             width: 80%;
@@ -112,9 +123,6 @@
         @media (max-width: 480px) {
             width: 90%;
         }
-
-        transition: background-color 0.3s ease,
-        transform 0.3s ease;
 
         &:hover {
             color: #00ffff;
@@ -128,23 +136,34 @@
     /* Enlaces adicionales */
     .additionalLinks {
         display: flex;
-        justify-content: center;
-        /* Centra el contenedor de enlaces */
+        justify-content: center; /* Centra el contenedor de enlaces */
         margin-top: 1rem;
         width: 100%;
 
         @media (max-width: 780px) {
-            display: none;
-            /* Oculta los enlaces adicionales en tablets */
+            display: none; /* Oculta los enlaces adicionales en tablets */
         }
 
-        .button-secondary {
-            text-align: center;
-            padding: 0.5rem 1rem;
-            max-width: 200px;
-            /* Limita el ancho del botón para que se vea más compacto */
-            width: 100%;
-            /* Hace que el botón ocupe el ancho del contenedor */
+        /* Enlace de bajo contraste para FAQ */
+        .faqLink {
+            color: $color-light-gray;
+            text-decoration: none;
+            font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+            transition: color 0.3s ease;
+
+            &:hover,
+            &:focus {
+                color: $color-hover;
+                text-decoration: underline;
+            }
         }
+
+        /* Si decides mantener estilos anteriores para .buttonSecondary, puedes eliminarlos */
+        // .buttonSecondary {
+        //     text-align: center;
+        //     padding: 0.5rem 1rem;
+        //     max-width: 200px; /* Limita el ancho del botón para que se vea más compacto */
+        //     width: 100%; /* Hace que el botón ocupe el ancho del contenedor */
+        // }
     }
 }

@@ -33,8 +33,8 @@ const style = {
 }
 
 const display = {
-    location: true,
-    time:     true
+    location: false,
+    time:     false
 }
 
 const mailchimp = {

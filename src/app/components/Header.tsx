@@ -1,78 +1,54 @@
-"use client";
+// src/app/components/Header.tsx
 
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+'use client';
 
-import { Flex, ToggleButton } from "@/once-ui/components";
+import React, { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { Flex } from '@/once-ui/components';
 import styles from '@/app/components/Header.module.scss';
 
-import { routes, display } from '@/app/resources';
-import { person, home, about, blog, work, gallery } from '@/app/resources';
-import useWindowSize from "../hooks/useWindowSize";
+import NavItem from './NavItem';
+import useWindowSize from '../hooks/useWindowSize';
+import LocationDisplay from './LocationDisplay';
+import { navigationItems } from '../resources/navigationConfig';
+import { display, person } from '../resources';
+import TimeDisplay from './TimeDisplay';
 
-type TimeDisplayProps = {
-    timeZone: string;
-    locale?: string;
-};
-
-const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = 'en-GB' }) => {
-    const [currentTime, setCurrentTime] = useState('');
-
-    useEffect(() => {
-        const updateTime = () => {
-            const now = new Date();
-            const options: Intl.DateTimeFormatOptions = {
-                timeZone,
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false,
-            };
-            const timeString = new Intl.DateTimeFormat(locale, options).format(now);
-            setCurrentTime(timeString);
-        };
-
-        updateTime();
-        const intervalId = setInterval(updateTime, 1000);
-
-        return () => clearInterval(intervalId);
-    }, [timeZone, locale]);
-
-    return <>{currentTime}</>;
-};
-
-export default TimeDisplay;
-
-export const Header = () => {
+export const Header: React.FC = () => {
     const pathname = usePathname() ?? '';
-    const isClient = typeof window !== "undefined";
-    const { height: windowHeight } = isClient ? useWindowSize() : { height: undefined };
-    const [isGalleryMenuVisible, setGalleryMenuVisible] = useState(false);
+    const { height: windowHeight } = useWindowSize();
+    const [dropdownStates, setDropdownStates] = useState<Record<string, boolean>>({});
     const isDropdownAbove = windowHeight ? windowHeight <= 768 : false;
 
     useEffect(() => {
-        console.log(isDropdownAbove); // Confirma que el valor cambia correctamente
+        console.log(isDropdownAbove); // Confirm that the value changes correctly
     }, [isDropdownAbove]);
+
+    const handleMouseEnter = (key: string) => {
+        setDropdownStates(prev => ({ ...prev, [key]: true }));
+    };
+
+    const handleMouseLeave = (key: string) => {
+        setDropdownStates(prev => ({ ...prev, [key]: false }));
+    };
 
     return (
         <Flex
-            style={{ height: 'fit-content' }}
-            className={styles.position}
             as="header"
+            className={styles.header}
             zIndex={9}
-            fillWidth padding="8"
+            fillWidth
+            padding="8"
             justifyContent="center"
         >
-            <Flex
-                hide="s"
-                paddingLeft="12"
-                fillWidth
-                alignItems="center"
-                textVariant="body-default-s"
-            >
-                {display.location && <>{person.location}</>}
+            {/* Left Section */}
+            <Flex className={styles.leftSection}>
+                { display.location && <LocationDisplay /> }
             </Flex>
+
+            {/* Navigation Section */}
             <Flex
+                className={styles.navSection}
                 background="surface"
                 border="neutral-medium"
                 borderStyle="solid-1"
@@ -81,97 +57,38 @@ export const Header = () => {
                 padding="4"
                 justifyContent="center"
             >
-                <Flex gap="4" textVariant="body-default-s">
-                    {routes['/'] && (
-                        <ToggleButton
-                            prefixIcon="home"
-                            href="/"
-                            selected={pathname === "/"}
-                            style={{ padding: '2px 8px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                        >
-                            <Flex paddingX="0" gap="0" hide="s" justifyContent="center" alignItems="center"> {/* Ajuste de gap y padding */}
-                                {home.label}
-                            </Flex>
-                        </ToggleButton>
-                    )}
-                    {routes['/about'] && (
-                        <ToggleButton
-                            prefixIcon="person"
-                            href="/about"
-                            selected={pathname === "/about"}
-                            style={{ padding: '2px 8px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} // Centrado en este botón también
-                        >
-                            <Flex paddingX="0" hide="s" justifyContent="center" alignItems="center">
-                                {about.label}
-                            </Flex>
-                        </ToggleButton>
-                    )}
-                    {routes['/work'] && (
-                        <ToggleButton
-                            prefixIcon="grid"
-                            href="/work"
-                            selected={pathname.startsWith('/work')}
-                            style={{ padding: '4px 8px', height: '30px' }}
-                        >
-                            <Flex paddingX="1" hide="s">
-                                {work.label}
-                            </Flex>
-                        </ToggleButton>
-                    )}
-                    {routes['/blog'] && (
-                        <ToggleButton
-                            prefixIcon="book"
-                            href="/blog"
-                            selected={pathname.startsWith('/blog')}
-                            style={{ padding: '4px 8px' }}
-                        >
-                            <Flex paddingX="2" hide="s">
-                                {blog.label}
-                            </Flex>
-                        </ToggleButton>
-                    )}
-                    {/* Menú desplegable de galería */}
-                    {routes['/gallery'] && (
-                        <div
-                            onMouseEnter={() => setGalleryMenuVisible(true)}
-                            onMouseLeave={() => setGalleryMenuVisible(false)}
-                            className={styles.menuContainer}
-                        >
-                            <ToggleButton
-                                prefixIcon="gallery"
-                                href="/gallery"
-                                selected={pathname.startsWith('/gallery')}
-                                style={{ height: '30px' }}
-                            >
-                                <Flex paddingX="2" hide="s">
-                                    Portfolio
-                                </Flex>
-                            </ToggleButton>
-                            <div className={styles.bridge}></div>
-                            <div className={`${styles.dropdownMenu} ${isGalleryMenuVisible ? styles.dropdownMenuVisible : ''} ${isDropdownAbove ? styles.dropdownAbove : ''}`}>
-                                {gallery.images.map((image, index) => (
-                                    image.is_best_seller && (
-                                        <a key={index} href={image.src} className={styles.dropdownItem}>
-                                            {image.category}
-                                        </a>
-                                    )
-                                ))}
-                            </div>
-                        </div>
-                    )}
+                <Flex gap="4" textVariant="body-default-s" className={styles.navContainer}>
+                    {navigationItems.map(item => {
+                        const isSelected =
+                            item.href === '/'
+                                ? pathname === item.href
+                                : pathname.startsWith(item.href);
+                        const hasSubItems = !!item.subItems && item.subItems.length > 0;
+                        const isDropdownVisible = dropdownStates[item.key] || false;
 
+                        return (
+                            <NavItem
+                                key={item.key}
+                                label={item.label}
+                                href={item.href}
+                                icon={item.icon}
+                                isSelected={isSelected}
+                                subItems={item.subItems}
+                                isDropdownAbove={isDropdownAbove}
+                                isDropdownVisible={isDropdownVisible}
+                                onMouseEnter={() => handleMouseEnter(item.key)}
+                                onMouseLeave={() => handleMouseLeave(item.key)}
+                            />
+                        );
+                    })}
                 </Flex>
             </Flex>
-            <Flex
-                hide="s"
-                paddingRight="12"
-                fillWidth
-                justifyContent="flex-end"
-                alignItems="center"
-                textVariant="body-default-s"
-            >
+
+            {/* Right Section */}
+            <Flex className={styles.rightSection}>
                 {display.time && <TimeDisplay timeZone={person.location} />}
             </Flex>
         </Flex>
     );
 };
+

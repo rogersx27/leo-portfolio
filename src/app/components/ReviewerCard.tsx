@@ -3,6 +3,7 @@ import { Flex, Avatar, Text } from '@/once-ui/components';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import styles from './ReviewerCard.module.scss';
 import Flag from 'react-world-flags';
+import { format } from 'date-fns';
 interface ReviewerCardProps {
   username: string;
   reviewer_country: string;
@@ -24,38 +25,30 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({
 }) => {
   // Función para renderizar estrellas basadas en la calificación
   const renderStars = (rating: number) => {
-    const fullStars = Math.floor(rating); // Estrellas completas
-    const halfStar = rating % 1 !== 0; // Si hay una media estrella
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Estrellas vacías
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
     return (
-      <div className={styles.stars}>
-        {/* Estrellas completas */}
-        {[...Array(fullStars)].map((_, index) => (
-          <FaStar key={index} style={{ color: '#FFD700' }} />
+      <div className={styles.rating} aria-label={`Qualification ${rating} Stars`}>
+        {[...Array(fullStars)].map((_, i) => (
+          <FaStar key={`full-${i}`} style={{ color: '#FFD700' }} />
         ))}
-
-        {/* Media estrella */}
         {halfStar && <FaStarHalfAlt style={{ color: '#FFD700' }} />}
-
-        {/* Estrellas vacías */}
-        {[...Array(emptyStars)].map((_, index) => (
-          <FaRegStar key={index} style={{ color: '#FFD700' }} />
+        {[...Array(emptyStars)].map((_, i) => (
+          <FaRegStar key={`empty-${i}`} style={{ color: '#FFD700' }} />
         ))}
       </div>
     );
   };
+
 
   const month = new Date(created_at).toLocaleString('default', { month: 'long' });
   const day = new Date(created_at).getDate();
   const year = new Date(created_at).getFullYear();
 
   return (
-    <Flex
-      direction="column"
-      alignItems="center"
-      className={styles.card}
-    >
+    <div className={styles.card}>
       {/* Logo en la esquina superior derecha */}
       <div
         className={styles.fiverrLogo}
@@ -63,8 +56,8 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 400 121.34831"
-          height="24"
-          width="80"
+          height="20"
+          width="50"
           fill="currentColor"
         >
           {/* Aquí van los paths del logo */}
@@ -84,25 +77,25 @@ const ReviewerCard: React.FC<ReviewerCardProps> = ({
         <Avatar
           size="l"
           className={styles.avatar}
-          src={user_image ? `/images/reviewers/${user_image}` : undefined}
+          src={user_image ? `/images/reviewers/${user_image}` : '/images/reviewers/default-avatar.png'}
         />
         <div className={styles.username}>
           <Text>{username}</Text>
-          {reviewer_country && <Flag code={reviewer_country} className={styles.flag} />}
+          {reviewer_country && <Flag code={reviewer_country} className={styles.flag} aria-label={`País: ${reviewer_country}`} />}
         </div>
-        <Flex className={styles.rating}>{renderStars(value)}</Flex>
+        {renderStars(value)}
       </div>
 
-      {/* Contenido principal */}
+      {/* Comentario */}
       <div className={styles.content}>
-        <Text wrap="balance" className={styles.comment}>
-          {comment}
-        </Text>
+        <Text className={styles.comment}>{comment}</Text>
       </div>
 
       {/* Fecha */}
-      <Text className={styles.date}>{`${capitalize(month)} ${day}, ${year}`}</Text>
-    </Flex>
+      <Text className={styles.date} as="time" dateTime={created_at}>
+        {capitalize(format(new Date(created_at), 'MMMM d, yyyy'))}
+      </Text>
+    </div>
   );
 };
 

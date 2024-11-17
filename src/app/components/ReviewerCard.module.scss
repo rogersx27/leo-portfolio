@@ -7,13 +7,12 @@
   padding: 1rem;
   transition: all 0.3s ease-in-out;
   width: 300px;
-  height: 450px;
+  height: 550px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  /* Alinea el contenido desde la parte superior */
   position: relative;
   overflow: hidden;
   margin-top: 10px;
@@ -27,7 +26,6 @@
 
 .username {
   display: flex;
-  /* Para alinear el nombre y la bandera */
   align-items: center;
   color: var(--brand-color);
   font-weight: bold;
@@ -40,9 +38,6 @@
   margin-left: 0.5rem;
   overflow: hidden;
 }
-
-
-
 
 .rating {
   color: var(--accent-color);
@@ -57,18 +52,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* Centra el contenido verticalmente */
   gap: 1rem;
   flex-grow: 0.5;
-  /* Permite que el contenedor ocupe el espacio restante */
 }
-
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
-
 
 .fiverrLogo {
   position: absolute;
@@ -76,29 +67,13 @@
   right: 8px;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Opcional: puedes ajustar el espacio entre elementos */
-  gap: 1rem;
-}
-
-.username {
-  color: var(--brand-color);
-  font-weight: bold;
-  /* Eliminamos margen superior para facilitar el centrado */
-  margin-top: 0.5rem;
-}
-
 .comment {
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
   margin: 0.5rem 0;
   word-wrap: break-word;
-  overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
+  display: block;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
@@ -122,11 +97,10 @@
   font-size: 0.85rem;
   text-align: center;
   margin-top: auto;
-  /* Empuja la fecha hacia la parte inferior */
   padding-bottom: 0.5rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .card {
     /* Ajustamos la altura para móviles */
     padding: 0.3rem;
@@ -135,54 +109,31 @@
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
     width: 300px;
-    height: 450px;
+    height: 360px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Centra el contenido verticalmente */
     position: relative;
     overflow: hidden;
   }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+  .comment {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 4; /* Limita a 4 líneas en móviles */
   }
 
-  .username {
-    font-size: 1.2rem;
+}
+
+@media (min-width: 390px) {
+  .card {
+    width: 280px; /* Reducir ancho en pantallas muy pequeñas */
+    height: 360px; /* Eliminar altura fija */
   }
 
   .comment {
-    font-size: 0.9rem;
-    -webkit-line-clamp: 4;
-    /* Limita el comentario a 4 líneas en móviles */
-    color: rgba(255, 255, 255, 0.9);
-    text-align: center;
-    margin: 0.5rem 0;
-    word-wrap: break-word;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
+    font-size: 0.85rem;
+    -webkit-line-clamp: 3; /* Limita a 3 líneas en pantallas pequeñas */
   }
 
-  .avatar {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    padding: 0.5rem;
-  }
-
-  .content {
-    gap: 0.3rem;
-  }
 }

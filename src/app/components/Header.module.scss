@@ -1,9 +1,9 @@
 /* src/app/components/Header.module.scss */
 
 /* Variables */
-$color-black-overlay: #0000004d;
+$color-black-overlay: #1725424d;
 $color-hover: #179cf7;
-$color-neutral-medium: rgba(87, 86, 86, 0.5);
+$color-neutral-medium: rgba(50, 63, 87, 0.5);
 $color-white: #ffffff;
 $spacing-small: 8px;
 $spacing-medium: 16px;
@@ -16,6 +16,7 @@ $breakpoint-small: 768px;
 
 /* Posicionamiento del Header */
 .position {
+    display: block;
     position: sticky;
     top: 0;
     left: 0;
@@ -87,6 +88,7 @@ $breakpoint-small: 768px;
 /* Contenedor de Cada Menú */
 .menuContainer {
     position: relative;
+    
 
     &:hover .dropdownMenu {
         visibility: visible;

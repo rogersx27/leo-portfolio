@@ -14,6 +14,17 @@ const CustomHeading: React.FC = () => {
     );
 };
 
+const CustomText: React.FC = () => {
+    return (
+        <p className={styles.text}>
+            It’s time to make<br />
+            something extraordinary <br />
+            that leaves a lasting impression.
+        </p>
+    );
+};
+
+
 const CallToAction: React.FC = () => {
     return (
         <Flex
@@ -35,13 +46,7 @@ const CallToAction: React.FC = () => {
             <CustomHeading />
 
             {/* Descripción */}
-            <Text
-                variant="body-default-l"
-                marginBottom="m"
-                className={styles.text}
-            >
-                It’s time to make something extraordinary that leaves a lasting impression.
-            </Text>
+            <CustomText />
 
             {/* Botón principal */}
             <Button

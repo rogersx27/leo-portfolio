@@ -3,6 +3,8 @@ import { Flex, RevealFx, Scroller, SmartImage, Button } from "@/once-ui/componen
 import ImageModal from './ImageModal';
 import ExpandedImage from './ExpandedImage';
 import { useEffect, useState, useRef } from "react";
+import styles from './ImageCarousel.module.scss';
+import clsx from "clsx";
 
 interface Image {
     src: string;
@@ -11,12 +13,13 @@ interface Image {
 
 interface CarouselProps {
     images: Image[];
-    indicator?: 'line' | 'thumbnail';
+    indicator?: 'line' | 'thumbnail' | 'dots';
     aspectRatio?: string;
     sizes?: string;
     autoPlay?: boolean;
     autoPlayInterval?: number;
 }
+
 
 export const ImageCarousel: React.FC<CarouselProps> = ({
     images = [],
@@ -170,7 +173,7 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                                     height="2"></Flex>
                             ))}
                         </Flex>
-                    ) : (
+                    ) : indicator === "thumbnail" ? (
                         <Scroller direction="row" gap="4">
                             {images.map((image, index) => (
                                 <Flex
@@ -203,7 +206,36 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                                 </Flex>
                             ))}
                         </Scroller>
-                    )}
+                    ) : indicator === 'dots' ? (
+                        <Flex
+                            gap="4"
+                            paddingX="s"
+                            fillWidth
+                            justifyContent="center"
+                        >
+                            {images.map((_, index) => (
+                                <div
+                                    key={index}
+                                    onClick={() => handleControlClick(index)}
+                                    className={clsx(styles.dot, {
+                                        [styles.activeDot]: activeIndex === index,
+                                    })}
+                                    role="button"
+                                    aria-label={`Ir a la imagen ${index + 1}`}
+                                    tabIndex={0}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            handleControlClick(index);
+                                        }
+                                    }}
+                                />
+
+                            ))}
+                        </Flex>
+                    ) : null
+                    }
+
                 </>
             )}
         </Flex>

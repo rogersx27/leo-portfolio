@@ -5,7 +5,8 @@ $color-black-overlay: rgba(39, 38, 38, 0.384);
 $color-hover: #179cf7;
 $color-neutral-medium: rgba(87, 86, 86, 0.5);
 $color-white: #ffffff;
-$color-light-gray: #b0b0b0; /* Color de bajo contraste */
+$color-light-gray: #b0b0b0;
+/* Color de bajo contraste */
 $spacing-small: 8px;
 $spacing-medium: 16px;
 $spacing-large: 24px;
@@ -31,8 +32,10 @@ $breakpoint-small: 768px;
     align-items: center;
     text-align: center;
     padding: 1rem;
-    max-width: 500px; /* Limita el ancho máximo para pantallas grandes */
-    margin: 0 auto; /* Centra el componente horizontalmente en la pantalla */
+    max-width: 500px;
+    /* Limita el ancho máximo para pantallas grandes */
+    margin: 0 auto;
+    /* Centra el componente horizontalmente en la pantalla */
     box-sizing: border-box;
 
     /* Icono */
@@ -59,7 +62,8 @@ $breakpoint-small: 768px;
         margin-bottom: 1rem;
 
         .primaryHeading {
-            font-size: 2.5rem; /* Tamaño grande para "Let’s Work" */
+            font-size: 2.5rem;
+            /* Tamaño grande para "Let’s Work" */
             font-weight: bold;
             margin-bottom: -0.3rem;
 
@@ -74,7 +78,8 @@ $breakpoint-small: 768px;
         }
 
         .secondaryHeading {
-            font-size: 1.75rem; /* Tamaño un poco menor para "Together!" */
+            font-size: 1.75rem;
+            /* Tamaño un poco menor para "Together!" */
             font-weight: bold;
             padding: 0;
 
@@ -90,17 +95,22 @@ $breakpoint-small: 768px;
 
     /* Texto */
     .text {
-        font-size: 1rem;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         margin-bottom: 1rem;
-        padding: 0 1rem; /* Padding horizontal para que el texto no se pegue a los bordes */
+        padding: 0 1rem;
+        /* Padding horizontal para que el texto no se pegue a los bordes */
+        line-height: 1.6;
+        color: $color-white;
 
-        @media (max-width: 768px) {
-            font-size: 0.95rem;
-            padding: 0 1rem;
+        /* Transición suave para cambios de tamaño si es necesario */
+        transition: font-size 0.2s ease-in-out, padding 0.2s ease-in-out;
+
+        /* Ajustes adicionales para mejorar la responsividad */
+        @media (max-width: $breakpoint-small) {
+            padding: 0 0.75rem;
         }
 
         @media (max-width: 480px) {
-            font-size: 0.9rem;
             padding: 0 0.5rem;
         }
     }
@@ -108,7 +118,8 @@ $breakpoint-small: 768px;
     /* Botón principal */
     .button {
         margin-top: 1rem;
-        width: 100%;
+        width: 90%;
+        height: 3.1rem;
         background-color: transparent;
         color: #ffffff;
         text-align: center;
@@ -136,19 +147,18 @@ $breakpoint-small: 768px;
     /* Enlaces adicionales */
     .additionalLinks {
         display: flex;
-        justify-content: center; /* Centra el contenedor de enlaces */
+        justify-content: center;
+        /* Centra el contenedor de enlaces */
         margin-top: 1rem;
         width: 100%;
 
-        @media (max-width: 780px) {
-            display: none; /* Oculta los enlaces adicionales en tablets */
-        }
 
         /* Enlace de bajo contraste para FAQ */
         .faqLink {
             color: $color-light-gray;
             text-decoration: none;
-            font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+            font-size: 0.875rem;
+            /* Tamaño de fuente más pequeño */
             transition: color 0.3s ease;
 
             &:hover,
@@ -158,12 +168,5 @@ $breakpoint-small: 768px;
             }
         }
 
-        /* Si decides mantener estilos anteriores para .buttonSecondary, puedes eliminarlos */
-        // .buttonSecondary {
-        //     text-align: center;
-        //     padding: 0.5rem 1rem;
-        //     max-width: 200px; /* Limita el ancho del botón para que se vea más compacto */
-        //     width: 100%; /* Hace que el botón ocupe el ancho del contenedor */
-        // }
     }
 }

@@ -101,7 +101,7 @@ const ContactMe: React.FC = () => {
         >
             <h1 className={styles.heading}> {contact.title} </h1>
             <p className={styles.subheading}>
-                {contact.description}
+                Don’t forget to check the <a href="/faqs">FAQ</a>.
             </p>
 
             <form className={styles.contactForm} onSubmit={handleSubmit}>
@@ -124,16 +124,6 @@ const ContactMe: React.FC = () => {
                     onChange={handleChange}
                     error={errors.email}
                     hasPrefix={<Icon name="email" size="s" />}
-                />
-
-                <Input
-                    id="subject"
-                    label="Subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    error={errors.subject}
-                    hasPrefix={<Icon name="subject" size="s" />}
                 />
 
                 <Textarea

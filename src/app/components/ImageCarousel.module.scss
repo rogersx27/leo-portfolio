@@ -1,0 +1,24 @@
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--neutral-alpha-medium);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        background-color: var(--neutral-on-background-strong);
+        transform: scale(1.2);
+    }
+
+    &:focus {
+        outline: 2px solid var(--brand-solid-strong);
+        outline-offset: 2px;
+    }
+}
+
+.activeDot {
+    background-color: var(--brand-solid-strong);
+    transform: scale(1.4);
+}

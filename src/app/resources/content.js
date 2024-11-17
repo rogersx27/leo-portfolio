@@ -14,8 +14,8 @@ const person = {
 }
 
 const contact = {
-  title: 'Contact Me',
-  description: `I’d love to hear from you! Whether you have a question or just want to say hi, feel free to reach out.`,
+  title: 'Contact Form',
+  description: `Don’t forget to check the FAQ`,
 }
 
 const newsletter = {

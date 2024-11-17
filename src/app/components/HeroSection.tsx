@@ -9,7 +9,7 @@ import styles from '@/app/home.module.scss';
 interface HeroSectionProps {
     titleLine1: string;
     titleLine2: string;
-    subline: string;
+    subline: string | JSX.Element;
     about: {
         avatar: {
             display: boolean;

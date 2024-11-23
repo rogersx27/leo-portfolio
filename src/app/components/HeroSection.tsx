@@ -42,7 +42,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ titleLine1, titleLine2, subli
                         </Flex>
                     </Heading>
                 </RevealFx>
-                <RevealFx translateY="8" delay={0.1}>
+                <RevealFx translateY="8">
                     <Text
                         wrap="balance"
                         onBackground="neutral-weak"
@@ -52,7 +52,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ titleLine1, titleLine2, subli
                         {subline}
                     </Text>
                 </RevealFx>
-                <RevealFx translateY="12" delay={0.1}>
+                <RevealFx translateY="12">
                     <Flex gap="m">
                         <Button
                             data-border="rounded"

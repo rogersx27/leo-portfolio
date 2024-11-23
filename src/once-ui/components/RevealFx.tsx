@@ -43,13 +43,13 @@ const RevealFx = forwardRef<HTMLSpanElement, RevealFxProps>(({
 	const getSpeedDuration = () => {
 		switch (speed) {
 			case 'fast':
-				return '0.5s'; // Antes era '1s'
+				return '0.3s'; // Antes era '1s'
 			case 'medium':
-				return '1s'; // Antes era '2s'
+				return '0.5s'; // Antes era '2s'
 			case 'slow':
-				return '1.5s'; // Antes era '3s'
+				return '1s'; // Antes era '3s'
 			default:
-				return '1s';
+				return '0.5s';
 		}
 	};
 

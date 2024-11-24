@@ -33,7 +33,7 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(({
     onSolid,
     size = 'm',
     withBackground = false,  // Valor predeterminado sin fondo
-    backgroundColor = 'var(--color-neutral-light)',  // Color predeterminado del fondo
+    backgroundColor = 'transparent',  // Color predeterminado del fondo
     backgroundPadding = '8px',  // Padding predeterminado del fondo
     decorative = true,
     className,

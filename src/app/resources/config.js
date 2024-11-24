@@ -9,6 +9,7 @@ const routes = {
   '/contact': true,
   '/api/contact': true,
   '/faqs': true,
+  '/terms': true,
 }
 
 // Enable password protection on selected routes

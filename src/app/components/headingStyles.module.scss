@@ -38,8 +38,21 @@
     }
 
     /* Estilos para cada línea */
-    .line1, .line2 {
+     .line1, .line2 {
         display: block; /* Asegura que cada línea esté en una línea separada */
+
+        @media (max-width: 576px) {
+            font-size: 1.8rem; /* Aumenta el tamaño de los botones en móvil */
+            line-height: 1.4; /* Mejora la legibilidad */
+        }
+
+        @media (max-width: 430px) {
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 320px) {
+            font-size: 1.4rem;
+        }
     }
 
     /* Reducir el tamaño de fuente para la segunda línea */
@@ -47,17 +60,17 @@
         font-size: 0.8em; /* Ajusta según sea necesario */
         line-height: 1.2;
 
-
-        @media (min-width: 414px) {
-            font-size: 0.7em; /* Ajusta según sea necesario */
+        @media (max-width: 576px) {
+            font-size: 1.5rem; /* Aumenta ligeramente en móviles */
         }
 
-        @media (max-width: 390px) {
-            font-size: 0.6em; /* Ajusta según sea necesario */
+        @media (max-width: 430px) {
+            font-size: 1.3rem; /* Ajuste específico para pantallas más pequeñas */
         }
 
-        @media (min-width: 320px) {
-            font-size: 0.6em; /* Ajusta según sea necesario */
+        @media (max-width: 320px) {
+            font-size: 1.2rem; /* Ajusta para dispositivos extra pequeños */
         }
     }
+}
 }

@@ -71,7 +71,7 @@ const structure = [
 
 export default function About() {
     return (
-        <Flex fillWidth maxWidth="m" direction="column">
+        <Flex fillWidth maxWidth="m" direction="column" className={styles.aboutPage}>
             {/* Datos Estructurados */}
             <script
                 type="application/ld+json"

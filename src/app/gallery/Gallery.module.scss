@@ -148,13 +148,23 @@
 }
 
 .categoriesGrid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    /* Ajusta la distribución horizontal */
-    gap: 2rem;
-    /* Añade espacio entre columnas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Configuración inicial */
+    gap: 2rem; /* Espaciado entre cartas */
 }
+
+@media (max-width: 650px) {
+    .categoriesGrid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas por fila */
+    }
+}
+
+@media (max-width: 450px) {
+    .categoriesGrid {
+        grid-template-columns: 2fr; /* Una sola columna por fila */
+    }
+}
+
 
 .categoryColumn {
     flex: 1;

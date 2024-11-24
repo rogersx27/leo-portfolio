@@ -86,7 +86,7 @@ export default function Gallery() {
           }),
         }}
       />
-      <Heading size="xl" style={{ textAlign: "center", margin: "0 0 5px 0" }}>
+      <Heading size="xs" style={{ textAlign: "center", margin: "0 0 5px 0" }}>
         {gallery.title}
       </Heading>
       <p style={{ textAlign: "center", margin: "0 0 5px 0" }}>

@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@/once-ui/components";
+import { Flex, Heading, RevealFx } from "@/once-ui/components";
 import MasonryGrid from "./components/MasonryGrid";
 import { baseURL, gallery, person, niche_in_category } from "../resources";
 import styles from "@/app/gallery/Gallery.module.scss";
@@ -86,12 +86,22 @@ export default function Gallery() {
           }),
         }}
       />
-      <Heading size="xs" style={{ textAlign: "center", margin: "0 0 5px 0", fontSize: "2.5rem", }}>
-        {gallery.title}
-      </Heading>
+      <RevealFx translateY="4">
+        <Heading
+          size="xs"
+          style={{
+            textAlign: "center",
+            margin: "0 0 5px 0",
+            fontSize: "2.5rem",
+          }}
+        >
+          {gallery.title}
+        </Heading>
+
       <p style={{ textAlign: "center", margin: "0 0 5px 0" }}>
         {gallery.description}
       </p>
+      </RevealFx>
       <>
         <MasonryGrid />
       </>

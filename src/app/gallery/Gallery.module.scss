@@ -9,14 +9,28 @@
     background-clip: padding-box;
 }
 
-.gridItem {
+@keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .gridItem {
     margin-bottom: var(--static-space-16);
     transition: transform 0.3s ease;
-}
-
-.gridItem:hover {
+    animation: float 2s ease-in-out infinite; /* Efecto constante */
+  }
+  
+  .gridItem:hover {
     transform: scale(1.05);
-}
+  }
+  
 
 .imageContainer {
     position: relative;
@@ -207,3 +221,6 @@
         padding: 0;
     }
 }
+
+
+  

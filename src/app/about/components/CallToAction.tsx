@@ -70,6 +70,12 @@ const CallToAction: React.FC = () => {
                 >
                     Don’t forget to check the FAQ
                 </Link>
+                <Link
+                    href="/terms"
+                    className={clsx(styles.faqLink)}
+                >
+                    Don't forget to check the Terms and Services.
+                </Link>
             </Flex>
         </Flex>
     );

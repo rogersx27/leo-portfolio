@@ -1,9 +1,7 @@
-// src/app/contact/page.tsx
-
-"use client";
+'use client';
 
 import { useState } from 'react';
-import { Button, Flex, Text, Icon, Input } from '@/once-ui/components';
+import { Button, Flex, Text, Icon, Input, RevealFx } from '@/once-ui/components';
 import styles from './contact.module.scss';
 import { Textarea } from '@/once-ui/components/TextArea';
 import { contact, person } from '../resources';
@@ -99,60 +97,74 @@ const ContactMe: React.FC = () => {
             justifyContent="center"
             className={styles.contactContainer}
         >
-            <h1 className={styles.heading}> {contact.title} </h1>
-            <p className={styles.subheading}>
-                Don’t forget to check the <a href="/faqs">FAQ</a>.
-            </p>
+            <RevealFx translateY="4">
+                <h1 className={styles.heading}> {contact.title} </h1>
+            </RevealFx>
+            <RevealFx translateY="8">
+                <p className={styles.subheading}>
+                    Don’t forget to check the <a href="/faqs">FAQ</a>.
+                </p>
+            </RevealFx>
 
             <form className={styles.contactForm} onSubmit={handleSubmit}>
-                <Input
-                    id="name"
-                    label="Name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    error={errors.name}
-                    hasPrefix={<Icon name="user" size="s" />}
-                />
+                <RevealFx translateY="4">
+                    <Input
+                        id="name"
+                        label="Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        error={errors.name}
+                        hasPrefix={<Icon name="user" size="s" />}
+                    />
+                </RevealFx>
 
-                <Input
-                    id="email"
-                    label="Email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    error={errors.email}
-                    hasPrefix={<Icon name="email" size="s" />}
-                />
+                <RevealFx translateY="8">
+                    <Input
+                        id="email"
+                        label="Email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        error={errors.email}
+                        hasPrefix={<Icon name="email" size="s" />}
+                    />
+                </RevealFx>
 
-                <Textarea
-                    id="message"
-                    label="Message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    error={errors.message}
-                    lines={5}
-                    hasPrefix={<Icon name="subject" size="s" />}
-                />
+                <RevealFx translateY="12">
+                    <Textarea
+                        id="message"
+                        label="Message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        error={errors.message}
+                        lines={5}
+                        hasPrefix={<Icon name="subject" size="s" />}
+                    />
+                </RevealFx>
 
-                <Button
-                    type="submit"
-                    variant="primary"
-                    size="m"
-                    className={styles.submitButton}
-                    disabled={status === 'sending'}
-                >
-                    {status === 'sending' ? 'Sending...' : 'Send Message'}
-                </Button>
+                <RevealFx translateY="16">
+                    <Button
+                        type="submit"
+                        variant="primary"
+                        size="m"
+                        className={styles.submitButton}
+                        disabled={status === 'sending'}
+                    >
+                        {status === 'sending' ? 'Sending...' : 'Send Message'}
+                    </Button>
+                </RevealFx>
 
-                {status === 'success' && (
-                    <p className={styles.successMessage}>Thank you! Your message has been sent successfully.</p>
-                )}
-                {status === 'error' && (
-                    <p className={styles.errorMessage}>Oops! Something went wrong. Please try again later.</p>
-                )}
+                <RevealFx translateY="20">
+                    {status === 'success' && (
+                        <p className={styles.successMessage}>Thank you! Your message has been sent successfully.</p>
+                    )}
+                    {status === 'error' && (
+                        <p className={styles.errorMessage}>Oops! Something went wrong. Please try again later.</p>
+                    )}
+                </RevealFx>
             </form>
 
             <div className={styles.contactInfo}>

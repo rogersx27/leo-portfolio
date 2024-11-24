@@ -1,4 +1,27 @@
 /* src/app/faqs/faqs.module.scss */
+.accordionItem {
+    margin-bottom: 1rem; /* Añade margen entre cada cuadro */
+    border: 1px solid #ffffff; 
+    padding: 1rem; 
+    background-color: transparent; 
+    border-radius: 8px; 
+}
+
+.accordionItem .icon {
+    position: absolute;
+    right: 1rem; /* Alinea la flecha a la derecha dentro del cuadro */
+    top: 50%; /* Centra verticalmente */
+    transform: translateY(-50%);
+    font-size: 1.25rem; /* Ajusta tamaño del icono */
+    color: #ffffff; /* Color del icono */
+}
+
+.section {
+    margin-bottom: 2rem; /* Más espacio entre las secciones */
+    padding: 1.5rem; /* Espaciado interno de la sección */
+    background-color: transparent; 
+    border-radius: 10px; /* Redondea bordes */
+}
 
 .faqsContainer {
     display: flex;

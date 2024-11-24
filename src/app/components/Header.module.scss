@@ -17,20 +17,17 @@ $breakpoint-small: 768px;
 /* Posicionamiento del Header */
 .position {
     display: block;
-    position: sticky;
+    position: fixed; /* Cambiado de sticky a fixed */
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    
     padding: $spacing-medium;
 
     @media (max-width: $breakpoint-small) {
         position: fixed;
-        top: auto;
-        bottom: $spacing-large;
-        left: 0;
-        right: 0;
+        top: 0;
+        bottom: auto;
     }
 }
 

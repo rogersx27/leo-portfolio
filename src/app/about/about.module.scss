@@ -29,8 +29,34 @@ $breakpoint-small: 768px;
  margin-top: 2rem;
 }
 
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
 /* Call to Action */
 .callToAction {
+    animation: float 2s ease-in-out infinite; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,8 +145,28 @@ $breakpoint-small: 768px;
         }
     }
 
+    @keyframes highlight {
+        0% {
+            background-color: rgba(0, 108, 204, 0.2); /* Base inicial (complementario) */
+            box-shadow: 0 0 8px rgba(0, 204, 255, 0.3); /* Cian complementario */
+            border-color: rgba(0, 204, 255, 0.6);
+        }
+        50% {
+            background-color: rgba(0, 204, 255, 0.3); /* Cian más intenso */
+            box-shadow: 0 0 20px rgba(0, 204, 255, 0.6); /* Más brillo */
+            border-color: rgba(0, 204, 255, 1);
+        }
+        100% {
+            background-color: rgba(0, 108, 204, 0.2); /* Regreso al color inicial */
+            box-shadow: 0 0 8px rgba(0, 204, 255, 0.3);
+            border-color: rgba(0, 204, 255, 0.6);
+        }
+    }
+
     /* Botón principal */
     .button {
+        animation: highlight 3s infinite ease-in-out;
+        transition: transform 1s ease;
         margin-top: 1rem;
         width: 90%;
         height: 4rem; 

@@ -1,12 +1,10 @@
-import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
-
+import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text, RevealFx } from '@/once-ui/components';
 import { person, about, social, baseURL } from '@/app/resources';
 import TableOfContents from '@/app/about/components/TableOfContents';
 import styles from '@/app/about/about.module.scss';
 import Card from '../components/Card';
 import CallToAction from './components/CallToAction';
 import cardStyles from '@/app/components/Card.module.scss';
-
 
 export function generateMetadata() {
     const title = about.title;
@@ -20,7 +18,7 @@ export function generateMetadata() {
             title,
             description,
             type: 'website',
-            url: `https://${baseURL}/about`, // Cambiado de /blog a /about
+            url: `https://${baseURL}/about`,
             images: [
                 {
                     url: ogImage,
@@ -73,10 +71,7 @@ const structure = [
 
 export default function About() {
     return (
-        <Flex
-            fillWidth maxWidth="m"
-            direction="column">
-
+        <Flex fillWidth maxWidth="m" direction="column">
             {/* Datos Estructurados */}
             <script
                 type="application/ld+json"
@@ -91,12 +86,8 @@ export default function About() {
                         url: `https://${baseURL}/about`,
                         image: `${baseURL}/images/${person.avatar}`,
                         sameAs: social
-                            .filter((item) => item.link && !item.link.startsWith('mailto:')) // Filtrar enlaces vacíos y correos electrónicos
+                            .filter((item) => item.link && !item.link.startsWith('mailto:'))
                             .map((item) => item.link),
-                        // worksFor: {
-                        //     '@type': 'Organization',
-                        //     name: about.work.experiences[0]?.company || ''
-                        // },
                     }),
                 }}
             />
@@ -108,45 +99,36 @@ export default function About() {
                     position="fixed"
                     paddingLeft="24" gap="32"
                     direction="column" hide="s">
-                    <TableOfContents
-                        structure={structure}
-                        about={about} />
-                </Flex>
+                        <TableOfContents structure={structure} about={about} />
+                </Flex>   
             )}
 
             {/* Contenido Principal */}
-            <Flex
-                fillWidth
-                mobileDirection="column" justifyContent="center">
-
+            <Flex fillWidth mobileDirection="column" justifyContent="center">
                 {/* Avatar y Datos Personales */}
                 {about.avatar.display && (
                     <Flex
                         minWidth="160" paddingX="l" paddingBottom="xl" gap="m"
                         flex={3} direction="column" alignItems="center">
-                        <Avatar
-                            src={person.avatar}
-                            size="xl" />
-                        <Flex
-                            gap="8"
-                            alignItems="center">
-                            <Icon
-                                onBackground="accent-weak"
-                                name="globe" />
-                            {person.location}
-                        </Flex>
-                        {person.languages.length > 0 && (
-                            <Flex
-                                wrap
-                                gap="8">
-                                {person.languages.map((language, index) => (
-                                    <Tag
-                                        key={index}
-                                        size="l">
-                                        {language}
-                                    </Tag>
-                                ))}
+                        <RevealFx translateY="4">
+                            <Avatar src={person.avatar} size="xl" />
+                        </RevealFx>
+                        <RevealFx translateY={6}>
+                            <Flex gap="8" alignItems="center">
+                                <Icon onBackground="accent-weak" name="globe" />
+                                {person.location}
                             </Flex>
+                        </RevealFx>
+                        {person.languages.length > 0 && (
+                            <RevealFx translateY="8">
+                                <Flex wrap gap="8">
+                                    {person.languages.map((language, index) => (
+                                        <Tag key={index} size="l">
+                                            {language}
+                                        </Tag>
+                                    ))}
+                                </Flex>
+                            </RevealFx>
                         )}
                     </Flex>
                 )}
@@ -157,91 +139,82 @@ export default function About() {
                     fillWidth flex={9} maxWidth={40} direction="column">
 
                     {/* Introducción y Redes Sociales */}
-                    <Flex
-                        id={about.intro.title}
-                        fillWidth minHeight="160"
-                        direction="column" justifyContent="center"
-                        marginBottom="32">
-                        {about.calendar.display && (
-                            <Flex
-                                className={styles.blockAlign}
-                                style={{
-                                    backdropFilter: 'blur(var(--static-space-1))',
-                                    border: '1px solid var(--brand-alpha-medium)',
-                                    width: 'fit-content'
-                                }}
-                                alpha="brand-weak" radius="full"
-                                fillWidth padding="4" gap="8" marginBottom="m"
-                                alignItems="center">
-                                <Flex paddingLeft="12">
-                                    <Icon
-                                        name="calendar"
-                                        onBackground="brand-weak" />
-                                </Flex>
-                                <Flex
-                                    paddingX="8">
-                                    Schedule a call
-                                </Flex>
-                                <IconButton
-                                    href={about.calendar.link}
-                                    data-border="rounded"
-                                    variant="tertiary"
-                                    icon="chevronRight" />
-                            </Flex>
-                        )}
-                        <Heading
-                            className={styles.textAlign}
-                            variant="display-strong-xl">
-                            {person.name}
-                        </Heading>
-                        <Text
-                            className={styles.textAlign}
-                            variant="display-default-xs"
-                            onBackground="neutral-weak">
-                            {person.role}
-                        </Text>
-                        {social.length > 0 && (
-                            <Flex
-                                className={styles.blockAlign}
-                                paddingTop="20" paddingBottom="8" gap="8" wrap>
-                                {social.map((item) => (
-                                    item.link && (
-                                        <Button
-                                            key={item.name}
-                                            href={item.link}
-                                            prefixIcon={item.icon}
-                                            label={item.name}
-                                            size="s"
-                                            variant="tertiary" />
-                                    )
-                                ))}
-                            </Flex>
-                        )}
-                    </Flex>
-
-                    {about.intro.display && (
+                    <RevealFx translateY="4">
                         <Flex
-                            direction="column"
-                            textVariant="body-default-l"
-                            fillWidth gap="m" marginBottom="xl">
-                            {Array.isArray(about.intro.description) ? (
-                                about.intro.description.map((paragraph, index) => (
-                                    <p key={index}>{paragraph}</p>
-                                ))
-                            ) : (
-                                about.intro.description
+                            id={about.intro.title}
+                            fillWidth minHeight="160"
+                            direction="column" justifyContent="center"
+                            marginBottom="32">
+                            {about.calendar.display && (
+                                <Flex
+                                    className={styles.blockAlign}
+                                    style={{
+                                        backdropFilter: 'blur(var(--static-space-1))',
+                                        border: '1px solid var(--brand-alpha-medium)',
+                                        width: 'fit-content'
+                                    }}
+                                    alpha="brand-weak" radius="full"
+                                    fillWidth padding="4" gap="8" marginBottom="m"
+                                    alignItems="center">
+                                    <Flex paddingLeft="12">
+                                        <Icon name="calendar" onBackground="brand-weak" />
+                                    </Flex>
+                                    <Flex paddingX="8">Schedule a call</Flex>
+                                    <IconButton
+                                        href={about.calendar.link}
+                                        data-border="rounded"
+                                        variant="tertiary"
+                                        icon="chevronRight" />
+                                </Flex>
+                            )}
+                            <Heading className={styles.textAlign} variant="display-strong-xl">
+                                {person.name}
+                            </Heading>
+                            <Text className={styles.textAlign} variant="display-default-xs" onBackground="neutral-weak">
+                                {person.role}
+                            </Text>
+                            {social.length > 0 && (
+                                <Flex
+                                    className={styles.blockAlign}
+                                    paddingTop="20" paddingBottom="8" gap="8" wrap>
+                                    {social.map((item) => (
+                                        item.link && (
+                                            <Button
+                                                key={item.name}
+                                                href={item.link}
+                                                prefixIcon={item.icon}
+                                                label={item.name}
+                                                size="s"
+                                                variant="tertiary" />
+                                        )
+                                    ))}
+                                </Flex>
                             )}
                         </Flex>
+                    </RevealFx>
+
+                    {/* Descripción de Introducción */}
+                    {about.intro.display && (
+                        <RevealFx translateY={6}>
+                            <Flex
+                                direction="column"
+                                textVariant="body-default-l"
+                                fillWidth gap="m" marginBottom="xl">
+                                {Array.isArray(about.intro.description) ? (
+                                    about.intro.description.map((paragraph, index) => (
+                                        <p key={index}>{paragraph}</p>
+                                    ))
+                                ) : (
+                                    about.intro.description
+                                )}
+                            </Flex>
+                        </RevealFx>
                     )}
 
-                    {/* Bilingual Section */}
+                    {/* Sección Bilingüe */}
                     {about.bilingual.display && (
-                        <>
-                            <Heading
-                                as="h2"
-                                id={about.bilingual.title}
-                                variant="display-strong-s"
-                                marginBottom="m">
+                        <RevealFx translateY="8">
+                            <Heading as="h2" id={about.bilingual.title} variant="display-strong-s" marginBottom="m">
                                 {about.bilingual.title}
                             </Heading>
                             <Flex
@@ -252,21 +225,14 @@ export default function About() {
                                         key={`${experience.company}-${index}`}
                                         fillWidth
                                         direction="column">
-                                        <Text
-                                            id={experience.languages.replace(" ", "-")}
-                                            variant="heading-strong-l">
+                                        <Text id={experience.languages.replace(" ", "-")} variant="heading-strong-l">
                                             {experience.languages}
                                         </Text>
-                                        <Text
-                                            variant="body-default-m"
-                                            onBackground="neutral-weak">
+                                        <Text variant="body-default-m" onBackground="neutral-weak">
                                             {experience.achievements}
                                         </Text>
-                                        {/* Si tienes imágenes en bilingual, inclúyelas aquí */}
                                         {experience.images.length > 0 && (
-                                            <Flex
-                                                fillWidth paddingTop="m" gap="12"
-                                                wrap>
+                                            <Flex fillWidth paddingTop="m" gap="12" wrap>
                                                 {experience.images.map((image, index) => (
                                                     <Flex
                                                         key={index}
@@ -287,13 +253,16 @@ export default function About() {
                                     </Flex>
                                 ))}
                             </Flex>
-                        </>
+                        </RevealFx>
                     )}
 
+                    {/* Call to Action */}
                     {about.callToAction.display && (
-                        <Card className={cardStyles.card}>
-                            <CallToAction />
-                        </Card>
+                        <RevealFx translateY={10}>
+                            <Card className={cardStyles.card}>
+                                <CallToAction />
+                            </Card>
+                        </RevealFx>
                     )}
 
                     {/* Experiencias Laborales */}

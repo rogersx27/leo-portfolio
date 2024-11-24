@@ -14,23 +14,41 @@ export const Footer = () => {
             <Flex
                 fillWidth maxWidth="m" paddingY="8" paddingX="16"
                 justifyContent="space-between" alignItems="center">
-                <Text
-                    variant="body-default-s"
-                    onBackground="neutral-strong">
+                {/* Main Footer Text */}
+                <Flex direction="column" alignItems="flex-start">
                     <Text
-                        onBackground="neutral-weak">
-                        © {currentYear} /
+                        variant="body-default-s"
+                        onBackground="neutral-strong">
+                        <Text onBackground="neutral-weak">
+                            © {currentYear} /
+                        </Text>
+                        <Text paddingX="4">
+                            {person.name}
+                        </Text>
+                        <Text onBackground="neutral-weak">
+                            / Build using <SmartLink style={{ marginLeft: '-0.125rem' }} href="https://once-ui.com/templates/magic-portfolio">Once UI</SmartLink>
+                        </Text>
                     </Text>
-                    <Text paddingX="4">
-                        {person.name}
-                    </Text>
-                    <Text onBackground="neutral-weak">
-                        {/* Usage of this template requires attribution. Please don't remove the link to Once UI. */}
-                        / Build using <SmartLink style={{marginLeft: '-0.125rem'}} href="https://once-ui.com/templates/magic-portfolio">Once UI</SmartLink>
-                    </Text>
-                </Text>
-                <Flex
-                    gap="16">
+                    {/* Links to Terms and FAQs */}
+                    <Flex
+                        direction="column"
+                        alignItems="flex-start"
+                        gap="4"
+                        marginTop="8">
+                        <SmartLink href="/terms" style={{ textDecoration: 'none' }}>
+                            <Text variant="body-default-s" onBackground="neutral-strong">
+                                Terms & Conditions
+                            </Text>
+                        </SmartLink>
+                        <SmartLink href="/faqs" style={{ textDecoration: 'none' }}>
+                            <Text variant="body-default-s" onBackground="neutral-strong">
+                                FAQs
+                            </Text>
+                        </SmartLink>
+                    </Flex>
+                </Flex>
+                {/* Social Icons */}
+                <Flex gap="16">
                     {social.map((item) => (
                         item.link && (
                             <IconButton
@@ -39,7 +57,7 @@ export const Footer = () => {
                                 icon={item.icon}
                                 tooltip={item.name}
                                 size="s"
-                                variant="ghost"/>
+                                variant="ghost" />
                         )
                     ))}
                 </Flex>

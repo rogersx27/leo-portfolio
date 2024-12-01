@@ -46,7 +46,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ titleLine1, titleLine2, subli
                     <Text
                         wrap="balance"
                         onBackground="neutral-weak"
-                        variant="body-default-l"
+                        style={{
+                            fontSize: '1.5rem', // Ajusta el tamaño del texto
+                            lineHeight: '1.5rem', // Espaciado entre líneas
+                            fontWeight: 'bold',
+                            textAlign: 'center',
+                            alignItems: 'center', // Cambia el grosor de la fuente
+                        }}
                         className={styles.sublineText}
                     >
                         {subline}

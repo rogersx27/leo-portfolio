@@ -176,7 +176,7 @@ export default function About() {
                             {social.length > 0 && (
                                 <Flex
                                     className={styles.blockAlign}
-                                    paddingTop="20" paddingBottom="8" gap="8" wrap>
+                                    paddingTop="20" paddingBottom="4" gap="8" wrap>
                                     {social.map((item) => (
                                         item.link && (
                                             <Button

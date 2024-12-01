@@ -203,7 +203,7 @@ $breakpoint-small: 768px;
         font-weight: bold; // Opcional para hacerlo más prominente
 
         @media (max-width: 460px) {
-            font-size: 1.2rem; // Ajusta el tamaño en pantallas medianas
+            font-size: 1rem; // Ajusta el tamaño en pantallas medianas
         }
       }
       
@@ -247,6 +247,7 @@ $breakpoint-small: 768px;
         margin: 0 auto; /* Centra el contenido */
         max-width: 100%; /* Asegura que no se desborde */
         box-sizing: border-box; /* Incluye padding en el ancho total */
+        margin-top: 1rem;
     }
 
     .blockAlign {

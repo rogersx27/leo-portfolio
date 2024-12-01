@@ -50,7 +50,7 @@ const CallToAction: React.FC = () => (
             size="m"
             className={styles.button}
         >
-            Contact Now
+           <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Contact Now</span>
         </Button>
 
         {/* Enlaces adicionales */}

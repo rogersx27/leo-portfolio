@@ -9,6 +9,8 @@
     background-clip: padding-box;
 }
 
+
+
 @keyframes float {
     0% {
       transform: translateY(0);
@@ -200,6 +202,15 @@
     text-align: center;
     color: #d3d3d3;
     /* Cambiado a gris claro para mayor contraste con el fondo negro */
+}
+
+.titleGallery{
+    text-align: center;
+    margin: 0 0 5px 0;
+    font-size: 2.5rem; 
+    @media (max-width: 500px){
+        font-size: 1.5rem;
+    }
 }
 
 .categoryTitle {

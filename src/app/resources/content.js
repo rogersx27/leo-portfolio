@@ -153,7 +153,7 @@ const niche_in_category = {
 
 const gallery = {
   label: 'Gallery',
-  title: "HERE'S A COLLECTION OF MY WORK",
+  title: "Here's A Collection Of My Work",
   description: `Explore by Category or Niche`,
   images: [
     {

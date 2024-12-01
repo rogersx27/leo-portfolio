@@ -37,7 +37,7 @@ function NicheInCategorySection() {
   return (
     <div className={styles.nicheInCategorySection}>
       <Heading marginTop="l" marginBottom="m">
-        EXPLORE MORE NICHES
+        Explore More Niches
       </Heading>
       <div className={styles.categoriesGrid}>
         {Object.entries(niche_in_category).map(([category, niches]) => (
@@ -89,11 +89,7 @@ export default function Gallery() {
       <RevealFx translateY="4">
         <Heading
           size="xs"
-          style={{
-            textAlign: "center",
-            margin: "0 0 5px 0",
-            fontSize: "2.5rem",
-          }}
+          className={styles.titleGallery}
         >
           {gallery.title}
         </Heading>

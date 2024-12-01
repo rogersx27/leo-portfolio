@@ -89,7 +89,7 @@ export default function Home() {
 
             {/* Sección de Reseñas */}
             <section className={styles.reviewsSection}>
-                <Heading variant="display-strong-l" as="h2" style={{ textAlign: 'center', margin: '2rem 0' }}>
+                <Heading variant="display-strong-l" as="h2" style={{ textAlign: 'center', margin: '1.5rem 0' }}>
                     What People Are Saying
                 </Heading>
                 <ReviewersCarousel />

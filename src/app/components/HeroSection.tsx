@@ -36,7 +36,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ titleLine1, titleLine2, subli
                         className={headingStyles.twoLinesHeading}
                         as="h1"
                     >
-                        <Flex direction="column" alignItems="center">
+                        <Flex direction="column" alignItems="center" justifyContent='center'>
                             <span className={headingStyles.line1}>{titleLine1}</span>
                             <span className={headingStyles.line2}>{titleLine2}</span>
                         </Flex>
@@ -47,11 +47,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ titleLine1, titleLine2, subli
                         wrap="balance"
                         onBackground="neutral-weak"
                         style={{
-                            fontSize: '1.5rem', // Ajusta el tamaño del texto
+                            fontSize: '100%', // Ajusta el tamaño del texto
                             lineHeight: '1.5rem', // Espaciado entre líneas
                             fontWeight: 'bold',
                             textAlign: 'center',
                             alignItems: 'center', // Cambia el grosor de la fuente
+                            justifyContent: 'center', // Centra el texto
                         }}
                         className={styles.sublineText}
                     >

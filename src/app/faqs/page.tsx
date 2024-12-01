@@ -246,22 +246,17 @@ const FAQsPage: React.FC = () => {
         <SearchBar onSearch={handleSearch} />
 
         {/* FAQs List */}
-        <div className={styles.accordionList}>
+        <div className={styles.faqList}>
           {filteredFaqSections.length > 0 ? (
             filteredFaqSections.map((section) => (
               <div key={section.title} className={styles.section}>
                 <h2 className={styles.sectionTitle}>{section.title}</h2>
-                <Accordion>
-                  {section.faqs.map((faq) => (
-                    <Accordion
-                      key={faq.id}
-                      title={faq.question}
-                      className={styles.accordionItem}
-                    >
-                      <p>{faq.answer}</p>
-                    </Accordion>
-                  ))}
-                </Accordion>
+                {section.faqs.map((faq) => (
+                  <div key={faq.id} className={styles.faqItem}>
+                    <p className={styles.question}>{faq.question}</p>
+                    <p className={styles.answer}>{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             ))
           ) : (
@@ -287,3 +282,4 @@ const FAQsPage: React.FC = () => {
 };
 
 export default FAQsPage;
+

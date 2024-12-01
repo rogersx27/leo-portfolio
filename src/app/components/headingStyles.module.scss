@@ -40,6 +40,7 @@
     /* Estilos para cada línea */
      .line1, .line2 {
         display: block; /* Asegura que cada línea esté en una línea separada */
+        font-size: 1em;
 
         @media (max-width: 576px) {
             font-size: 1.8rem; /* Aumenta el tamaño de los botones en móvil */

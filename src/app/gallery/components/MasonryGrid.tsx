@@ -7,14 +7,16 @@ import styles from "@/app/gallery/Gallery.module.scss";
 
 export default function MasonryGrid() {
     const breakpointColumnsObj = {
-        default: 3, // Pantallas mayores a 1440px
-        //1440: 3,    // <= 1440px, 5 columnas
-        1200: 2,    // <= 1200px, 4 columnas
-        //1024: 2,    // <= 1024px, 3 columnas
-        //768: 2,     // <= 768px, 2 columnas
-        501: 1,      // <= 560px, 1 columna
+        default: 5, // Pantallas mayores a 1440px
+        1440: 5,    // <= 1440px, 5 columnas
+        1200: 4,    // <= 1200px, 4 columnas
+        1024: 3,    // <= 1024px, 3 columnas
+        768: 2,     // <= 768px, 2 columnas
+        560: 1      // <= 560px, 1 columna
       };
       
+
+ 
 
     // Ordenar las imágenes (si es necesario)
     const sortedImages = [...gallery.images].sort((a, b) => {

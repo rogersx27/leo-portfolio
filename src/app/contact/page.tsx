@@ -141,7 +141,7 @@ const ContactMe: React.FC = () => {
                         onChange={handleChange}
                         error={errors.message}
                         lines={5}
-                        hasPrefix={<Icon name="subject" size="s" />}
+                        //hasPrefix={<Icon name="subject" size="s" />}
                     />
                 </RevealFx>
 

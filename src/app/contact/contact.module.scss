@@ -5,7 +5,8 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    max-width: 800px;
+    max-width: 1200px;
+    width: 100%;  // Aumenta este valor
     margin: 0 auto;
     box-sizing: border-box;
 
@@ -24,7 +25,8 @@
     }
 
     .contactForm {
-        width: 100%;
+        width: 80%;
+        max-width: 600px;
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
@@ -44,6 +46,8 @@
 
     .input,
     .textarea {
+        position: relative;
+        padding-left: 2.5rem; // Asegura espacio para el icono
         padding: 0.75rem;
         border: 1px solid #cccccc;
         border-radius: 8px;
@@ -59,6 +63,9 @@
     .textarea {
         resize: vertical;
     }
+
+    
+
 
     .submitButton {
         align-self: flex-start;

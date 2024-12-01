@@ -22,12 +22,12 @@
 .heroSection {
     width: 100%;
     display: flex;
-    margin-top: 2rem;
     justify-content: center;
     padding: 2rem 0;
 
     @media (max-width: 768px) {
         padding: 1rem 0;
+        margin-top: 2rem;
     }
 }
 

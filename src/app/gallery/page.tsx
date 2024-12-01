@@ -59,7 +59,7 @@ function NicheInCategorySection() {
 
 export default function Gallery() {
   return (
-    <Flex fillWidth direction="column" alignItems="center" padding="l">
+    <Flex fillWidth direction="column" alignItems="center" padding="l" marginTop="24">
       <script
         type="application/ld+json"
         suppressHydrationWarning

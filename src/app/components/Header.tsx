@@ -106,6 +106,7 @@ export const Header: React.FC = () => {
                     {display.time && <TimeDisplay timeZone={person.location} />}
                 </Flex>
             </Flex>
+           
         </header>
     );
 };

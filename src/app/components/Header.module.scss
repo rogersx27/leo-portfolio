@@ -23,11 +23,13 @@ $breakpoint-small: 768px;
     right: 0;
     z-index: 100;
     padding: $spacing-medium;
+    margin-bottom: 50px;
 
     @media (max-width: $breakpoint-small) {
         position: fixed;
         top: 0;
         bottom: auto;
+        margin-bottom: $spacing-large;
     }
 }
 

@@ -198,6 +198,15 @@ $breakpoint-small: 768px;
         }
     }
     
+    .bigText {
+        font-size: 1.5rem; // Ajusta el tamaño según tus necesidades
+        font-weight: bold; // Opcional para hacerlo más prominente
+
+        @media (max-width: 460px) {
+            font-size: 1.2rem; // Ajusta el tamaño en pantallas medianas
+        }
+      }
+      
 
     /* Enlaces adicionales */
     .additionalLinks {

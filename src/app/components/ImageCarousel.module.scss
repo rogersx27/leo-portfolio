@@ -22,3 +22,9 @@
     background-color: var(--brand-solid-strong);
     transform: scale(1.4);
 }
+
+.carouselContainer {
+    width: 100%;
+    max-width: 800px; // Cambia este valor según el tamaño deseado
+    margin: 0 auto; // Para centrar el carrusel
+  }

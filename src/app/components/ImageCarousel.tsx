@@ -92,7 +92,7 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
     }
 
     return (
-        <Flex fillWidth gap="12" direction="column">
+        <Flex fillWidth gap="12" direction="column" className={styles.carouselContainer}>
             <Flex position="relative" onClick={handleImageClick}>
                 <RevealFx
                     style={{ width: '100%' }}

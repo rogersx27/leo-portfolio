@@ -12,7 +12,7 @@ import styles from "./Accordion.module.scss";
 import classNames from "classnames";
 
 interface AccordionProps {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -126,7 +126,7 @@ const Accordion: React.FC<AccordionProps> = forwardRef(
             variant="heading-strong-s"
             style={{ marginRight: "2rem" }} // Asegúrate de dejar espacio para el ícono
           >
-            {title}
+            {title ? title : "Untitled"}
           </Heading>
           <Icon
             name="chevronDown"

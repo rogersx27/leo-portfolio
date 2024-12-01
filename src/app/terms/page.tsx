@@ -189,89 +189,86 @@ const termsData = [
 ];
 
 const TermsPage: React.FC = () => {
-    const [searchQuery, setSearchQuery] = useState("");
-  
-    const handleSearch = (query: string) => {
-      setSearchQuery(query);
-    };
-  
-    // Filtrar términos por búsqueda
-    const filteredTerms = termsData.filter(
-      (term) =>
-        term.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        React.Children.toArray(term.content.props.children).some((child) => {
-          if (React.isValidElement(child)) {
-            return (
-              child.props.children
-                .toString()
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase())
-            );
-          }
-          return false;
-        })
-    );
-  
-    return (
-      <>
-        <Head>
-          <title>Terms and Conditions | Your Website</title>
-          <meta
-            name="description"
-            content="Detailed terms and conditions for our design services."
-          />
-          <meta
-            name="keywords"
-            content="Terms, Policies, Conditions, Design Services"
-          />
-        </Head>
-        <Flex
-          direction="column"
-          alignItems="center"
-          justifyContent="flex-start"
-          className={styles.termsContainer}
-        >
-          <h1 className={styles.heading}>Terms and Conditions</h1>
-          <p className={styles.subheading}>
-            Please review the following terms and policies before using our
-            services.
-          </p>
-  
-          {/* Search Bar */}
-          <SearchBar onSearch={handleSearch} />
-  
-          {/* Terms List */}
-          <div className={styles.accordionList}>
-            {filteredTerms.length > 0 ? (
-              filteredTerms.map((term, index) => (
-                <Accordion
-                  key={index}
-                  title={term.title}
-                  className={styles.accordionItem}
-                >
-                  {term.content}
-                </Accordion>
-              ))
-            ) : (
-              <Text as="p" variant="body-default-m" className={styles.noResults}>
-                No terms matching your search were found.
-              </Text>
-            )}
-          </div>
-  
-          {/* Contact Promotion */}
-          <div className={styles.contactPrompt}>
-            <Text as="p" variant="body-default-m">
-              Do you have a question that's not on the list?{" "}
-              <a href="/contact" className={styles.contactLink}>
-                Contact me
-              </a>{" "}
-              and I'll be happy to help you.
-            </Text>
-          </div>
-        </Flex>
-      </>
-    );
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
   };
-  
-  export default TermsPage;
+
+  // Filtrar términos por búsqueda
+  const filteredTerms = termsData.filter(
+    (term) =>
+      term.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      React.Children.toArray(term.content.props.children).some((child) => {
+        if (React.isValidElement(child)) {
+          return (
+            child.props.children
+              .toString()
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase())
+          );
+        }
+        return false;
+      })
+  );
+
+  return (
+    <>
+      <Head>
+        <title>Terms and Conditions | Your Website</title>
+        <meta
+          name="description"
+          content="Detailed terms and conditions for our design services."
+        />
+        <meta
+          name="keywords"
+          content="Terms, Policies, Conditions, Design Services"
+        />
+      </Head>
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyContent="flex-start"
+        className={styles.termsContainer}
+      >
+        <h1 className={styles.heading}>Terms and Conditions</h1>
+        <p className={styles.subheading}>
+          Please review the following terms and policies before using our
+          services.
+        </p>
+
+        {/* Search Bar */}
+        <SearchBar onSearch={handleSearch} />
+
+        {/* Terms List */}
+        <div className={styles.termsList}>
+          {filteredTerms.length > 0 ? (
+            filteredTerms.map((term, index) => (
+              <div key={index} className={styles.termItem}>
+                <h2 className={styles.termTitle}>{term.title}</h2>
+                <div className={styles.termContent}>{term.content}</div>
+              </div>
+            ))
+          ) : (
+            <Text as="p" variant="body-default-m" className={styles.noResults}>
+              No terms matching your search were found.
+            </Text>
+          )}
+        </div>
+
+        {/* Contact Promotion */}
+        <div className={styles.contactPrompt}>
+          <Text as="p" variant="body-default-m">
+            Do you have a question that's not on the list?{" "}
+            <a href="/contact" className={styles.contactLink}>
+              Contact me
+            </a>{" "}
+            and I'll be happy to help you.
+          </Text>
+        </div>
+      </Flex>
+    </>
+  );
+};
+
+export default TermsPage;

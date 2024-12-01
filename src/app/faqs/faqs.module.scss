@@ -1,11 +1,13 @@
 .section {
     margin-bottom: 2rem; /* Espaciado entre secciones */
-    padding: 1.5rem; /* Espaciado interno de cada sección */
+    padding: 1rem; /* Espaciado interno de cada sección */
     background-color: transparent; 
     border-radius: 10px; /* Bordes redondeados */
   }
   
-
+  .faqItem {
+    margin-bottom: 1.5rem; /* Espaciado entre preguntas */
+  }
   
   .question {
     font-size: 1.25rem;

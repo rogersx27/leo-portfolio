@@ -3,7 +3,7 @@
 import React from 'react';
 import Image, { ImageProps } from 'next/image';
 
-interface ExpandedImageProps extends ImageProps {
+interface ExpandedImageProps extends Omit<ImageProps, 'width' | 'height'> {
     className?: string;
     style?: React.CSSProperties;
 }
@@ -18,13 +18,11 @@ const ExpandedImage: React.FC<ExpandedImageProps> = ({
     return (
         <div
             style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100vw', // Toma todo el ancho de la ventana
-                height: '100vh', // Toma toda la altura de la ventana
-                overflow: 'hidden',
+                position: 'relative',
+                width: '90vw',
+                height: '90vh',
                 borderRadius: '8px',
+                overflow: 'hidden',
                 ...style,
             }}
             className={className}
@@ -33,13 +31,9 @@ const ExpandedImage: React.FC<ExpandedImageProps> = ({
                 {...props}
                 src={src}
                 alt={alt}
-                layout="responsive"
-                width={1920} // Ajuste temporal, puede adaptarse según el tamaño de la imagen
-                height={1080}
+                fill
                 style={{
-                    objectFit: 'contain', // Asegura que la imagen se ajuste al contenedor sin recortar
-                    maxWidth: '100%',
-                    maxHeight: '100%',
+                    objectFit: 'contain',
                 }}
             />
         </div>

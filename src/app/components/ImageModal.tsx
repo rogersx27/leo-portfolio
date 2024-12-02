@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 interface ModalProps {
     isOpen: boolean;
@@ -10,9 +11,15 @@ interface ModalProps {
 const ImageModal: React.FC<ModalProps> = ({ isOpen, onClose, children, style }) => {
     if (!isOpen) return null;
 
-    return (
+    const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
+    const modalContent = (
         <div
-            onClick={onClose}
+            onClick={handleOverlayClick}
             style={{
                 position: 'fixed',
                 top: 0,
@@ -23,17 +30,14 @@ const ImageModal: React.FC<ModalProps> = ({ isOpen, onClose, children, style }) 
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                zIndex: 1000,
-                overflow: 'hidden',
-                ...style
+                zIndex: 10000,
+                overflow: 'auto',
+                ...style,
             }}
         >
             <div
-                onClick={(e) => e.stopPropagation()}
                 style={{
                     position: 'relative',
-                    maxWidth: '90%',
-                    maxHeight: '90%',
                     backgroundColor: 'transparent',
                     display: 'flex',
                     justifyContent: 'center',
@@ -51,7 +55,7 @@ const ImageModal: React.FC<ModalProps> = ({ isOpen, onClose, children, style }) 
                         color: '#fff',
                         fontSize: '1.5rem',
                         cursor: 'pointer',
-                        zIndex: 1001,
+                        zIndex: 2,
                     }}
                 >
                     &times;
@@ -60,6 +64,10 @@ const ImageModal: React.FC<ModalProps> = ({ isOpen, onClose, children, style }) 
             </div>
         </div>
     );
+
+    return typeof window !== 'undefined'
+        ? createPortal(modalContent, document.body)
+        : null;
 };
 
 export default ImageModal;

@@ -49,7 +49,7 @@ export const Footer = () => {
             <Text
                 variant="body-default-s"
                 onBackground="neutral-strong"
-                textAlign="center"
+                align="center"
             >
                 <Text onBackground="neutral-weak">© {currentYear} /</Text>
                 <Text paddingX="4">{person.name}</Text>

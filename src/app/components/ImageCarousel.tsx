@@ -141,11 +141,6 @@ export const ImageCarousel: React.FC<CarouselProps> = ({
                 <ExpandedImage
                     src={images[activeIndex]?.src}
                     alt={images[activeIndex]?.alt}
-                    sizes="100vw"
-                    style={{
-                        maxWidth: '90vw',
-                        maxHeight: '90vh',
-                    }}
                 />
             </ImageModal>
 
